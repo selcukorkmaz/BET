@@ -1,0 +1,729 @@
+sentences	label
+ArnB is dimer in solution as defined by its size exclusion chromatography elution profile data not show 	1
+Molecular surface representation of the dimeric structure of ArnB showing the UDP Ara PLP binding pocket 	1
+Prior to the structural and biophysical characterization we demonstrated that Ani is monomer in the NMR conditions 	1
+Sedimentation velocity experiments yielded results compatible with single monomer species 	1
+The extension of this interaction surface suggests that the dimer seen in the crystal is related to the oligomeric GpgS species observed by size exclusion chromatography 	1
+The elongated nature of the putative tuberculosis GpgS dimer with overall dimensions of might explain its higher apparent molecular weight in size exclusion chromatography 	1
+Taken together these data indicate that tuberculosis GpgS is dimer in solution and that homodimerization might be conserved feature within this enzyme family 	1
+As well when analyzed by size exclusion chromatographyure ASP eluted with Stokes radius consistent with molecular mass equivalent to   kDa monomer kDa further supporting the idea that ASP exists as trimer in solution 	1
+The molecular weight of functional Vdi was determined to be kDa as estimated by size exclusion chromatography also implying that the endonuclease is an active homodimer 	1
+The apparent sedimentation coefficients of Pfu FtsY   and Taq FtsY   were determined and and both receptors appeared as monomers in solution 	1
+This is nearly twice its calculated molecular weight and indicates dimeric state in solution 	1
+We observe that dimer occurs both in solution at and in the crystal grown at room temperature 	1
+The application of the three fold crystal symmetry reveals that the quaternary structure is toroid formed by three crystallographically related dimers 	1
+Chemical cross linking was used to show that lysin is dimer in solution and that Triton and other detergents dissociate the dimer 	1
+Previous measurements of dynamic light scattering of solutions of purified lysin at mg ml ixM at pH and showed essentially all the lysin to be dimeric with an estimated molecular weight of kD 	1
+This paper provides new information about the function oflysin by showing that it is dimer in solution that monomerizes during or immediately after its contact with theVE 	1
+Although the work in this paper hasutilized lysin from the red abalone rufescens lysinfrom two other California species cracheroidii and corrugata also exist in solution as dimers and yield thesame cross linking pattern as that shown 	1
+Strikingly the interface surface area correlates positively with biochemical stability GlpF tends to aggregate in solution AQP is well behaved and AqpZ is stable tetramer in even mild denaturing conditions 	1
+There is remarkable tertiary and quaternary structure conservation and the tetramer pore remains nearly constant in shape between the known structures 	1
+Because exCD is also monomeric in solution under these conditions as determined by sedimentation equilibrium molecular mass   unpublished data this biphasicity must be caused by formation of dimers or trimers by enhanced self association of lectin domains as they bind to IgE Fc 	1
+derCD oligomerizationAt concentration of derCD has an apparent molecular mass of kD but at mM of derCD monomeroligomer equilibrium supervened with mass average molecular mass of kD with both values estimated from NMR based translational diffusion measurements 	1
+The domain of titin forms homodimers in solution and in the crystalline state but these have different arrangement from the APEG homodimers and do not appear to be physiologically relevant 	1
+The sedimentation velocity experiment results revealed that both non methylated and methylated proteins were pure homogenous and monomeric 	1
+The sedimentation velocity experiments showed the protein remained pure and monomeric after the chemical modification 	1
+Subsequently ion exchange and size exclusion chromatography allowed isolation of highly purified tetrameric protein sample for enzyme kinetic analysis and crystallization 	1
+NMR spectra particularly relaxation experiments indicate that the protein behaves as monomer in solution even at NMR concentrations 	1
+The resulting protein AVR hereafter referred to AVR as well as all of the other studied proteins were found to form avidin like tetramers according to analysis by size exclusion chromatography and confirmed to be pure and homogenous using SDS PAGE 	1
+Gel filtration analysis showed that all of the mutated proteins corresponded to tetramers 	1
+Gel filtration analysis of AVR revealed that these disulphide bonds are formed between tetramers thus causing further oligomerization of the protein not shown 	1
+A tetramer biological unit composed of only main chain atoms and based on high resolution ray structure of avidin Airenne Hytnen unpublished PDB VYO was used as trial model 	1
+NMR and native PAGE analyses of the mer RNA suggested that the ACCGCG loop forms kissing loop type homodimer 	1
+Furthermore NMR analysis and native PAGE analysis of the loop variant AUCGCG suggested that the AUCGCG loop forms kissing loop type homodimer such that the WatsonCrick edges of and may allow the kissing looploop interaction 	1
+While monomer dimer equilibrium was observed for MspI in analytical ultracentrifuge experiments we used several alternative ways to establish whether HinP exists as monomer dimer or tetramer in solution 	1
+Taken together these data suggest that HinP occurs predominantly as monomer in solution but can form dimer or higher order molecule weight complex at high protein concentrations 	1
+Interestingly ray crystallographic and nuclear magnetic resonance NMR spectroscopic analysis of CP KH domains reveal both hetero and homo dimer formation between KH domains 	1
+As monomer of His tagged SeMet TmYeaZ would have calculated molecular weight of Da it is likely that TmYeaZ exists as dimer in solution 	1
+Surprisingly sedimentation velocity measurements showed that all single domain RPTPs studied IA IA GLEPP DEP and STEP were entirely monomeric in solution as were tandem domain receptor PTPs RPTP CD RPTP and RPTP 	1
+The determined molecular masses calculated from AUC velocity data ranged from kDa to kDa in agreement with the theoretical mass of monomeric tandem domains 	1
+Sedimentation equilibrium confirmed that RPTP formed stable dimer in solution 	1
+Both the RKEE and DDKK mutants were entirely monomeric in solution as assessed by velocity and equilibrium AUC analysis validating the head to toe dimerization model 	1
+Although we conclude that PTP catalytic domains do not dimerize in solution regulation of RPTPs by dimerization may occur invivo through other means involving transmembrane domains juxtamembrane regions or extracellular ligands proteolysis of the linker or upon oxidation 	1
+In contrast to other RPTPs RPTP did self associate strongly in solution and dimeric head to toe arrangement of molecules was observed in the crystal structure 	1
+Mutation of residues from both the and the dimer interfaces abolished dimerization confirming that the molecular basis for the dimerization observed in solution correlates with the dimer model suggested by the crystal structure 	1
+The caspase zymogen such as procaspase exists as homodimer in solution but exhibits poor catalytic activity because its active sites exist in an unproductive conformation 	1
+Supporting this hypothesis caspase exists predominantly as monomer in solution and exhibits basal level of catalytic activity 	1
+An effector caspase such as caspase exists exclusively as stable homodimer in solution 	1
+Compared to caspase caspases and also known to exist as homodimers in solution contain similarly conserved residues on the strand 	1
+Thus results derived from gel filtration and analytical ultracentrifugation analysis unequivocally show that our engineered caspase which contains five residue replacement at the dimeric interface exists predominantly as homodimer in solution 	1
+The effector caspases including the zymogens exist as constitutive homodimers in solution 	1
+However WT caspase homodimer cannot be isolated because caspase exists predominantly as monomer in solution 	1
+It should also not noted that although stable caspase homodimer was reported to exist in solution rigorous effort in several laboratories including ours to reproduce this result have not been successful 	1
+Caspases and exist primarily as dimer and monomer respectively in solution 	1
+Similar to caspase caspases and also exist as homodimers in solution 	1
+These results suggested that in the absence of protein aCBF protein aNOP forms homodimers in solution 	1
+Therefore in accordance with the crystal structure the aNOP aCBF heterodimers can form heterotetramers in solution likely via the aNOP aNOP interaction 	1
+As shown by gel filtration assays both amino acids substitutions abolished homodimer formation which is in favor of the formation of homodimers with parallel helices in solution 	1
+This suggests that the two kinds of dimers may exist in equilibrium in solution 	1
+However according to our site directed mutagenesis analysis only dimers with parallel helices are stable in solution 	1
+Interestingly the quaternary structure for the heterotetramer found in their crystal corresponds to the abyssi heterotetramer in which the two aNOP helices are perpendicular to each other 	1
+The structures of at least motif monomers dimers or tetramers have been solved by ray or NMR methods in the last years but little is known about the motif formation dissociation kinetics 	1
+The dimer dissociation kinetics were measured versus pH on NMR spectra collected at interval right after dilution of concentrated fully dimeric samples 	1
+To determine koff small volume of mM fully dimeric solution was rapidly diluted by factor of into the NMR tube 	1
+The NMR spectra of mCCTCACTCC solutions to mM show that the multimer concentration increases as the square of the monomer concentration left and thus reveals the formation of dimer 	1
+The dimer concentration measured on NMR spectra collected as function of the time tends towards pH dependent equilibrium 	1
+NMR resonance assignmentsThe HSQC spectrum of presented well dispersed resonances characteristic of folded protein with line widths consistent with it being monomeric 	1
+Filaments and rings of archaeal RadA molecules have also been observed by EM and more recently in crystal structures Methanococcus voltae MvRadA filament Pyrococcus furiosus PfRadA heptameric ring 	1
+The MnSODs of eukaryotic origin are distinguishable from those of prokaryotic sources on the basis of their quaternary structure the former are tetramers while the latter are dimers 	1
+It is possible therefore that our crystals grew from solutions of much lower protein concentration than the originally present in the drop and at which the dimer form may be more prevalent in solution 	1
+There is substantial evidence that the quaternary structure of BBP II is tetrameric but it is not clear whether the tetramers are formed as result of assembling four monomers or if the tetramers result from limited proteolysis of single polypeptide containing all the binding sites 	1
+This together with the results showing that BTN significantly stabilizes tetramers of bBBP see below andure supports the idea that the quaternary structure of bBBP is tetrameric an idea that is also supported by the crystal structures of bBBP BSO and bBBP BTN see below 	1
+Gel filtrationSDS PAGE based thermostability assayDissociation of fluorescent BTN DSCElution time min Molecular mass kDa aTr kdiss Release Tm BTN BTN BTN BTN BTN BTN BTN BTNbBBP bBBP bBBP iBBP N AVD bAVD N N Protein appeared mainly in monomeric form already at room temperature Not applicable Not measured 	1
+Hydrophobic interactions essential for the dimerization of EstE EstE exists as dimer in solution 	1
+The activity of EstE and EstE F which are present as monomer was dramatically diminished when they were incubated at Although EstE retained its dimeric status upon mutation of either Val or Phe to Alaure mutation of both of these amino acids to Ala EstE F destabilized the EstE and converted it to monomer in solution 	1
+BFAE exists as dimeric form in solution like EstE but the dimer interactions are quite distinct in that EstE dimer has tight hydrophobic interactions assisted by ionic interactions while BFAE dimerization is mainly mediated by ionic interactions 	1
+Members of the Lrp AsnC family typically have molecular mass of kDa but populate range of multimeric species in solution which include dimers tetramers octamers and hexadecamers 	1
+Gel filtration studies indicated that LrpC forms tetramer in solution and DNA binding has been reported to proceed cooperatively in sequence independent manner with LrpC preferentially recognizing intrinsically curved regions of DNA 	1
+Summary of surface area buried upon multimerizationAsnCLrpC and area of monomer buried upon dimer formation and area of monomer buried upon octamer formation 	1
+Guided by solution nuclear magnetic resonance NMR experiments we have solved the Xray crystal structure of the Munc A domain homodimer at resolution designed mutation that disrupts homodimerization and solved the Xray crystal structure at resolution of Munc fragment bearing this mutation bound to the RIM ZF domain 	1
+Gel filtration showed that both point mutations disrupt dimerization of Munc Munc and Munc but preserve heterodimerization with RIM and unpublished data 	1
+Since the Munc RIM interaction competes with Munc homodimerization this model predicts that Munc may exist in solution as homodimer that needs to be disrupted in order to bind to RIMs at the active zone 	1
+We show that the ASK catalytic domain is dimeric in solution and that it is an active kinase in its unphosphorylated state 	1
+In order to verify the dimeric state of the ASK kinase domain in solution we carried out analytical ultracentrifugation experiments 	1
+Sedimentation velocity measurements led to the determination of an apparent sedimentation coefficient corrected for water at of as well as the determination of protein molecular weight of kDa which is in excellent agreement with the expected mass of an ASK catalytic domain dimer 	1
+Equilibrium experiments performed at three concentrations and where is the concentration used in the velocity experiment confirmed stable dimeric state of the kinase domain in solution 	1
+However AUC data indicated that dephosphorylated ASK mixture between de and monophosphorylated ASK homogeneously triphosphorylated ASK as well as T mutant formed all stable dimers in solution and sedimentation equilibrium experiments revealed similar association behavior 	1
+However it is believed that this dimer is not physiologically relevant as we found that human MMP is monomer in solution V amp 	1
+The dUTPase fold jelly roll subunits entwined in homotrimer was found in all these crystals providing yet another strengthening example for the conservation of this quaternary structure in homotrimeric dUTPases 	1
+The structural parameters summarized in demonstrate that both NC samples are monomeric in solution and that NC domain also undergoes compactisation after ligand binding 	1
+According to SAXS results oligonucleotide binding to the fusion protein induces significant ordering in the protein conformation and formation of trimeric symmetry of NC domains 	1
+The DLS analysis clearly showed sharp monomodal fit of the data centered at nm hydrodynamic radius indicating homogeneous species that forms an oligomeric structure with an approximate molecular weight of kDa the calculated molecular mass of the monomer is kDa suggesting that it forms an octameric structure 	1
+Four dimers are symmetrically arranged around crystallographic fold axis and form the quaternary structure the octameric assembly 	1
+The apparent molecular masses of GLTP and its complexes with hexyl glucoside LacCer and GalCer are in the kDa range consistent with apo GLTP and its GSL complexes existing as monomers in solution 	1
+Similar indications of monomeric solution behavior for GLTP when liganded with GalCer or in GSL free state were obtained by size exclusion chromatography and by affinity tag immunoadsorption experiments 	1
+Thus it is not surprising that GLTP and its GSL bound complexes are monomeric in solution as monitored by sedimentation analysis or size exclusion chromatography even when substantial portion of the GSL sphingosine chain methylenes is outside the hydrophobic tunnel 	1
+Only monomeric GSL GLTP complexes could be detected in solution despite repeated attempts using different methodologies analytical ultracentrifugation size exclusion liquid chromatography affinity pull down assays involving GLTPs with different terminal fusion tags 	1
+A recent electron microscopy study provides new evidence that carboxysomes are roughly icosahedral but whether they conform strictly to principles of quasi equivalence and icosahedral triangulation is not yet known 	1
+Native gel electrophoresis of folded heterodimeric NKT and control LC TCRs 	1
+The wild type fragment residues which exists as constitutive tetramer in solution formed stable complex with HAUSP 	1
+Although HAUSP was shown to be homogeneous monomer in solution by analytical ultracentrifugation recent data suggested that HAUSP may form homo dimer in cells 	1
+Electron microscopy of HIV has shown the RNA genome to consist of two identical genomic RNA strands joined within their leader at bases long region defined as the dimer linkage structure DLS 	1
+The structure of the looploop dimer or kissing complex has been resolved by NMR and crystallography 	1
+The NMR solution structure shows symmetrical homodimer where the average plane of the loops is roughly perpendicular to the axis of the stems whereas in the crystallographic structure it shows perfect coaxial alignment with the stems 	1
+The sequential assignment of the imino and amino protons of the dimer was obtained by using ms mixing time NOESY spectrum recorded at 	1
+The part of the dimer corresponding to the stems to and to and to the loops to showed typical double helix type conformation and no ambiguity with the intra and intermolecular connectivities assignment 	1
+As described in our previous report bcl Mid forms monomeric intramolecular quadruplex structure as demonstrated by the independence of the melting temperature from the concentration the sharp NMR spectral line widths and the EMSA electrophoretic mobility shift assay results 	1
+In addition DOSY Diffusion Ordered Spectroscopy experiments on bcl Mid also confirmed that the sharp NMR signals are from molecular weight equivalent to monomeric structure 	1
+The analysis of the molecular mass of the BsTrmB by gel filtration studies confirms that BsTrmB is dimeric also in solution and that dimerization is not consequence of crystal packing only 	1
+Interestingly BsTrmB is found to be dimer both in crystal and in solution 	1
+The positions of all carboxyl bearing residues in single subunit of the homodimeric protein are shown in accompanied by CLC alignment in strongly conserved region commonly known as the PIGG pen 	1
+The gel filtration elution profile of tmRBP consists of two peaks one of which is consistent with monomeric tmRBP kDa the other consistent with   kDa protein 	1
+Recent biochemical studies indicated that HlyIIR exists as dimer in solution and two such dimers bind to hlyII operator DNA circular dichroism spectra suggested no significant conformational changes in the operator DNA upon binding to HlyIIR Rodikova unpublished results 	1
+The protein was purified by affinity and anion exchange chromatography and size exclusion chromatography showed that the protein was monomeric and free of aggregates 	1
+Analytical size exclusion chromatography in combination with static light scattering indicated that the major species in solution is dimer 	1
+Gel filtration of the purified TPK proteins on Sephacryl HR column indicated the final products were dimeric in solution 	1
+The hexamer structure is believed to be the active biological unit similar to other known ROs 	1
+Gel filtration chromatography studies of the AYEdes VJQ construct showed that the protein exists predominantly as dimer at where thermodynamic properties of the original AYEdesign construct were measured as well as at crystallography concentrations mM 	1
+Analytical ultracentrifugation suggests that AYEdes exists in monomer dimer equilibrium with an estimated Kd of 	1
+The ratios measured for AYEdes give correlation time of ns which is consistent with homodimeric association under the conditions used for NMR 	1
+Analytical size exclusion chromatography coupled with static light scattering also supports these assignments in solution suggesting that dimer is the functionally relevant oligomer 	1
+This ensured that single monomer species e the hairpin structure exists at and the temperatures of NMR experiments 	1
+Refolded LIR D elutes from Superdex column at just before kDa marker protein consistent with the protein behaving as compact monomer in solution 	1
+Each molecule of the trimer the normal biological oligomeric state is therefore in crystallographically equivalent environment indicating that all three chains have the same conformational state 	1
+The structure of the monomeric subunit of the residue protein CylR was solved based on complete chemical shift assignment interproton distances dihedral angle restraints and HN RDCs 	1
+N and were located in loop regions and on opposite sides of the structure of the monomer as was known from the NMR structure of the monomeric subunit of CylR 	1
+The structure of the CylR homodimer in solution was determined by rigid body docking of two copies of the high resolution NMR structure of the monomeric subunit of CylR 	1
+High resolution structure of the CylR homodimer in solution 	1
+The rmsd values between the NMR and the Xray structure were calculated from the structural fit shown in and are shown for both subunits of the CylR homodimer 	1
+NMR based ranking of homodimer structures obtained from ab initio docking 	1
+The ability of AnxA mutants to form trimers was first assessed by transmission electron microscopy TEM according to established procedures 	1
+Analytical size exclusion chromatography in combination with static light scattering indicates that PA is dimer in solution 	1
+The extensive dimerization interface observed in the structure in addition to the SEC SLS data suggest that dimer is likely to be the bio logically relevant oligomeric state of PA 	1
+The change in ligand receptor stoichiometry in the crystal is clearly due to crystal packing as SDS PAGE and RP HPLC analyses proved this complex to be hexameric in solution 	1
+Such low value is consistent with results from gel filtration and ultracentrifugation experiments that indicate LmMK is monomer in solution 	1
+That LmMK presents monomer in solution makes it different from rat and human MK which are reported to be dimeric 	1
+We have shown previously that topoVI is monomeric in solution in the absence of nucleotide and that ATP or non hydrolyzable analog is able to induce measurable amounts of dimerization 	1
+Gel filtration and nondenaturing polyacrylamide gel electrophoresis Bais Raushel amp Cleland have demonstrated that KHK is dimer in solution 	1
+Yeast MetRS purified from Escherichia coli was found to exist as mixture of two conformers corresponding in MW to monomers and dimers as judged on the basis of gel filtration and dynamic light scattering experiments under near physiological conditions 	1
+The NMR spectra of Tel at strand concentration of mM for NMR experiments and structure determination and mM for experiments and the titration experiment are the same indicating that the same monomeric intramolecular quadruplex structure is formed in all the conditions used for our NMR analysis 	1
+Because this quaternary structure is unusual for an ESR we confirmed the dimeric nature of TakP in solution by gel filtration and cross linking experiments 	1
+Moreover the gel filtration analysis revealed that is monomer in solution 	1
+Analysis of the crystallographic packing of LP using the PISA server Krissinel amp Henrick and analytical size exclusion chromatography in combination with static light scattering indicate that monomer is the likely quaternary form 	1
+The oligomeric state of NE was determined to be monomer using cm Shodex Protein KW column Thomson Instruments pre calibrated with gel filtration standards Bio Rad 	1
+Analytical size exclusion chromatography shows that NE forms monomer in solution whereas crystal packing analysis suggests dimer with total buried surface area of per monomer 	1
+Cryoelectron microscopy and biochemical studies of the full length ag indicate that ag forms double donut of hexameric rings in the presence of origin like DNA and adenosine nucleotides 	1
+Mutating of EcoSSB to or destabilizes the OBOB interaction to such an extent that only monomeric species are observed in solution 	1
+The phage has six tail fibers and cryo electron microscopy data suggest that each fiber has two Mtd trimers at its base H and H Zhou unpublished data 	1
+Predicted molecular mass of PedB is Da Kav   indicating that PedB exists as monomer in solution 	1
+We could not find any oligomeric contacts between PedB monomers in crystal packing which is consistent with the result that PedB exists as monomer in solution 	1
+Gel filtration studies showed that the SV CP enzyme is predominantly dimeric in solution 	1
+The dimeric arrangement of SV CP observed in the crystal structure 	1
+For the Chiba virus protease structure it has been suggested that the side chains of Gln and Lys act to clamp substrate at the position by forming bridge under which the main chain of the substrate lies and this feature appears to be present in the SV CP structureure although the two residues are only interacting in one of the monomers and they appear to have greater role in binding at the adjacent site 	1
+The size of the protein was consistent with stable octameric association in size exclusion chromatography experiments 	1
+The purified protein kDa is present as monomer in solution 	1
+This is in agreement with biological data which indicated that the SsoPCNA and SsoPCNA subunits form stable dimer in solution 	1
+This is supported by dynamic light scattering studies showing the presence of single species corresponding to dimer 	1
+Analytical ultracentrifugation AUC demonstrated that all four catalytic domains self associate in solution whereas site directed mutant of SLK which is monomeric in solution showed that dimerization is required for autophosphorylation 	1
+Domain exchanged kinase catalytic domains are dimeric in solution 	1
+Sedimentation velocity experiments revealed the presence of catalytic domain dimers in solution at physiological pH and salt concentrations for all four kinases 	1
+Comparison with PAK and other group II PAKs that are monomeric in solution identified proline residue in the position corresponding to in SLK 	1
+Indeed the SLK mutant had similar stability as wild type SLK and was monomeric in solution 	1
+However AUC experiments showed that the dimer concentration for unphosphorylated SLK was twofold higher than for the phosphorylated catalytic domain 	1
+Requirement of additional domains that stabilize dimer formationAUC demonstrated that dimerization is also observed in solution 	1
+Indeed AUC velocity experiments showed that the unphosphorylated DAPK kinase domain is entirely monomeric in solution 	1
+We confirmed dimer formation in solution both by gel filtration chromatography and by gluteraldehyde cross linking experiments coupled to SDS PAGE analysis results 	1
+The resulting dimer arrangement is identical to that observed for the crystallographic AFV dimer strengthening the argument that this arrangement corresponds to genuine dimer in solution 	1
+QDE May Act as Two Stroke Motor for the Production of dsRNA TriggersQDE is active in solution and we have shown here that this form is dimeric 	1
+To validate in solution the AcrB monomer to DARP in stoichiometry observed in the crystal structure we performed sedimentation velocity experiments 	1
+It has been suggested that formyl THF cyclo ligase forms dimers in solution and that this oligomeric state is related to the cooperative binding of its substrate formyl THF 	1
+To determine if the TAD dimer forms in solution Cys was exploited as natural cross linking group 	1
+However when the wild type protein was incubated under non reducing conditions DTT and treated with ethylmaleimide NEM to alkylate free cysteine residues prior to electrophoresis dimer formed lane 	1
+Redox dependent dimerization of the TAD in solution 	1
+To confirm redox dependent dimerization in full length and mutants were purified by ion exchange chromatography followed by gel filtration in or mM DTT and assayed for dimerization by SDSPAGE after NEM treatment 	1
+Briefly DraE was purified from the supernatant using nickel affinity chromatography followed by size exclusion chromatography on an Superdex Sepharose column GE Life Sciences to separate the trimeric form from small amounts of monomeric dimeric and aggregated forms 	1
+Here we report the NMR structure of talin residues five helix bundle which has similar structure to the HIP THATCH core domain and the crystal structure of helix that forms an antiparallel dimer 	1
+Small angle ray scattering SAXS together with these two structures allows us to propose model for the entire talin dimer which is elongated in solution 	1
+Electron microscopy interpreted with the help of the overall shape of the dimer determined by SAXS establishes how the dimer interacts with actin filaments and positions the termini accessible and on opposite sides of the filaments 	1
+Three point mutants and were all monomeric as determined by gel filtration and NMR as was the double mutant A 	1
+Gel filtration and NMR data show that both mutants are dimeric but both showed significant decrease in actin binding 	1
+SAXS analysis of the terminal actin binding domain of talin shows an extended dimeric protein 	1
+To investigate the overall shape of the talin dimer we carried out SAXS experiments 	1
+Ab initio shape reconstructions from the experimental SAXS profile alone using GASBOR highlight the elongated shape of the dimeric talin polypeptide the calculated molecular envelope is shown in 	1
+In fact the SAXS based dimer model fits nicely into the extra density indicating that the conformation of actin bound dimers and dimers in solution are similar 	1
+NMR indicates that additional intramolecular interactions between the unstructured regions and terminal to the dimerisation helix may also help to stabilise the antiparallel dimer 	1
+Electron microscopy and image analysis studies together with DSC and co sedimentation assays provide direct evidence for binding of the dimeric terminal domain of talin to filamentous actin 	1
+The model assumes that there are no major rearrangements between the domains in solution as determined by SAXS and the actin bound form of the dimer 	1
+This assumption is fully consistent with the shape of the additional density which can be accounted for well by docking the SAXS dimer structure into the density 	1
+Cren exists as monomer in solution and is stable at high temperature	1
+Prod purified as monomer as assessed by analytical size exclusion chromatography 	1
+Analysis of the free RNA aptamer under NMR conditions mM RNA mM NaCl pH by native gel electrophoresis showed single conformation indicative of monomeric hairpin stem loop structure 	1
+Isotropic overall rotational correlation times of ns for VPA and ns for yiiS were inferred from spin relaxation times and indicate that both proteins are monomeric in solution 	1
+The VGL and VBL dodecamers were titrated with the various ADF oligomers and monitored by NMR 	1
+The HSQC spectrum of DnaI presented well dispersed resonances characteristic of monomeric folded protein 	1
+The oligomerization assay employed freshly purified monomeric BAX in combination with BIM SAHB at the indicated ratios and incubation durations followed by size exclusion chromatography to quantify monomeric vs oligomeric BAX 	1
+The mixtures and sample of BAX monomer alone were incubated at for minutes and then subjected to analysis by size exclusion chromatography SEC using an SD column 	1
+Although in principle the two linear oligonucleotides might form such high order structures the close similarity of their NMR spectra with that of lt pCGCTCCGT gt and other oligonucleotides of the same family studied in previous works led us to conclude that the structures adopted by the three oligonucleotides are dimeric 	1
+In all three cases the resulting structures are symmetric dimers as expected from the complete degeneration of the signals in their NMR spectra 	1
+The monomeric state was determined by analytical ultracentrifugation and NMR methods online in the presence of mM mercaptoethanol 	1
+Analytical ultracentrifugation measurements show that Arap Sam is monomer in solution in fact the experimentally measured molecular weight kDa is in perfect agreement with the expected molecular weight 	1
+This suggests that JARID APHD is monomeric in solution for both the free and me states 	1
+These values are consistent with isotropic tumbling values of monomeric protein of their respective sizes further supporting that both free and complexed JARID APHD exist as monomers in solution 	1
+Thus although JARID APHD K me complex exhibits domain swapped dimer in the crystal gel filtration and NMR relaxation measurements clearly showed such complex to be monomeric in solution 	1
+As our results show that CclA does not form dimers in solution these hydrophobic patches could assist interaction of the peptide with the lipophilic portion of the target membrane 	1
+This implies that this protein fragment is monomeric in solution and that the disulfide bond between Cys and Cys is intramolecular rather that intermolecular 	1
+The sedimentation velocity experiments indicate that Dre is monomeric at least up to 	1
+These results indicate that there was genuine heterogeneity in the quaternary structure for two of the four proteins and the dependence on column volume for the ArdBCFT protein further suggested that the apparent switching between the monomer and dimer forms was occurring on the minute timescale of the chromatography process 	1
+Analysis of AUC profiles demonstrated that all three of the samples are predominantly monomeric at mg ml in phosphate buffered saline PBS 	1
+Thus in agreement with the AUC data collected on samples in PBS pH SAXS collected on samples in mM potassium phosphate pH showed that all constructs appear to be monomeric in solution 	1
+Gel filtration suggested that RecQL exists as monomer in solution 	1
+The fusion protein is monomeric in solution with molecular mass of kDa as assessed by size exclusion chromatography and multi angle light scattering analysis 	1
+The sets of intra and intermonomeric NOE contacts identified in the NMR spectra demonstrated that GpAtm forms symmetrical in the NMR time scale homodimer in both media this dimer consists of two parallel helices 	1
+Later the conformation of the dimer GpA TM fragment in dried lipid bilayers consisting of DMPC and palmitoyl oleyl phosphatidylcholine POPC was proposed on the basis of the structural restraints obtained using the method of solid state NMR 	1
+NMR and triple resonance assignments and NSpectra obtained with frequency of MHz were sufficient to assign all resonances and within the chondroitin tetramer CN using enriched sample 	1
+To date only few sizeable structures of helical membrane proteins have been solved by solution NMR of which only one is monomeric 	1
+Gel filtration experiments also indicate that under these conditions Fap NR is largely monomeric in solution 	1
+Furthermore NMR spectra indicate that Fap NR is monomeric at concentrations up to but it self associates at higher concentrations 	1
+In EM imaging BLM displays fold symmetry tetramer or octamer and fold hexamer symmetry in vitro 	1
+Dimeric construct exhibits well resolved NMR signals 	1
+They can be observed however at temperatures of up to Interestingly some imino peaks are observed even at NMR spectrum of the dimeric RNA construct recorded at Imino region with the assignment of resonances is shown in the inset 	1
+A high resolution structure of the stable nt RNA dimeric construct has been derived based on high number of NMR observables including NOEs coupling constants and RDCs 	1
+It is amazing that sufficient resolution of NMR signals was achieved on an MHz NMR spectrometer which enabled sequential assignment of kDa dimer without isotope labeling 	1
+We tried to integrate all these informations into our NMR based structure model of NS MBD but these attempts were confounded by the fact that NS is dimer which most likely forms higher order oligomeric complexes 	1
+Even under these low added salt conditions the NMR samples would begin to dimerize when stored at for gt day so the samples needed to be re annealed before and checked for dimerization after each NMR experiment 	1
+The NMR spectra were examined for the possible formation of cross peaks indicating presence of dimeric to end quadruplex association 	1
+Time dependence of imino proton NMR spectrum of the dimeric form II quadruplexWe observe small chemical shift changes for subset of imino protons in the kit promoter dimeric form II quadruplex spectrum on standing over period of many months in the refrigerator changes over time toure 	1
+Further our accumulated experimental observations are that the kit promoter and sequences switch over time from the form monomeric quadruplex to the form II dimeric quadruplex in KCl containing solution establishing that the form II dimeric quadruplex is the more thermodynamically stable conformer in solutionures and 	1
+A sample of kit promoter prepared in mM KCl containing solution exhibited an imino proton NMR spectrum consisting of monomeric form G quadruplex 	1
+By contrast sample of kit promoter prepared in mM KCl containing solution exhibited imino NMR spectra consistent with formation of dimeric form II quadruplex 	1
+All parallel stranded intramolecular quadruplexes were first reported in solution from NMR studies of the GGA sequence which formed dimeric quadruplex containing stacked GGGG tetrad and GGGG hexad 	1
+Each sequence forms dimer under non denaturing polyacrylamide gel electrophoresis conditions panel for CC kit AG and panel for TT kit TTure 	1
+The authors of this paper interpreted their NMR data to conclude that the major conformer in their spectral mixture of conformers adopts monomeric all parallel stranded quadruplex 	1
+Further we have identified monomeric all parallel stranded quadruplex but this kit promoter form G quadruplex exhibits very different imino proton NMR spectrum recorded in mM KCl containing buffer from that of the kit promoter form II quadruplex recorded in mM KCl containing buffer 	1
+We remain confident about our conclusions given that the NMR studies reported in our paper were intentionally undertaken under single conformer conditions for both kit promoter monomeric form and dimeric form II quadruplexes thereby avoiding potential complications over data interpretation from minor conformations 	1
+The proteins were monomeric in solution as determined by size exclusion chromatography 	1
+However subsequent study of by NMR resulted in monomeric solution structure having different arrangement of the terminal helix and the authors of the original crystal structure went on to show that mutations introduced into the dimer interface of had no effect on activation although mutations elsewhere in did do so 	1
+Correct refolding of DNA ligands into monomeric dumbbell conformation was confirmed by NMR spectroscopy as described in 	1
+NMR and X-ray studies revealed that Sso is dimer of winged helix DNA binding domains linked by an antiparallel coiled coil rod 	1
+Sso forms homodimer in solution The average relaxation value of Sso suggested that the protein existed in form larger than that of the monomer in solution 	1
+Under these conditions the residue gpW remains soluble and monomeric according to NMR linewidth values 	1
+Interestingly the DBD forms dimer in solution bound to two molecules of duplex DNA forming complex called DBD DNA 	1
+The dimerization of DBD determined above is somewhat inconsistent with previous analytical ultracentrifugation studies that suggest DBD is protein monomer bound to single DNA hairpin 	1
+The SEC mass analysis measured above as function of protein concentration indicates dissociation constant of DBD dimerization to be lt nM suggesting that DBD DNA should be quite stable and remain intact under physiological conditions 	1
+Inspection of the NMR structure of DBD bound to DNA reveals relatively small exposed surface solvent exposed surface area   that would be capable of forming dimerization binding site 	1
+As expected the mutant dramatically weakens the dimerization binding interaction as evidenced by SEC MALS data indicating an apparent molar mass of kDa for the complex compared to kDa for that of wildtype 	1
+Recognizing that the DBD DNA complex was highly stable during its purification and NMR analysis we hypothesized that protein dimerization in this complex must exist under physiological conditions and may be required to regulate target gene expression 	1
+In this study we present the NMR structure of the DBD dimer bound to duplex DNA and establish that HOXA dimerization is functionally important for activating transcription 	1
+Our structural analysis reveals that DBD forms protein dimer in solution which is functionally important for the regulation of HOXA target gene expression 	1
+The spectral line widths of the modified sequence RET Hz for the sharpest peaks at are indicative of monomeric intramolecular structure this is supported by the concentration independent of the well resolved quality of spectra for RET where the line widths of imino proton signals are almost same to each other in both cases at the concentration of and mM of RET NMR sample 	1
+Here an extending helical conformation of integrin TMC was determined using solution NMR in detergent micelles indicating majority helical conformation of integrin TMC in its monomeric form in micelles 	1
+M forms tetramers in solution and the oligomerization domain was mapped to the region 	1
+Line widths of the solution NMR spectra were compatible with monomeric state and was amenable to structure determination by NMR in contrast to tetrameric full length 	1
+Our studies found no evidence about the presence of such dimer in solution in agreement with the analysis of gel filtration data performed by the authors of crystal structure 	1
+P forms homo dimer in solution and its terminal domain is responsible for dimerization 	1
+To provide better understanding on how plays role in the assembly of eukaryotic stalk we have determined the structure of the terminal dimerization domain of hetero dimer NTD NTD by nuclear magnetic resonance NMR spectroscopy 	1
+To have better understanding on how they interact with each other we have determined the solution structure of the terminal dimerization domain NTD of by NMR and the ensemble of best structures is shown in Statistics of structural calculation is summarized in 	1
+The extra turn of helix of is important for dimerization P forms homo dimer in solution 	1
+P or its truncation variants were co refolded with hetero dimer and the molecular mass of the co refolded proteins were analyzed by static light scattering 	1
+To provide better understanding of the structure function of eukaryotic ribosomal stalk we have determined the structure of the dimerization domain of hetero dimer NTD NTD by NMR spectroscopy 	1
+Gel filtration of the PARP BRCT domainBRCT domains are known to mediate both heterodimeric and homodimeric protein interactions and the PARP BRCT domain was previously demonstrated to readily form homodimer under physiologically relevant conditions 	1
+In contrast with expectations both the gel filtration and the SAXS studies reported here clearly indicate that this domain even at high millimolar concentrations is monomeric 	1
+Because the domain homodimer was only observed in the crystalline state rather than in solution it is likely that additional segments of PARP may be required to form biologically relevant PARP homodimer 	1
+Stoichiometry of the UDG complex determined by microcalorimetry By analytical ultracentrifugation it has been shown that is dimeric under physiological conditions 	1
+Architecture of the dimer To gain insights into the mechanism underlying the UDG inhibition by protein we analysed the solution structure of the inhibitor by NMR 	1
+The orientation of the dimer in the top view is identical to that of the NMR ensemble shown in 	1
+The NMR structure of provides detailed description of the particular interactions involved in the stabilization of the protein dimer 	1
+Coordinates for the final NMR structures of dimer have been deposited in the Protein Data Bank with accession code LE 	1
+Gel electrophoresis which can provide information on the molecular sizes of quadruplexes was used to examine the possibility of stacking of parallel stranded quadruplex blocks to form dimeric structures 	1
+Similar NMR and Supplementary Data and gel electrophoresis results were obtained for consistent with the formation of similar stacked dimeric quadruplex for this sequence 	1
+Using bovine serum albumin sample mg ml an estimated molecular weight of kDa was obtained for CT Ler LeeH theoretical MW of kDa thereby indicating the presence of monomeric particle in solution 	1
+Further mutagenesis studies together with the on going characterization of the dimers in solution will be helpful to confirm this hypothesis and to understand the molecular basis of the swapping process in BS RNase 	1
+NMR experiments and labelled monomeric BS RNase was expressed and purified as previously described 	1
+The distribution of the sedimentation coefficients is centered on showing that onco Lbc is monodispersed and monomeric in solution 	1
+In this article we describe the NMR structure determination of an undecamer duplex containing the dA adduct of aristolactam II ALII dA the most abundant and persistent DNA lesion generated by AAII 	1
+Size exclusion chromatography of the purified CCL showed that the protein exists as monomer in solution 	1
+The strong toxicity of CCL towards elegans and melanogaster is surprising in the light of the monomeric state of the lectin in solution and the consequential lack of multivalency for the identified ligand since clustering of glycoconjugates on cell surfaces is generally regarded as prerequisite for lectin mediated toxicity 	1
+Size exclusion chromatography showing the monomeric state of CCL compared to standards proteins 	1
+Finally ATS FL does not form dimers in solution as suggested earlier by size exclusion chromatography 	1
+The solution structure of complex of naphthyridineazaquinolone dimer with an oligonucleotide having AA mismatch in the CAG CAG context was characterized by NMR it features the binding of two molecules of ligand in the mismatch site accompanied by ejection of two flanking cytosine residues from the duplex 	1
+In the present study the spatial structure is solved by heteronuclear NMR spectroscopy in membrane mimetic environmet and the dynamics of the APP TM domain with juxtamembrane JM region which was incorporated as monomer into detergent micelles is described 	1
+In addition size exclusion chromatography dynamic light scattering and biomolecular NMR experiments see below demonstrated that GhoS is monomer in solution 	1
+Collectively these results show that GhoS is non canonical antitoxin because it does not regulate its own transcription it is stable and it is monomer in solution 	1
+Electron microscopy EM directly shows the association of myosin coiled coil fragment with twoS dimers in agreement with the NMIIA stoichiometry 	1
+Gel filtration and multi angle laser light scattering MALLS data show that the protein exists as monomer in solution 	1
+MALLS and gel filtration data demonstrate that pCrkL remains monomer in solution 	1
+All fragments are monomeric in solution at concentrations used for the NMR studies typically mM as indicated by gel filtration and light scattering 	1
+Ten structures were HIV TAR RNA with different ligands and another five were cryo EM reconstructions of the pRNA pentamer 	1
+ATPase motor complex demonstrated that the gp pentamer is attached to the prohead solely through interaction with pRNA 	1
+Recently high resolution X-ray crystallography X-ray scattering analysis and analytical ultracentrifugation were used to show that antifungal plant defensin NaD known to enter fungal cells forms dimers and that this dimerization enhances its antifungal activity 	1
+The recombinant protein residues behaves as monomer in solution as assessed by the rotational correlation time ns determined from relaxation data 	1
+Specifically we focused on determination of the structure of the chimeric dodecamer fCfGfCfGaAaAaUaUfCfGfCfG by applying NMR spectroscopy experiments and restrained molecular dynamics MD 	1
+In high resolution NMR and crystallographic studies unmodified DNA Dickerson dodecamer has been found as duplex 	1
+The higher tc of PFV RNase as compared to the isolated RNase domain of HIV RT ns reflects the larger size of the PFV RNase aa vs aa kDa vs kDa and confirms the monomeric character of the domain already demonstrated by size exclusion chromatography 	1
+In size exclusion chromatography Rr Csp eluted at higher retention time than SUMO small ubiquitin like modifier monomeric protein of kDa suggesting that Rr Csp is monomeric like nearly all of its bacterial homologs Horn 	1
+At acidic pH the oligonucleotides from the relatively pyrimidine rich CENP box strand CCCGTTTCC TCCCGTTTCCA and the full TCCCGTTTCCAACGAAG fold and dimerize in solution to form four stranded intercalated motif with five hemi protonated C  base pairs 	1
+The changes on NMR spectra with temperature and oligonucleotide concentration are consistent with dimeric structures 	1
+As reflected by the number of signals in the NMR spectra the dimer is symmetric 	1
+As in TCGTTTCGT the concentration and pH dependence of the NMR spectra indicates the formation of dimeric structure 	1
+It is worth mentioning that at pH the imino region of the NMR spectra of ACGAAACGA indicates the formation of non canonical structure which is not monomeric according to native gel electrophoresis experiments 	1
+Significant NMR signal broadening and overlap had suggested distinct CdnL forms in exchange and analytical ultracentrifugation indicated co existing CdnL monomers and dimers in solution 	1
+The excellent signal dispersion and overall quality of its NMR spectra allowed complete NMR chemical shift assignments for CdnLCt which was monomeric as assessed by amide T relaxation data or size exclusion analysis 	1
+Our data also show that CdnL self interacts via its terminal domain and exists as monomers and dimers in solution 	1
+The structure was computed with the knowledge that single species in solution must include symmetric protein dimer and symmetric ssDNA units bound to each YdbC protomer 	1
+Comparison of the solution NMR structure of lactis YdbC with crystal structures structurally similar apo forms of dimeric ssDNA binding proteins sapiens PC PDB ID pcf and burgdorferi PUR PDB ID nm 	1
+One single TL TLR interaction is not very strong KD   mM so that already followed the strategy of homodimer to study this interaction by solution NMR 	1
+Analytical ultracentrifuge sedimentation velocity assay further showed that the CXC domain is monomer in solution 	1
+SEC MALLS analysis showed that CaBP NTD has an apparent molecular mass of kDa which is consistent with CaBP NTD existing in monomeric form under the conditions tested 	1
+In agreement with this NMR spectroscopy also suggested that the protein was monomeric 	1
+Here we show through SEC MALLS and NMR analyses that Ca   bound CaBP NTD is homogeneously folded and monomeric in nature under the conditions tested 	1
+In addition sedimentation diffusion equilibrium ultracentrifugation experiments performed at concentration Bertrand Raynal Plate forme de Biophysique Institut Pasteur and NMR HSQC spectra which were invariant for AFV concentrations between and mM indicated that the protein is monomeric up to millimolar concentrations 	1
+Initial characterization of fly parkin RING by heteronuclear single quantum coherence HSQC spectroscopy and analytical ultracentrifugation shows the domain is monomeric and well folded but with disordered terminus 	1
+Parkin is not substrate of parkin in transOur structural data indicate that parkin and parkin mutants form monomers in solution even at the very high concentrations required for SAXS analysis up to mM 	1
+Gelfiltration profile NMR diffusion data and relaxation experiments indicated that the FAAP HhH domain is monomeric in solution 	1
+StructureAlthough experiments indicated that the HhH domain of FAAP is monomeric in solution earlier work demonstrated that for full activity heterodimerization with FANCM is required 	1
+Monomer ligase protein was isolated by size exclusion chromatography using the AKTA FPLC system GE Healthcare equipped with mm mm column Tricorn and Superdex resin GE Healthcare 	1
+In contrast to the stoichiometry of the NMR derived structure the BCL xLC PUMABH complex crystallized in domain swapped dimeric structure with stoichiometry in which of one BCL xLC molecule replaced of the symmetry mate and 	1
+Finally native polyacrylamide gel electrophoresis PAGE clearly demonstrated that the BCL xLPUMABH complex is the predominant species in solution and also PUMA associated BCL xL immunoprecipated from UV treated MCF cells was exclusively monomeric with stoichiometry 	1
+Solution Structures of CTDMi RPMi and LKMiIn aqueous solution CTDMi formed stable homodimer as evidenced by size exclusion chromatography SEC 	1
+It existed mainly in monomeric form at low protein concentration lt mg ml in the presence of mM NaCl but mainly in dimer together with small oligomers in the absence of salt as indicated by SEC 	1
+Very likely the monomer dimer and larger oligomers are in dynamic equilibrium since single SEC peak was observed 	1
+Because the NMR line width is proportional to the molecular size the apparent size of RPMi must be significantly larger than the size of CTDMi dimer under the condition of mM protein mM sodium phosphate and pH 	1
+At low protein concentrations lt mg ml RP LK CTDMi existed as dimer on the basis of the SEC data 	1
+The dodecamer exhibits pseudo dyad symmetry and in NMR spectra both strands are numbered identically from nucleotides to 	1
+H containing KC me was combined with the other three core histones unmodified A B and in equimolar ratios refolded and the resulting histone octamers were purified by size exclusion chromatography 	1
+The rotational correlation time ns time scale of monomeric protein lt kDa in solution is approximately times its molecular weight kDa 	1
+This value indicates that ChxREff exists in monomeric state in solution MW in kDa expected for monomeric ChxREff kDa   ns and is in good agreement with those reported in the literature for proteins of similar size 	1
+Previous biochemical characterization of ChxR demonstrated that stable homodimers primarily through receiver domain interactions were maintained in solution both in vitro and in vivo 	1
+The results described here in concert with previous receiver domain structural studies lead us to hypothesize that ChxR exists as constitutively active dimer in solution 	1
+g Overall arrangement of full length ChxR dimer in solution 	1
+A Structural superposition of full length ChxR monomer cyan model from SAXS analysis with receiver PDB ID and effector PDB ID GXQ domain monomers from coli PhoB colored green and red respectively 	1
+The quadruplex formed in Pu appears to be of monomeric nature as shown by the NMR stoichiometry titration experiment at the melting temperatureNo assembly result 	1
+The binding stoichiometry for both ligands is in accordance with the finding that human PD is monomeric in solution and at the cell surface 	1
+Oligomeric state of SrfN YahO SssB and SssB IIISeveral lines of evidence indicate that SrfN forms dimer in solution throughout the pH range 	1
+Retention time in size exclusion chromatography and static light scattering recorded on the effluent from this column are consistent with dimer 	1
+NMR measurement of the ratio of the spin relaxation parameters and for estimation of the rotational correlation time gave the following results that are consistent with species of kDa the predicted dimer molecular mass including the terminal His tag is kDa at pH and ns and at pH and ns 	1
+Samples of SrfN in pH buffer yield HSQC spectra resembling those at pH suggesting that the protein is still dimeric at the higher pH Also the dimeric form does not appear to be an artifact of the high protein concentration required for NMR spectroscopy mM NMR sample diluted tenfold yielded HSQC spectrum that was identical to the more concentrated sample 	1
+Furthermore observation of intermolecular cross peaks in the edited filtered NOESY experiment suggests strongly that SrfN is dimeric in solution at pH values between and 	1
+Retention times in size exclusion chromatography for YahO SssB SssB III and full length SssB also were consistent with monomeric species 	1
+The purified monomeric and the purified monomeric hDlgPDZ in complex with purified CT were subsequently structurally characterized by standard solution state NMR techniques 	1
+Here we show how ten residues peptide is the region necessary and sufficient to bind to ATX AXH in solution and out compete dimerisation and further aggregation by stabilizing the AXH monomer 	1
+Using combination of NMR analytical ultracentrifugation X-ray and small angle scattering we have previously shown that the observed behaviour is consistent with the presence of monomer dimer tetramer equilibrium over wide range of concentrations as well as with conformational heterogeneity of the different protomers 	1
+This evidence was further confirmed by size exclusion chromatography measurements while isolated AXH elutes around mL which is close to the carbonic anhydrase standard kDa the complex elutes at volume compatible with kDa species which is approximately the size of the AXH monomer bound to CICp 	1
+While the recognition motif on the AXH is in excellent agreement with our structure in solution binding of the longer CIC construct allows another form of dimerisation which is mediated by CIC showing yet another lever of the intricacy of protein complex formation 	1
+To generate shortened monomeric Sso MCM constructs amenable to liquid state NMR spectroscopy the residues ILI were mutated to DSD in Sso MCMN term 	1
+NMR solution structure of the terminal domain of the Sso MCMAn initial biophysical characterization of the terminal domain of the Sso MCM indicated that this domain represents folded and thermostable monomer in solution 	1
+Its structural characterization by NMR CD and ultracentrifugation convincingly demonstrated that HasSCTD is an elongated monomer in association with the detergent micelles 	1
+HuNLRP PYD in pH was monomer as judging by size exclusion chromatography 	1
+NMR sample preparation and behavior in solution Full length A was monomeric and soluble up to   mM at pH mM NaCl and the HSQC spectrum exhibited well dispersed narrow resonances 	1
+The NMR solution structures of monomeric proteins murine PDB RPZ and CS HM Rosetta model for human are also similar to A atomic m differences of   	1
+Negative stain EM of the DPC reconstituted in NMR buffer showed hexameric flower shaped particles that are similar to those in the electron micrographs of the JFH strain genotype hexamer in dihexanoyl phosphatidyl choline DHPC micelles used earlier for single particle reconstruction 	1
+Structure determination of the hexamer by NMR employed approach taken earlier for oligomeric membrane proteins which involves determination of local structures of the monomers and assembly of the oligomer with intermonomer distance restraints and orientation constraints 	1
+These secondary structures are consistent with earlier NMR studies of monomers in DHPC detergent and organic solvent 	1
+The overall structure of the hexamer has flower like shape that agrees with the EM map EM database ID fitting to the map with correlation coefficient of 	1
+NMR structure of the hexamer and its comparison to the EM mapa Ensemble of low energy structures calculated using NMR restraints summarized in 	1
+To keep the studied kDa protein in monomeric state we performed all experiments for the NMR titrations resonance assignments and structural analysis at the protein concentration of mM 	1
+A new dimer interface within the RBPMS RRM motifTo structurally characterize RBPMS RRM domain we over expressed and purified the truncated RBPMS Nter recombinant protein residues thus including the RRM domain and examined by size exclusion chromatography with multi angle laser light scattering SEC MALS 	1
+We then confirmed RBPMS homodimerization via the RRM domain by filtered NMR experimentsNo assembly result 	1
+Similarly this dimeric structure was confirmed using SAXS measurements at mg ml crysol  ure and at mg ml without noticeable concentration effects 	1
+In both cases only one species appears that perfectly matches the theoretical dimeric NMR structure indicating the absence of any equilibrium 	1
+Analysis of the dimeric structure obtained with NMR indicated that the main interface involved residues and lying on the surface of helixure and 	1
+A conserved leucine in RBPMS RRM is essential for its homodimerization In order to investigate the functional involvement of RBPMS homodimerization and based on the results of the NMR analysis we decided to alter the homodimerization of RBPMS through essential amino acid substitution in this interface without impacting the overall stability and structure of the RRM domain 	1
+SAXS data at low concentration mg ml showed that only one species appears which perfectly matches the theoretical monomeric NMR structure crysol  ure 	1
+Here we show using multiple approaches NMR SAXS SEC MALS co immunoprecipitation in cellulo glutaraldehyde crosslinking H and PLA DuoLink that vertebrate RBPMS protein forms stable dimers in vitro and in vivo 	1
+We also investigated the oligomeric state of RasGRP CEC by analytical gel filtration analysis and found that the protein can form dimers and higher order oligomers in vitro 	1
+Consistent with this structure RasGRP CC is exclusively dimeric in solution from to mM monomer based on multiangle light scattering measurements 	1
+If the interface is so tight and extensive as described one would expect it to be dimeric in solution 	1
+We actually observe multiple oligomeric states including monomers dimers and tetramers for RasGRP CEC as measured by gel filtration 	1
+The NMR spectra of the mixed samples exhibited no peak doubling indicating that this dimeric STIM fragment maintains two equivalent Orai binding sites with single magnetic environments at all residue positions 	1
+This quaternary structure results in three distinct interfaces the interface is characterized by hydrophobic and polar interactions of such extent that the dimer can be considered as single structural unit whereas the interface is the weakest composed only of three residues in avidin 	1
+The homotetrameric symmetrical structure simplifies the NMR spectra of ChiAVD at the expense of losing potential NOE distance restraints at the very center of the protein structure Arg Val where intra and intersubunit correlations are indistinguishable 	1
+In order to address this missing knowledge we have solved the solution structure of the CXCL dimer using NMR spectroscopy 	1
+O 	1
+All CXCR activating chemokines studied to date exist reversibly as monomers and dimers and some as tetramers 	1
+The initial NMR HSQC and DOSY and sedimentation velocity experiments at in phosphate buffer pH indicated CXCL exists as dimer 	1
+Structure of CXCL total of experimental restraints were used for the final dimer structure calculations 	1
+Overall the CXCL dimer structure is similar to the CXCL CXCL CXCL and CXCL dimer structures 	1
+On the basis of these observations we propose that CXCL dimer is also likely to be potent CXCR agonist and that its ability to reversibly exist as monomers and dimers regulates in vivo function 	1
+In summary the solution structure of CXCL dimer reveals well defined core consisting of strands and helices typical chemokine fold and dimerization similar to other CXCR activating chemokines 	1
+schematic of the sedimentation velocity profile showing CXCL at is dimer 	1
+The estimated molecular weights of LpoA by SAXS kDa kDa and kDa were similar for each concentration tested and mg ml respectively showing that the scattering intensities recorded came mostly from the monomeric form of the protein and confirming the largely monomeric and monodisperse behavior of LpoA 	1
+An isotropic overall rotational correlation time of ns was inferred from spin relaxation times indicating that hMcl is monomeric in solution 	1
+Although the wild type ESD residues shows some dimeric form in solution at pH the protein exists mainly as monomer enabling structure determination for the MSF at pH using heteronuclear NMR spectroscopy 	1
+RNA interactions of the RBD since we observe conserved contacts between the dimer of the crystal structure and the isolated KH QUA domain in solution 	1
+All proteins eluted as dimer in the final fractions from size exclusion chromatography using Superdex column cm Pharmacia and were concentrated in mM Tris HCl pH mM KCl and mM CaCl 	1
+The cleaved RAGE domain was further purified as monomer by size exclusion chromatography using Superdex column cm Pharmacia that was equilibrated with mM Tris HCl pH mM KCl and mM CaCl 	1
+These findings thus support the NMR restraint driven HADDOCK approach utilized to generate the structure of the heterotetrameric complex of and the RAGE domain 	1
+The HSQC spectra of the three labeled proteins are well resolved and the cross peaks in the spectrum of each individual finger overlay well with subset of the cross peaks in the ZF spectrum indicating that the zinc finger domains are independently folded and largely monomeric in solution 	1
+This MW which is close to the theoretical MW kDa of the Uch Rpn complex suggested that the Uch Rpn complex existed as heterodimer in solution 	1
+When compared to the theoretical MWs Uch kDa Uch Rpn complex kDa the SAXS based MW estimations further highlighted the ability of Uch to form oligomers although the Uch Rpn complex might exist as heterodimer 	1
+This analysis suggests that Uch most likely forms and exists as dimer or tetramer in solution 	1
+We also performed time resolved small angle X-ray scattering TR SAXS experiments to monitor the de oligomerization of Uch where is the number of Uch molecules in the oligomer during its transition from an oligomer to monomer in the presence of Rpn 	1
+FRET will occur when Alexa Fluor and Alexa Fluor are sufficiently close lt the model which is most likely to be tetrameric 	1
+Sedimentation velocity experiments revealed that the Uch Hc KEKE truncation had an f ratio of values near correspond to globular shapes and exists as monomer estimated kDa MW from AUC whereas Uch KEKE and the WT Uch exist as mixture of different oligomers in solutions 	1
+The observation that Uch KEKE eluted as single peak at position close to that of the monomer of Uch in SEC but behaved as mixture of oligomers in AUC was intriguing 	1
+Static light scattering analysis showed that Stf has molecular mass of about kDa which indicated that the protein is prevalently monomer in solution in red 	1
+Dynamic light scattering DLS analysis conducted at concentrations ranging from to indicated that Stf shows concentration dependent monomer oligomer equilibrium in the conditions assayed 	1
+As result the experimental NMR and DLS rH together with that calculated from the structure provide clear indication that the protein Stf is monomeric under the analyzed conditions though exhibiting shape not completely globular 	1
+Stf presents further peculiar features with respect to the other members of the wHTH superfamily because it lacks the additional elements involved in the dimerization and it is monomer in solution 	1
+Two potential pathways for DNA binding of protein dimers have been described protein pre exists in solution as dimer and binds to DNA in this oligomeric form ii the protein dimerizes upon sequential binding of two monomers to the DNA 	1
+Herein we report the construction and structure determination of TatA dimer by solution NMR spectroscopy 	1
+By using this dimeric sample in combination with high resolution NMR spectroscopy we were able to observe more extensive inter subunit contacts in not only the TMH region but also the APH region 	1
+The formation of the TatA dimer was validated by SDS PAGE as well as NMR spectroscopy in 	1
+In summary by using combination of state of the art solution NMR and protein engineering techniques we constructed stable TatA dimer and observed more extensive inter subunit contacts in not only the TMH region but also the APH region 	1
+Hence residual dipolar coupling measurements confirm the monomeric fold in solution which supports the interpretation by that apparent dimerization of mouse MBD MBD reflects crystal lattice induced artifact 	1
+Accession codes The coordinates for the lowest energy structures of the complex between lys linker SUMO dimer and RNF SIM have been deposited in the Protein Data Bank with PDB ID code mp with associated NMR assignments under the BRMB ID 	1
+Coomassie blue stained SDSPAGE gel showing fractions from gel filtration chromatography left and purified SUMO dimers for NMR studies right 	1
+Overlay of HSQC NMR spectra for the two SUMO domains distal SUMO in cyan and proximal SUMO GG in green in the linked segmentally labelled SUMO dimer 	1
+These hexamer structural states are related in solution by dynamic equilibrium Rf with the state being dominant 	1
+The LysB ProB swap was introduced into AibB LysB ProB insulinto promote its monomeric behavior for solution NMR studies 	1
+This analogue provided good quality NMR spectra under acidic conditions acetic acid pH which is indicative of the expected monomeric behavior for this modified insulin 	1
+kDa is monomeric in solution and suggesting that FOG PR should be suitable candidate for structural analysis by NMR spectroscopy 	1
+Whereas it is difficult to determine the structure of multimeric fimbriae at atomic resolution production of stable monomers through donor strand complementation allows their study using nuclear magnetic resonance NMR spectroscopy and or X-ray crystallography 	1
+In this study we report X-ray crystallographic and NMR studies of monomeric donor strand complemented major and minor subunits of AAF from the German outbreak strain and AAF II from EAEC strain and provide an atomic resolution model for the structure of the entire fimbriae 	1
+The overall good quality of NMR spectra suggested that both GlnB insulin and WT insulin are monomeric in acetic acid pH 	1
+Our structure of WT human insulin is well defined and it preserves all typical structural features present in crystalline hexamer and is highly similar to the previously published NMR structure of human insulin determined under acidic conditions 	1
+Our NMR measurements indicated that GlnB insulin exists as monomer in solution 	1
+Analytical gel filtration experiments though only rough estimate of mass documented that proteins ad exist as dimers in solution and agree with the crystallographic results as discussed below 	1
+If the chemokine binding mode is conserved for all classes it is possible that CXCL could also bind to as dimer and in fact preliminary data for the CXCL complex are consistent with this hypothesis 	1
+The BBXB EELGQ SRRGR variant was created by quick change site directed mutagenesis courtesy of van Berkel Washington University St Louis MO expressed using baculovirus and elutes from size exclusion chromatography with the same dimeric profile as wild type 	1
+In this regard the structure of DNA decamer containing nitropyrrole opposite adenine has been determined by NMR revealing that the nitropyrrole ring is stacked within the duplex 	1
+An addition of dGTP further stabilized the protein increasing the denaturation temperature to the range of Thus in solution EF exists predominantly in tetrameric oligomerization state which can be additionally stabilized by Mg   and dGTP 	1
+The crystal structure of the EF apo form PDB ID I has only two crystallographically independent polypeptide chains which form dimer equivalent to the D C pairs in the tetrameric biological unit 	1
+Titration curves were performed with nM FAM DNA duplex and nM protein monomer concentration 	1
+It is well known that the CreI family of meganucleases binds DNA as homodimers therefore to analyze the oligomerization state of the mutants they were subjected to analytical ultracentrifugation 	1
+Here we show that MvaI is monomer in solution that binds duplex DNA in stoichiometric ratio and we present crystallographic analysis of MvaI in the apo and DNA bound forms both at resolution 	1
+MvaI is monomer according to analytical ultracentrifugation At the sequence level MvaI shows weak similarities to the monomeric DNA repair protein MutH 	1
+Analytical ultracentrifugation shows MvaI to be mostly monomeric 	1
+Sedimentation velocity runs in the analytical ultracentrifuge with MvaI gave sedimentation constant of W   Using mass for the monomeric protein of kg mol this corresponds to frictional ratio of 	1
+MspI and HinP which are specific for the palindromic sequences CGG and CGC respectively have both been reported to be monomers in solution 	1
+In the case of HinP conserved dimer is present in crystals of the apo form and of the DNA complex despite the predominantly monomeric nature of the enzyme in solution 	1
+In the case of insulin much effort has been put into the modification of the dimerization interactions and hexamer formations but less focus has been on the inter hexamer interactions in solution or within crystals 	1
+Size exclusion chromatography supports the assignment of dimer as the main oligomeric state in solution for both YP and YP 	1
+Thus the conserved Ile and Arg may contribute to stabilization of the dimeric state of the protein in solution 	1
+Dimers of GrlRGrlR was found to exist as homodimer in solution with an apparent molecular weight of kDa as determined by gel filtration and dynamic light scattering 	1
+Results of size exclusion chromatography and dynamic light scattering showed that in solution recombinant vvUDG exists as dimer of an estimated molecular weight of kDa 	1
+and is likely the physiological dimer observed in solution 	1
+Considering that vvUDG is dimer in solution see Methods the dimeric assembly in both crystal forms is unlikely to be an artifact of crystal packing 	1
+The major portion of the protein eluted as dimer calculated from the elution volume of protein standards and from dynamic light scattering experiments 	1
+Results from dynamic light scattering DLS verified that the protein exists predominantly as dimer estimated MW   kDa Stokes radius   nm 	1
+Sedimentation equilibrium data indicated that coli RdgC exists in solution as mixture of oligomeric states in equilibrium most likely monomers dimers and tetramers 	1
+The first peak corresponded to high molecular aggregates of RdgC and the second peak to RdgC dimers which was also consistent with our dynamic light scattering measurements 	1
+This observation is consistent with the results of previous gel filtration and sedimentation equilibrium experiments which suggested the presence of dimeric species of coli RdgC in solution 	1
+Depending on the concentration RdgC could also exist in solution as monomers tetramers and higher oligomers 	1
+The third would be the disruption of only one of the two interfaces and Sedimentation equilibrium indicated the presence of monomers in solution which is consistent with the first two scenarios 	1
+Electron microscopy showed that the coli RuvB protein in the presence of ATP forms dodecamer on double stranded DNA in which two stacked hexameric rings encircle the DNA and are oriented in opposite directions with symmetry 	1
+Higher affinity for DNA of the tetrameric species could be understood if the formation of tetramer in solution involves proteinprotein interaction similar to the side by side interaction between two adjacent RdgC dimers in the crystal although there is no experimental evidence 	1
+Gel filtration and chemical cross linkingure confirmed that and the Walker mutant see below form dimers in solution even in the absence of nucleotide or the presence of ADP 	1
+EcoMinD and TthSoj are monomers in solution with or without ADPMg   and binding of ATPMg   induces formation of structurally similar dimers 	1
+Although size exclusion chromatography did not provide evidence for JMS dependant dimerization the Mer JMS could accelerate autoactivation through transient homophilic interactions in manner consistent with ligand dependant receptor dimerization and activation 	1
+This oligomeric state is consistent with the results of our gel filtration analysis which showed that ASMTL Maf exists as dimer in solution observed molecular mass kDa predicted monomer molecular mass kDa whereas YhdE exists as mixture of dimers and tetramers observed molecular mass and kDa respectively predicted monomer molecular mass kDa and YceF as mixture of monomers and dimers observed molecular mass and kDa respectively predicted molecular mass kDa 	1
+Previously BSU has also been reported to exist as dimer in solution 	1
+The crystallographic structures of SABlaI and SAMecI dimers in free and in complex with their DNA operators have been determined and the structure of BLBlaI terminal DNA binding domain has been determined by heteronuclear nuclear magnetic resonance NMR spectroscopy 	1
+Circular dichroism and dynamic light scattering measurements showed that the protein was an appropriately folded monodisperse monomer 	1
+Certain serpins are able to undergo the to transition in the absence of RCL cleavage to form the latent conformation which represents the most stable monomeric conformation of the serpin chain 	1
+As previously demonstrated in the literature on the example of MJ and HI USP proteins form stable homodimers the dimeric state of AF and NE was verified by size exclusion chromatography and dynamic light scattering 	1
+The large buried surface area between the monomers per monomer as determined by the PISA server indicates that this interaction could form also in solution 	1
+The oligomeric state of HinfPDH was determined to be dimer by gel filtration using cm Shodex Protein KW column Thomson Instruments equilibrated in mM Tris mM NaCl mM TCEP pH and pre calibrated with gel filtration standards Bio Rad 	1
+Gel filtration and dynamic light scattering experiments indicated that hAFP exists as monomer in solution 	1
+Although crystal structures of APH show the protein as dimers they are not physiologically relevant as the enzyme is observed as monomer in solution 	1
+We conclude therefore that these proteins are present in solution predominantly in dimer form 	1
+Consistent with this our analytical ultracentrifugation AUC data showed that BAR PH protein has higher dimerization affinity in solution kd  nM than BAR domain alone kd  	1
+In this study the two actin monomers were observed to be related to each other in fashion similar to the way monomers are arranged in prevailing models of the actin filament derived from fiber diffraction and electron microscopy studies 	1
+Arguments were presented that this was within the bounds of experimental uncertainty in fiber diffraction and electron microscopy studies and that the longitudinal interface visualized in the crystal structure of the actin dimer provided faithful view of at least some of the atomic interactions between actin monomers in the native actin filament 	1
+Despite this electrophoresis under native conditions revealed single band indicating that the actin dimer remains intact 	1
+It was confirmed by using in solution methods analytical gel filtration and dynamic light scattering that wild type hUGDH and all enzyme variants to be described later fold into functional hexamers 	1
+This indicates possible communication between the two active sites during binding of UDP Glc and strongly supports role for dimerization in creating functional hUGDH enzyme 	1
+We first verified that both forms were monomeric in solution as determined by multi angle laser light scattering coupled to size exclusion chromatography SEC MALLS unpublished data 	1
+To determine whether the conditions used for crystallization perturbed the equilibrium between hexamer and monomer we performed size exclusion chromatography experiments under conditions mimicking as closely as possible those of crystallization 	1
+The crystal structure of the full length helicase reveals that DnaB is highly flexible two domain molecule in the absence of the restraints imposed by the formation of the hexameric quaternary structure 	1
+Analytical ultracentrifugation in sedimentation velocity mode demonstrates that SuhB is monomeric in the absence of Mg   	1
+Analysing the sedimentation velocity of SuhB in the presence of increasing concentrations of Mg   confirmed that in the absence of Mg   the monomer form is strongly preferred 	1
+Previously size exclusion chromatography experiments with mM EDTA present in the buffer had indicated that coli SuhB formed monomers and it had been inferred that the coli enzyme was active in the monomeric form 	1
+Crystal structures of eukaryotic IMPases refolding study and AUC analysis of human IMPase in the absence of Mg   consistently indicate constitutive dimerization of the eukaryotic orthologue 	1
+Analytical LS experiments demonstrate FIR to be monomer in the absence of DNA and dimer at higher protein concentrations in the presence of ssDNA 	1
+Finally the asymmetry of the oligonucleotides in the dimeric RRM binding pocketsone being an AT and the other CGalso supports the notion that an FIR dimer binds single strand of DNA in solution 	1
+SEC LS RI UV measurements demonstrate that FIR binds FUSE as monomer at low concentrations but dimerizes at higher concentrations in the presence of ssDNA 	1
+Similarly global fit analysis of sedimentation equilibrium AUC data indicated mass of for CEACAM suggesting dimer and mass of for UspA indicative of trimer 	1
+XLF forms homodimer via coiled coil region Dimerisation of XLF in solution is suggested by analytical gel filtration chromatography and crosslinking experiments 	1
+Furthermore the calculated hydrodynamic radii nm diffusion coefficient and average molecular weight kDa of XLF from dynamic light scattering DLS measurements are consistent with protein dimer 	1
+There is high evolutionary conservation of the interface residues across different species indicating the functional relevance of the dimeric unit and strongly suggesting that the dimeric form will persist in solution 	1
+These observations encouraged us to investigate further whether such tetramers might exist in solution by using the more sensitive methods of sedimentation velocity and small angle X-ray scattering SAXS 	1
+Sedimentation velocity experiments reveal that in solution XLF is mainly dimer as shown in 	1
+This is supported by SAXS intensity data which give values of the radius of gyration and the maximum particle size consistent with the dimensions of an XLF dimer 	1
+Thus there is no evidence that the tetramer in the crystal structure exists in solution demonstrating that the interaction between the two head domains is weak and the tetramer is likely of crystallographic origin 	1
+Moreover cryo electron microscopy data show that Pab adopts the same octameric structure in solution 	1
+Size exclusion chromatography on Superdex column Amersham Biosciences equilibrated with mm Tris HCl pH and mm NaCl showed the molecular mass of the proteins to be kDa indicating that hNDRG and its mutants exist as monomers in solution 	1
+Since this interface does not involve Phe shown to be critical to dimerisation in solution we propose that this is not the dimer that predominates in solution 	1
+The dimer dissociation constant was calculated for both the Grb SH domain and full length Grb at using analytical ultracentrifugation 	1
+The Grb SH domain was found to be dimeric in the crystal structure and in solution forming an analogous dimerisation interface to that observed for Grb and Grb SH domains 	1
+Dimerisation of full length Grb was demonstrated to occur in solution with Kd of the same order of magnitude as that obtained for the SH domain alone 	1
+Analytical size exclusion chromatography in combination with static light scattering indicated that both BB and SPO were hexamers in solution 	1
+The observation that SPO crystallizes as monomer in high salt and acidic pH NaCl pH while demonstrating the same hexameric oligomerization state in solution as BB under alkaline and low salt conditions mM NaCl pH lends further support to the hypothesis that pH or salt concentration might be key factor in oligomerization 	1
+mARH eluted in buffer containing mM Tris pH mM NaCl and mM DTT with molecular weight of about Da corresponding to monomer in solution 	1
+Elution profiles after gel filtration suggested the presence of minor amount of higher molecular weight complex while the majority of the protein eluted as monomer 	1
+WT Sin exists as dimer in solution W and A unpublished data but can synapse two isolated segments of DNA bearing site II presumably through formation of stable tetramer 	1
+The results of analytical size exclusion chromatography anSEC support the assignment of monomer as the quaternary state in solution for SPO 	1
+However the results of anSEC coupled with static light scattering SLS for Sbal indicate dimeric form in solution under the test conditions 	1
+This suggests that either the observed crystal packing interface is stable or the oligomerization state is dependent on the buffer conditions forming dimer in the anSEC buffer but disassociating in the crystallization solution prior to crystal formation 	1
+Small angle scattering experiments prove that LepFNR is monomeric enzyme in solution 	1
+Comparison of SAXS data with crystallographic structures of LepFNR monomers and dimers using CRYSOL reveals that LepFNR forms monomers in solution 	1
+leaves no doubt that the protein is indeed monomer in solution 	1
+Stereoviews showing the superposition of the high resolution crystallographic monomer of LepFNR with the envelope obtained from the data SAXS spheres 	1
+This analysis strongly suggests that metal mediated LepFNR dimerization observed in the crystal structure is induced by crystallization effects and do not represent physiologically relevant oligomeric state of the protein 	1
+The EGFR kinase domain has very low activity in solution but is activated upon increasing its local concentration by tethering it to lipid vesicles which promotes the formation of the asymmetric dimer 	1
+Three dimensional reconstruction of single particle electron microscopy images revealed dodecameric assemblies for all purified homogeneous full length CaMKII isozymes 	1
+The assignment of the peaks to the oligomeric states orders of association of CaMKII Ca   CaM heterodimers are indicated 	1
+We used analytical ultracentrifugation AUC to determine whether the CaMKII Ca   CaM heterodimer forms in solution and to estimate affinities for the substrate interaction 	1
+When peptide derived from CaMKII residues was included we observed only free Ca   CaM and the CaMKII Ca   CaM heterodimer in solution but no higher association species 	1
+SufI elutes from size exclusion chromatography column at the position expected for monomer 	1
+In the latter analysis xenavidin appeared mainly as single peak and had size of approximately kDa suggesting tetrameric quaternary structure 	1
+While cold inactivation is direct result of primarily the enamine PLP Lys scission the following collapse of the quaternary structure into dimers results from numerous protein protein and protein solvent interactions including hydrophobic electrostatic and hydrogen bonds 	1
+This low value is consistent with gel filtration and ultracentrifugation experiments that indicate AaIspE is monomer in solution 	1
+Gel filtration to analyze the dimerization status of Emg 	1
+The fusion protein has calculated molecular weight of kDa for the monomer but the large majority of it elutes between the and the kDa markers showing that it forms homodimer in solution 	1
+Together these data demonstrate that Emg forms homodimer in solution which is probably the active form of the protein 	1
+A feature shared between all previously characterized members of the alpha beta knot MTase families is the presence of dimers in the crystal forms and some members were confirmed to form dimers in solution 	1
+Stable dimerization was however confirmed for Emg in solution both by gel filtration and binding experiments 	1
+The crystal form of the truncated cytoplasmic domain of CapAB is thus monomer as observed in solution by size exclusion chromatography 	1
+The major difference concerns the quaternary structure of this unphosphorylated form of the protein that associates to ring shaped octamer 	1
+As confirmed by size exclusion chromatography analysis of the CapAB mutant unpublished data only the monomeric form of the protein is observed in solution 	1
+Gel filtration experiments with both the full length and truncated protein clearly show stable dimer in solution 	1
+Crystal structure of the Cep monomer and dimerization in solution 	1
+The predicted tetrahedral tetrameric assembly of tuberculosis HsaD in solution 	1
+This tetrameric arrangement likely does not reflect the oligomeric status of Mad as it exists predominantly as dimer in solution based on gel filtration and equilibrium sedimentation experiments 	1
+Furthermore mutations of several residues on including completely disrupt Mad dimerization in solution indicating that is the major structural determinant for Mad dimerization 	1
+The simplest interpretation of these results is that at low concentrations Sso MCM is mainly present in solution in monomeric state with low dsDNA binding affinity whereas at higher protein concentrations the formation of stable hexameric assemblies with higher dsDNA binding activity is favored 	1
+Conversely despite the lack of experimental evidences about its oligomeric state in vivo Sso MCM functions as an active helicase very likely in the form of single hexameric ring 	1
+The structure of the wild type Bacillus subtilis TrxA BsTrxA was originally solved by NMR as monomer in the oxidized and reduced states 	1
+The structure of the BsTrxA mutant was solved by NMR as heterodimer complex with the substrate protein arsenate reductase ArsC 	1
+Additionally analytical size exclusion chromatography shows that both forms are eluted as single monomeric peaks with molecular masses of and Da for the reduced and oxidized proteins respectively 	1
+Unlike the majority of GPX structures that exist as either homodimers or homotetramers in solution TbTDPX exists as monomer 	1
+The calibrated gel filtration suggests that CNanA is predominantly monomer in solution however it is possible that full length NanA may be dimer on the bacterial surface 	1
+Purified PfUIS residues was dimeric in solution as shown by protein cross linking experiments and gel filtration chromatography 	1
+Our biochemical data indicate that the PfUIS region spanning residues is soluble and dimeric in solution whereas truncation of PfUIS to the segment abolishes its dimerization property 	1
+From structural point of view the replicative helicases can adopt various oligomeric states including monomers dimers hexamers and heptamers 	1
+Gel filtration chromatography results showed that all the mutants assembled into hexamers 	1
+The molecular mass of and NTD were determined to be and kDa respectively monomer molecular masses are and respectively showing that both of them form dimer in solution 	1
+The molecular mass of complex was determined to be kDa suggesting and form heterodimer in solution the molecular masses of and are and kDa respectively 	1
+As alone exists as homodimer in solution our data imply that addition of can dissociate homodimer to form more stable heterodimer 	1
+The molecular mass of the complex was determined to be kDa monomer molecular masses of and are and kDa respectively showing that they form heterodimer in solution 	1
+The molecular mass of the complex estimated by static light scattering was kDa suggesting the formation of heterodimer 	1
+Since the molecular masses of NTD and NTD are and kDa respectively our data suggest that the terminal domain of and also form heterodimer in solution 	1
+The molecular mass of TM estimated by static light scattering suggests the formation of heterodimer 	1
+The molecular mass of the complex determined by static light scattering was kDa which is in good agreement with the theoretical molecular mass of kDa for pentameric complex 	1
+Consistent with previous studies here we show that while eukaryotic alone forms homodimer in solution it forms heterodimer spontaneously in the presence of 	1
+Dimeric arrangement of the globular head region p like other golgins is stable homodimer with an terminal globular head domain and C terminal coiled coil domain of nm length as determined by rotary shadowing electron microscopy 	1
+We have observed GHR to be monomeric in solution by gel filtration experiments 	1
+Dynamic light scattering SAXS and analytical gel filtration suggest that RD is monomer in the absence of RNA and we do not see convincing proteinprotein dimer interface in the crystal lattice 	1
+First BDLP which probably exists as dimer in solution is loaded with GTP 	1
+Thus at least in the absence of interactions stemming from other parts of CnA than the CBD segment the CaM CnA CBD complex is quantitatively monomeric in solution 	1
+The SAXS data clearly indicate that the complex is monomeric stoichiometry as observed by comparing the values describing the size and shape of the particle to those obtained for the CaM sample as well as to the theoretical values calculated from different crystal structures using the program CRYSOL 	1
+KorA consists of residues Da pI   and exists as dimer in solution 	1
+This is supported by gel filtration and analytical ultracentrifugation experiments where KorA was always found to be dimeric 	1
+The dimer structure and its mimicry of DNA Analysis of the structure with the program PISA identifies head to head dimeric arrangement as the functional biological unit and 	1
+Both techniques therefore indicated the protein was almost entirely present as dimer in solution 	1
+However sedimentation equilibrium data for the mthSBDS protein showed the presence of only the monomeric form in solution 	1
+Thus we conclude that the biological unit of mthSBDS protein is monomer 	1
+We next used size exclusion chromatography to compare the dimerization properties of purified mutant and wild type hinges in vitro 	1
+Multi angle laser light scattering MALLS confirmed that Slit exists as homodimer in solution 	1
+Analytical ultracentrifugation of the purified material showed major component of and minor component of which likely corresponded to the SCIN stabilized dimeric complex of kDa and putatively dimer of dimers respectively online 	1
+Sedimentation equilibrium analysis showed the average molecular weight to be kDa consistent with trimer form calculated molecular weight kDa 	1
+The results show that in solution PfMIF is predominantly trimeric with small percentage of species at five times this MW 	1
+Although these results show that purified Plasmodium MIF is predominantly trimer this is not necessarily the physiologically relevant oligomeric state of the protein 	1
+The NMR structure of the CD ectodomain is trimeric sharing the three fold rotational symmetry of MIF 	1
+Since only monomers were detected in solution we conclude that these assemblies are simply crystal packing artefacts 	1
+More extensive dimer interfaces are present in both the mouse and wheat crystal structures although both of these proteins were also monomeric in solution 	1
+These results suggest that the apo form and the GDP bound form of AfHypB exist as monomer in solution 	1
+Gel filtration chromatography on calibrated Superdex column equilibrated in mM Tris HCl pH mM NaCl and mM EDTA clearly shows that GLB GLB and GLB behave in solution as non covalently bound dimers 	1
+The SAXS data further confirm that is monomeric in solution and its shape in solution is highly similar to that seen in the crystal structure 	1
+Dimer formation can also be monitored in solution namely by gel filtration and chemical cross linking employing formaldehyde and glutardialdehyde 	1
+B sedimentation velocity analysis of BubR reveals it to be an asymmetrical monomer 	1
+Sedimentation velocity analysis of BubR revealed the presence of single species of molecular mass kDa theoretical molecular mass of kDa with frictional coefficient of suggesting monomer with an elongated asymmetrical shape 	1
+An extended conformation is also supported by the large Dmax of measured with small angle X ray scattering and analytical size exclusion chromatography in which BubR eluted as single species at volume corresponding to times the mass predicted for compact globular monomer 	1
+A final distinction between the BubR and Bub TPR domains relates to quaternary structure with BubR being monomer and Bub dimer in both solution and crystalline states 	1
+This suggests that SpGH with monomer molecular weight of behaves as an elongated dimer in solution 	1
+Furthermore although bLAM exists as monomer in the crystal state it has been characterized to be dimer in solution 	1
+Through EM and crystal packing bLAM was hypothesized to form two possible dimers one in which contacts are made between regions equivalent to the and domains in SpGH and another in which contacts are made between equivalents to the domain the latter of which was more favored 	1
+Gel filtration indicated that in solution TbGS exists as dimer of approximate mass kDa 	1
+Since the introduction of resulted in the formation of stable heterodimers in solution it is possible that an S bond may have broken during crystallization or data collection 	1
+Gel filtration shows that at concentration of the polypeptide is monomeric with an apparent molecular mass of kDa significantly higher than the calculated value kDa indicative of nonglobular conformation large radius of gyration 	1
+Although the talin helix module has somewhat higher apparent molecular mass kDa than the calculated value kDa due to its extended conformation the data on MESDc suggest that it may form dimer in solution 	1
+Gel filtration shows that it is monomeric with very similar elution profile to thioredoxin alone 	1
+Gel filtration experiments indicate that MESDc is dimeric in solution and the NMR HSQC shows broad signals consistent with this conclusion 	1
+The dimer buries of solvent accessible surface per monomer and the statistical score provided by PISA indicates dimer which is also stable in solution 	1
+Gel filtration indicates that SaPurB exists as single species with an approximate mass of kDa in solution suggesting the presence of dimer under the conditions used during the final stage of purification 	1
+Size exclusion chromatography indicated that BsMenD consists of mixture of dimer and tetramer in solution with the dimer being much more abundant 	1
+The crystal structure of BsMenD consists of dimer of dimers similar result was found for EcMenD which is predominantly dimeric in solution and then forms dimer of dimers when crystallized 	1
+The analysis by dynamic light scattering of the purified recombinant CA protein indicated monodisperse solution with gyration radius of nm compatible with monomer 	1
+P has been shown to form dimers but not higher oligomers in solution in absence of DNA 	1
+P is monomeric in solution but forms dimers upon interaction with operators 	1
+R is monomer in solution and dimerizes with fold symmetry upon binding to its palindromic DNA recognition sequence 	1
+The large buried surface area gt within all ROX dimerization domains is sufficient for dimerization in solution as reported for NO 	1
+Analytical ultracentrifugation sedimentation velocity analysis indicated that all the variants behave as dimers in solution with molecular mass that is double that of the CreI monomer of kDa including the monomeric single chain variant scV 	1
+Using multi angle static laser light scattering coupled with size exclusion chromatography we found that purified recombinant Pat is monomeric in solution and elutes as expected for well behaved globular protein domain of the respective mass kDa 	1
+A protein fragment containing the Mid domain and Pat residues was also monomeric in solution but eluted much earlier than expected for globular protein apparent molecular mass of kDa as opposed to the expected value of kDa 	1
+When expressed purified and analysed by size exclusion chromatography all three Pat mutants showed the expected elution volumes for folded monomeric proteins of the respective size indicating that the mutations do not disrupt the Pat fold 	1
+The correlation times obtained here are slightly less than those predicted by hydrodynamics model calculations ns apo ns lac ns and ns indicating that Gal is monomeric in solution in keeping with previous reports based on mass spectrometry and analytical ultracentrifugation 	1
+Gel filtration chromatography using HiLoad Superdex column GE Biosciences into mM TrisHCl pH mM NaCl buffer eluted single dimeric species whose purity was checked by SDS PAGE 	1
+The family of metal dependent nucleases contain enzymes showing both monomeric and dimeric quaternary structures 	1
+These results indicated that the WT Spd protein is monomeric in solution irrespective of the presence of EDTA or Mg   ions 	1
+The results from the SEC MALLS experiments show that Spd behaves as monomer in solution in the presence and absence of the divalent metal ion Mg   	1
+As shown by combination of size exclusion chromatography and multi angle light scattering SEC MALS the full length protein is present as monomers dimers and high molecular weight species 	1
+Analysis of the purified terminal domain by SEC indicates the presence of dimers 	1
+ALL samples used for SAXS eluted from size exclusion chromatography as single symmetric peaks corresponding to monomeric forms of the CNPase catalytic domain see 	1
+SaMenH behaves as monomer in solution as indicated by size exclusion chromatography 	1
+Peroxiredoxins exhibit wide variety of oligomeric states ranging from monomeric YPrx to large decameric or dodecameric assemblies like TryP AhpC and other typical Cys peroxiredoxins including PrxIII from bovine mitochondria which forms two concatenated dodecamers 	1
+This indicates that ypTpx is present solely as dimer in solution 	1
+Theoretical scattering curves of monomeric and dimeric atomic structures of Tpx were calculated and again confirm that Tpx is dimer in solution 	1
+The Dmax of the space fill model of the dimer crystal structure is approximately which agrees with the Dmax obtained from the SAXS data indicating that the low resolution envelope describes the ypTpx dimer 	1
+The two isoforms have identical in vitro binding characteristics to their interacting proteins studied so far Apo and ligand bound structures determined both by ray diffraction and NMR spectroscopic studies revealed that DYNLL forms homodimer possessing two identical ligand binding sites 	1
+The overall hexameric architecture of the lectin was determined in solution by electron microscopy and SAXS 	1
+BC C ct is dimeric in solution with molecular mass of kDa whereas BC C nt is trimeric with molecular mass of kDa the expected monomeric masses are kDa and kDa respectively 	1
+The SEC MALLS profile of the whole BC C analysis indicates hexamer in solution with molecular mass corresponding to kDa the expected mass of the monomeric form is kDa 	1
+The overall shape of the hexamer in solution was determined by small angle ray scattering SAXS and validated by negative stain electron microscopy EM 	1
+Our results suggest that the low resolution shape with the two trimers separated along the long axis and three dimers in the middle is the conformation adopted in solution under physiological conditions 	1
+The molecular mass of both Cf JBP and Lt JBP was determined by MALLS showing that both are monomers in solution 	1
+JBP also binds to DNA as monomer as indicated by size exclusion chromatography experiments using Cf JBP 	1
+Sedimentation equilibrium profile of the Mdv CC fragment at the indicated initial loading concentrations open symbols with the corresponding fit of MWobs MW monomer   	1
+The PISA analysis is consistent with the data from gel filtration which indicate monomer in solution 	1
+These data therefore suggest that PA most likely exists in solution in an equilibrium between monomeric and trimeric states 	1
+Gel filtration analyses show the protein to be dimeric in solution suggesting that the dodecamer arrangement is crystallographic artifact 	1
+Gel filtration data suggested mixture of dimer and monomer even at neutral pH We therefore investigated the concentration dependence of the dimeric state 	1
+Fatty acid binding by recombinant ABA ARecombinant ABA rABA expressed and purified as described in the section has solution properties characteristic of small monomeric globular protein similar to the natural material with sharp and well resolved NMR spectral features typical of compact folded protein suitable for high resolution structure determination 	1
+GbpA exists as an elongated monomer in solution To determine the position of domain in the context of the complete GbpA structure we studied the solution shapes of full length GbpA and GbpAD with Small Angle ray Scattering SAXS 	1
+Nsp is unstable in solution and nsp acts as scaffold for nsp yielding stable dimer active as an RNA cap dependent nucleoside MTase 	1
+Recent solid state NMR studies on full length human crystallin show the ACD dimer structure within the context of the assembled oligomer and also show the binding of the X motif into ACD pockets 	1
+When two wild type human ACDs KLR and WJ are compared there are significant differences between them these structures were determined at different pH with one being an excised ACD dimer solved by ray crystallography and the other an NMR structure solved in the context of large oligomeric assembly 	1
+While clearly this is structurally dynamic interface the two ion pairs between Arg and Asp across the dimer interface are conserved in the wild type ACD at pH WJ and the full length solid state NMR at pH KLR and rat Hsp WJ and 	1
+This form of crystallin ACD dimer with the groove in closed state either does not crystallise or exists only in the full length highly oligomeric state 	1
+The ACD dimer from full length wild type crystallin KLR pH determined by solid state NMR 	1
+To independently validate the crystallographic model of the dimeric terminal myomesin filament we used negative stain transmission electron microscopy EM and 	1
+The My My dimer as indicated on the right exhibits consistent arrangement in all data derived from EM ray and SAXS 	1
+PISA suggests the oligomeric state to be monomeric in crystal form but identifies potential trimer generated by the crystallographic symmetry in crystal form 	1
+Size exclusion gel filtration indicates that BcDHPS is dimer of approximate mass kDa in solution 	1
+The overall sequence identity of BcDHPS with the enzyme from other Gram negative species is in the region of and the fold of BcDHPS and dimeric quaternary structure is consistent with that observed for DHPS from other species 	1
+SEC MALLS analysis of SinR gave molecular mass value of kDa close to the calculated molecular mass of the tagged polypeptide chain kDa and indicating that the DNA binding domain fragment is monomer in agreement with earlier measurements 	1
+An analysis of the intermolecular contacts within the crystal suggests that Cv is monomeric in solution consistent with analytical gel filtration results 	1
+This helix is involved in dimer contacts in the crystal structures of cytochrome oxidase which all show dimer whereas in the single particle EM maps the oxidase is clearly monomeric 	1
+However during purification in the presence of NaCl MTH eluted from size exclusion chromatography as single peak with an apparent molecular weight of kDa which corresponds to monomer predicted molecular mass of kDa 	1
+Analysis of MTH using PISA indicates that MTH forms stable dimer in solution 	1
+The characterization of MTH as dimer in solution under physiological conditions and that the dimer enhances activity are both compatible with the model of in which the KH domain of one monomer binds to an RNA molecule targeting it for degradation by the MBL CASP domains from the other monomer 	1
+Purified recombinant PhoD protein was monomer in solution as judged by size exclusion multi angle laser light scattering 	1
+Deep etch electron microscopy studies have shown that the growing crescent membranes and closed IV particles containa single membrane bilayer stabilized by the honeycomb surface lattice formed by homotrimers of the kDa protein assembled in hexagonal mesh on the exterior of the IV membrane 	1
+VACV and mutant with terminal hexahistidine tags were expressed in Escherichia coli and purified by Ni   affinity and size exclusion chromatography as trimers 	1
+The spacing of trimers in the modeled lattice is such that plausible contacts are formed between adjacent trimers and the lattice geometry is consistent with that observed by electron microscopy for crystals of the orthologous protein from Orf virus center to center spacing 	1
+In this study we have described the monomeric structure of perfringens Delta toxin and model of its oligomeric form that is supported by electron microscopy views of liposomes surrounded by pores 	1
+Here we have presented the ray crystallographic structure of perfringens Delta toxin monomeric structure together with model of the heptameric pore form which is supported by negative stain electron microscopy images 	1
+Oligomeric Architectures of MCDsHsMCD is tetramer in solution based on gel filtration chromatography and analytical ultracentrifugation AUC studies consistent with the reported oligomerization state of many purified MCD enzymes 	1
+The architecture and shape of the HsMCD tetramer were also analyzed by electron microscopy coupled to single particle analysis 	1
+RpMCD and AvMCD are also tetramers in solution based on multiangle static light scattering studies 	1
+Surprisingly CmMCD is dimer in solution and the crystal structure reveals completely different mode of dimerization as compared to HsMCD RpMCD and AvMCD 	1
+The structure of terminally truncated IPNV VP Recombinantly expressed IPNV VP carrying C terminal hexahistidine affinity tag is predominantly monomeric in solution as determined by analytical gel filtration and multi angle light scattering 	1
+The affinity of this self interaction is obviously not high as VP behaves predominantly as monomer in solution 	1
+The stoichiometry of the purified EryCIIIEryCII complex in solution determined from sedimentation velocity data is and this agrees exactly with the stoichiometry found in the crystal structure where the EryCIIIEryCII complex appears as dimer of heterodimers 	1
+On the basis of its retention volume during size exclusion chromatography the DesVII DesVIII complex was previously reported to be trimer of heterodimers but given the elongated shape of the complex it is likely that this estimate was in error and other GT auxiliary protein pairs are also tetrameric complexes when correctly assembled 	1
+The biological unit is composed of two EryCIIIEryCII dimers arranged in an almost linear array 	1
+Similarly when mixture of RraA and SrmB was analyzed by AUC at similar concentration again species corresponding to complex of kDa was observed the SrmB monomer has molecular mass of kDa 	1
+This envelope can accommodate single RraA trimer with single SrmB helicase bound to the outer ring of RraA consistent with the molar ratio indicated by analytical ultracentrifugation analyses 	1
+In the case of DbpA AUC revealed single species in molecular mass range close to kDa corresponding to the expected mass of monomeric DbpA kDa 	1
+Under these conditions the AUC profile suggests that CsdA forms dimer with single species observed with an estimated mass of kDa 	1
+Both the CIDR and the Head protein are monomeric in solution and in the crystal unit cell as was the case for the single DBL domain 	1
+We tested the oligomerization state of purified SipD by static light scattering and found that SipD is monomer in solution Mw kDa 	1
+The needle tip complex was monomeric in solution suggesting that the supramolecular architecture of the tip complex is influenced by the PrgI assembly of the SS needle 	1
+We found that the PrgI SipDD fusion protein is monomeric in solution suggesting that the architecture of the tip complex depends on the scaffold provided by the subunits of the SS needle 	1
+These substitutions were made to single or several residues online in each of the separate loops and the resultant receptors tested for expression of pentameric assemblies by size exclusion chromatography and by binding with granisetron high affinity antagonist for the HT 	1
+Further SEC experiments on the protease liberated QUA peptide using Superdex column yielded an AAN value of and an apparent RS of intermediate between the predicted values of for an unfolded monomer and for folded dimer 	1
+The association state of released QUA was validated using analytical ultracentrifugation global single species fits to sedimentation equilibrium data yielded mean molecular weight of kDa which matched the theoretical value of kDa expected for folded dimer 	1
+By assuming that separate maxima would not be resolved in the elution profile of mixture of similarly populated folded and unfolded states and that the maximum of the overall envelope would vary linearly with the composition of the mixture see Experimental Procedures we estimated that approximately of fusion protein species were present in the dimeric state 	1
+We have used analytical size exclusion chromatography to confirm that mutants of QUA fragments from pXqua are unfolded monomers that are not able to dimerize at room temperature 	1
+As in published work we find no evidence of trimer formation in solution by multiangle light scattering suggesting an approximate millimolar KD 	1
+EssB is dimeric in solution but crystallizes as monomer 	1
+These orthologous fragments crystallize as monomer despite forming stable dimers in solution discussed later 	1
+In both structures the contacts formed with symmetry related molecules appear unlikely to support the existence of thermodynamically stable dimers in solution 	1
+These mutated proteins eluted as single species identical to the wild type dimer during size exclusion chromatography 	1
+The data are comparable to those obtained for the mutant but with significantly smaller oscillation depth that might indicate partial dimerization yet under the conditions used in SEC this sample appeared only to be dimer 	1
+To analyze the stability of the EssB dimer by size exclusion chromatography in different buffer systems EssB mg was buffer exchanged to the test buffer containing TCEP and v glycerol mM Tris HCl pH mM NaCl mM Tris HCl pH mM NaCl mM ethylenediaminetetraacetic acid EDTA mM citrate pH mM NaCl mM phosphate pH mM NaCl and mM Bis Tris pH mM NaCl using spin concentrator 	1
+The hydrodynamic behavior of dimeric holo AGT proteins was evaluated by dynamic light scattering DLS using AGT in subunit and PLP in Zetasizer Nano ZS Malvern Inc 	1
+Within the experimental uncertainty these results are consistent with the size of dimeric AGT WT previously reported by DLS and also imply no noticeable perturbation of dimer size and or dimer monomer equilibrium by these mutations 	1
+We thus propose that the last steps involving docking of tertiary structure elements and acquisition of the dimeric quaternary structure are crucial for proper folding of AGT 	1
+DNA bound SCL bHLH is topologically similar to previously reported bHLH structures such as the bHLH homodimer and NeuroD bHLH heterodimer 	1
+The three dimensional structure of DNA bound SCL bHLH LMO LDB LID reveals how LMO binds to the bHLH heterodimer 	1
+Moreover association constants have been measured for bHLH SCL SCL bHLH and SCL bHLH with respective of and in agreement with the fact that the heterodimer is more stable than individual homodimers 	1
+Analysis of SCL structures in the presence of LMO reveals the structural impact of LMO on heterodimerization 	1
+SCL prevented interaction with and all core members and with mSIN PCAF ETO andP confirming that heterodimerization is essential for SCL activity 	1
+The SCL F mutations abolished interaction with LMO and consequently with LDB and GATA but not with the cofactors their recruitment therefore does not require interaction with LMO and LDB and is likely to occur via the heterodimer 	1
+LMO Stabilizes the SCL Association but Weakens the Interaction of the Heterodimer with DNAIn addition to their association into heterodimers SCL and A bHLH domains can exist invitro as homodimers although todate only A homodimers have known biological functions 	1
+As detailed in the section we suggest that the SCL heterodimerization interface is more stable than either individual homodimerization interfaces and that binding of LMO induces subtle conformational changes resulting in the creation of new hydrogen bonds 	1
+Our work provides strong evidence for the A sequestration model in SCL expressing ALL through formation of SCL A heterodimers 	1
+Indeed whereas we do not rule out the possibility that binding of the specific monomer to central bases could still be achieved in solution the lack of interaction observed in our crystals could alternatively be hallmark ofbHLH heterodimers 	1
+However size exclusion chromatography indicated that CBM is monomer although ligand induced oligomerization is possible phenomenon which would not be observed by studying the molecular mass of the apoprotein 	1
+Separation of LANA CTD species by asymmetric field flow fractionation and multi angle static light scattering showed that the purified CTDs exist mostly as dimers of kDa in solution 	1
+The recombinant GyrB used in the crystallization is dimer in solution 	1
+Both Ls and Ac AChBPs show similarities to the extracellular domain of neuronal nAChRs and form homopentamers in solution Smit 	1
+The protein forms dimer in the crystal and in solution 	1
+To determine whether TYW forms dimer in solution purified TYW was subjected to sedimentation velocity analytical ultracentrifugation 	1
+The result clearly showed that TYW exists as monomer in solution with molecular mass of Da which agrees with the molecular mass of Da calculated from the amino acid sequence 	1
+These results indicate that the heterotetrameric enzyme observed in the crystal structure is formed in solution 	1
+Retention times of the variants through the gel filtration column were almost the same as that of the wild type endonuclease min for wild type min for LP min for LPE and min for LPEI respectively indicating the formation of the heterotetrameric subunit structure for the wild type endonuclease and the homodimeric structure for the variants in solution 	1
+Formation of the heterotetramer for the wild type and the homodimer for the variants was further confirmed by analytical ultracentrifugation 	1
+The compact globular domain structure is consistent with our sedimentation equilibrium data which suggest monomeric globular domain for the PHCCEx region in solution with estimated molecular masses of kDa Tiam and kDa Tiam 	1
+RAR atRA RXR LG LBDs is dimeric in solution 	1
+The previous NMR study indicated stoichiometry of the Fc dimer aptamer complex 	1
+To determine whether the dimer observed in the crystal is also formed in solution we subjected the wild type wt hTYW and the terminal helix bundle deletion mutant hTYW to gel filtration chromatography 	1
+The results revealed that wt hTYW also forms dimer in solution whereas the hTYW mutant behaves as monomer indicating the importance of the terminal helix bundle for dimer formation 	1
+Gel filtration and electron microscopic analyses showed that TacGINS indeed forms homotetramer Ogino 	1
+W exits in dimer interface on and interestingly mutant appeared to exist as monomer in solution based on the gel filtration chromatography result 	1
+The native molecular weight using the multi angle light scattering detector was calculated to be kDa indicating that Thermus MTHFR is dimer in solution 	1
+The topology of the holo subunit barrel of Thermus MTHFR is quite similar to that of holo subunits coli MTHFR which is homotetrameric protein in solution 	1
+Nevertheless despite the small area of the intersubunit surface as purified Thermus MTHFR was shown to be dimer in solution by size exclusion chromatography 	1
+The purified myosin MyTH FERM cassette exists as monomer in solution as suggested by analytical ultracentrifugation AUC analysis which showed mono modal peak corresponding to monomer kDa close to the calculated kDa 	1
+CF Im crystallizes as dimer which is also the oligomeric state of the protein in solution 	1
+The dimeric state of CF Im has also been confirmed by dynamic light scattering 	1
+A dimeric state for CF Im is consistent with dynamic light scattering DLS and gel filtration experiments performed with the kDa subunit both unliganded and with ATP or Ap 	1
+We used analytical ultracentrifugation to address the question if the Nep dimer is also present in solution 	1
+Sedimentation equilibrium analysis at three different starting concentrations as described in section unequivocally demonstrated that the dimer with molecular mass of kDa is the predominant species in solution 	1
+The peptides which comprised one nonamer RQApSLSISV PKD and three decamers RTYpSGPMNKV RTY RQApSIELPSM RQA and KMDpSFLDMQL KMD were derived from four different proteins 	1
+r s values of PDC and PAS domain superimpositionsPYPPhoQ CitA over PYP over CLK over over FixL over over NcoA over over CDimerization of PhoQ The wild type PhoQ dimer rotation   screw translation   buries of total accessible surface area between the two subunits 	1
+Thus even though sensor domains are expected to be functionally dimerized in situ on the membrane they may exhibit quite low dimer affinity when isolated in solution 	1
+The coli PhoQ sensor domain has been shown to be monomeric in solution by analytical ultracentrifugation with lower limit of measured for the Kd of dimerization and likewise both the CitA and DcuS sensor domains have also been reported to be mostly monomeric in solution 	1
+Thereisnoareaofpositivechargeinthe corresponding region of the DBL domain and DBL shows no evidence of dimerization either in the crystal or in solution 	1
+Crystallographic tetramer consisting of two symmetry related dimers representing biological unit 	1
+Unexpectedly in solution the product inhibited conformation corresponds to an elongated dimer 	1
+Cyclic di GMP Stabilizes WspR in an Elongated Dimeric ConformationDegradation of di GMP by PDE treatment has profound effect on the elution profile of WspR in size exclusion chromatography SEC 	1
+SEC Coupled Multiangle Light Scattering Analysis of Purified WspR in Solution Monomeric BSA mg ml Sigma was analyzed by coupled SEC multiangle light scattering 	1
+Despite di GMP binding the form of WspRwt existing predominantly as compact dimer sample was highly active similar to the nucleotide free species consistent with the identical elution profiles and 	1
+Gel filtration experiments starting with lysates from WspRR or WspRGGAAF expressing cells showed predominantly the more compact dimeric species probably due to the dilution occurring during chromatographic separation unpublished data 	1
+Model for the Inhibition and Activation of WspRThe gel filtration and multiangle light scattering experiments demonstrated that in solution di GMP inhibited WspR is predominantly an elongated dimer distinguishable from an active dimer with more globular shape and from tetrameric species 	1
+Although three possible elongated WspR dimers can be derived from the tetrameric structure the dimer shown in right panel might represent structure close to the conformation of inactive WspR in solution elongated dimer in based on structural and functional arguments 	1
+In fact preliminary studies suggest that addition of beryllium fluoride commonly used compound mimicking phosphorylation modulates WspR oligomeric state facilitating tetramer formation and autoinhibition De and Sondermann unpublished data 	1
+Cyclic di GMP bound inactive WspR is dimeric in solution but crystallizes as tetrameric assembly 	1
