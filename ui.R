@@ -21,6 +21,7 @@ conditionalPanel("input.tabs=='Analysis'",
 #conditionalPanel(condition = "input.pmc",
 
 radioButtons("dataInput", "", list("PDB ID"=1, "Upload file"=2, "Upload PDF"=3), selected=1),
+#bsTooltip(id = "input.dataInput=='1'", title="Single PDB entry", placement = "bottom", trigger = "focus",options = NULL),
 
 
 
@@ -28,7 +29,8 @@ radioButtons("dataInput", "", list("PDB ID"=1, "Upload file"=2, "Upload PDF"=3),
 br(),
 
 
- textInput(inputId = "PdbId", label = "Enter a PDB ID", value = "2PMF")
+ textInput(inputId = "PdbId", label = "Enter a PDB ID", value = "2PMF"),
+bsTooltip(id = "PdbId", title="Enter a 4 characters long ID", placement = "bottom", trigger = "hover", options = NULL)
 
 
 #        selectizeInput("MLalgorithm", "Select an ML algorithm", choices = c("Support vector machines", "Boosted logistic regression", "Random forest"), multiple = FALSE, selected = "Boosted logistic regression")
@@ -160,7 +162,7 @@ conditionalPanel("input.tabs=='Help'"
 
 mainPanel(
 
-navbarPage("Bioassembly Evaluation Tool v.0.2.3", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
+navbarPage("Bioassembly Evaluation Tool v.0.2.4", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
 
         tabPanel("Analysis",
 

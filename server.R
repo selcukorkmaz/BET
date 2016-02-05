@@ -1942,7 +1942,30 @@ sequenceCluster <- reactive({
     
     lastResult2 = unique(lastResult[,-1])
     
-    lastResult2
+    sequenceCluster = lastResult2
+    
+    sequenceCluster$PDBID = currentData()[,1]
+    
+    sequenceClusterLast = sequenceCluster[,c(7,1:6)]
+    names(sequenceClusterLast) = c("PDB ID", "Representative chain","Stoichiometry", "Symmetry",
+    "Consistency score", "Number of PDB entries", "PDBs in the cluster")
+    
+    
+    maxCS = sequenceClusterLast$`Consistency score`[which.max(sequenceClusterLast$`Consistency score`)]
+    
+    sequenceClusterLast$CS = maxCS
+    
+    if(maxCS > 0.5){
+        
+        for(i in 1: dim(sequenceClusterLast)[1]){
+            sequenceClusterLast$Res[i] = if(sequenceClusterLast$CS[i] == sequenceClusterLast$`Consistency score`[i]){1}else{0}
+        }
+    } else{
+        
+        sequenceClusterLast$Res = 0
+    }
+    
+    sequenceClusterLast[-8]
     
 })
 
@@ -1965,12 +1988,15 @@ return()
 
 if(input$signatureResults && input$startAnalysis){
 
+df = as.data.frame(sequenceCluster())
 
+datatable(df, rownames=FALSE, options = list(columnDefs = list(list(targets = 7, visible = FALSE)))
 
-datatable(sequenceCluster2(), escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),   deferRender = TRUE
-
-))
+)%>% formatStyle(
+'Res',
+target = 'row',
+backgroundColor = styleEqual(c(1), c('#00BA38'))
+)
 
 }
 
@@ -2278,13 +2304,38 @@ combined <- reactive({
         
         seqCluster2 = do.call(rbind.data.frame, byPDB)
 
-        seqCluster3 = seqCluster2[,c(1,3)]
+        seqCluster3 = seqCluster2[,c(1,3,5,6)]
+        
+        seqCluster3$Stoichiometry = as.character(seqCluster3$Stoichiometry)
+
+        for (i in 1:dim(seqCluster3)[1]){
+        
+        if(seqCluster3[i,3] <= 0.5 || seqCluster3[i,4] < 3){
+        
+            seqCluster3[i,2] = "Inconclusive"
+        
+        }
+        
+        }
+        
+        seqCluster3 = seqCluster3[,1:2]
+        
         names(seqCluster3) = c("PDB ID", "Sequence cluster Oligomeric State")
 
         }else{
         
         seqCluster2 = sequenceCluster2()[which.max(sequenceCluster2()[,5]),]
-        seqCluster3 = seqCluster2[,c(1,3)]
+        seqCluster3 = seqCluster2[,c(1,3,5,6)]
+        
+        
+        if(seqCluster3[3] <= 0.5 || seqCluster3[4] < 3){
+            
+            seqCluster3[2] = "Inconclusive"
+            
+        }
+        
+        seqCluster3 = seqCluster3[,1:2]
+
         names(seqCluster3) = c("PDB ID", "Sequence cluster Oligomeric State")
         }
         pisaRes = selectedPisa()
@@ -2310,124 +2361,138 @@ if(dim(current2)[1] > 1){
     
 }else{
     
-    consensus = cbind(current[,1:3], seqCluster2[,3], pisaRes[,4], tm[,2])
+    consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], tm[,2])
 
 }
 
 names(consensus) = c("pdbId", "BaNumber", "CurrentStoichiometry", "SequenceClusterStoichiometry", "PISAStoichiometry", "TextMiningStoichiometry")
 
 
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A"] ="monomer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A2"] ="dimer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "AB"] ="dimer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A3"] ="trimer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A2B"] ="trimer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "ABC"] ="trimer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A4"] ="tetramer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A2B2"] ="tetramer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "ABCD"] ="tetramer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A5"] ="pentamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A6"] ="hexamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A3B3"] ="hexamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A2B2C2"] ="hexamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A7"] ="heptamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A8"] ="octamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A4B4"] ="octamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A2B2C2D2"] ="octamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A9"] ="nonamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A10"] ="decamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A5B5"] ="decamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A11"] ="undecamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A12"] ="dodecamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A6B6"] ="dodecamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A13"] ="tridecamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A14"] ="tetradecamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A15"] ="pentadecamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A16"] ="hexadecamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A17"] ="heptadecamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A18"] ="octadecamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A19"] ="nonadecamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A20"] ="eicosamer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A21"] ="21-mer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A22"] ="22-mer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A23"] ="23-mer"
-consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A24"] ="24-mer"
+if(consensus$CurrentStoichiometry != "Inconclusive"){
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A"] ="monomer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A2"] ="dimer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "AB"] ="dimer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A3"] ="trimer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A2B"] ="trimer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "ABC"] ="trimer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A4"] ="tetramer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A2B2"] ="tetramer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "ABCD"] ="tetramer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A5"] ="pentamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A6"] ="hexamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A3B3"] ="hexamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A2B2C2"] ="hexamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A7"] ="heptamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A8"] ="octamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A4B4"] ="octamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A2B2C2D2"] ="octamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A9"] ="nonamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A10"] ="decamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A5B5"] ="decamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A11"] ="undecamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A12"] ="dodecamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A6B6"] ="dodecamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A13"] ="tridecamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A14"] ="tetradecamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A15"] ="pentadecamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A16"] ="hexadecamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A17"] ="heptadecamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A18"] ="octadecamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A19"] ="nonadecamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A20"] ="eicosamer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A21"] ="21-mer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A22"] ="22-mer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A23"] ="23-mer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A24"] ="24-mer"
+}else{
+    
+    consensus$CurrentOligomericState = "Inconclusive"
+}
 
+if(consensus$SequenceClusterStoichiometry != "Inconclusive"){
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A"] ="monomer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A2"] ="dimer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "AB"] ="dimer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A3"] ="trimer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A2B"] ="trimer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "ABC"] ="trimer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A4"] ="tetramer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A2B2"] ="tetramer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "ABCD"] ="tetramer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A5"] ="pentamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A6"] ="hexamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A3B3"] ="hexamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A2B2C2"] ="hexamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A7"] ="heptamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A8"] ="octamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A4B4"] ="octamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A2B2C2D2"] ="octamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A9"] ="nonamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A10"] ="decamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A5B5"] ="decamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A11"] ="undecamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A12"] ="dodecamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A6B6"] ="dodecamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A13"] ="tridecamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A14"] ="tetradecamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A15"] ="pentadecamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A16"] ="hexadecamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A17"] ="heptadecamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A18"] ="octadecamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A19"] ="nonadecamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A20"] ="eicosamer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A21"] ="21-mer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A22"] ="22-mer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A23"] ="23-mer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A24"] ="24-mer"
+    
+}else{
+    
+    consensus$SequenceClusterOligomericState = "Inconclusive"
+}
 
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A"] ="monomer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A2"] ="dimer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "AB"] ="dimer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A3"] ="trimer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A2B"] ="trimer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "ABC"] ="trimer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A4"] ="tetramer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A2B2"] ="tetramer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "ABCD"] ="tetramer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A5"] ="pentamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A6"] ="hexamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A3B3"] ="hexamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A2B2C2"] ="hexamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A7"] ="heptamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A8"] ="octamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A4B4"] ="octamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A2B2C2D2"] ="octamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A9"] ="nonamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A10"] ="decamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A5B5"] ="decamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A11"] ="undecamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A12"] ="dodecamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A6B6"] ="dodecamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A13"] ="tridecamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A14"] ="tetradecamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A15"] ="pentadecamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A16"] ="hexadecamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A17"] ="heptadecamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A18"] ="octadecamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A19"] ="nonadecamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A20"] ="eicosamer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A21"] ="21-mer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A22"] ="22-mer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A23"] ="23-mer"
-consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A24"] ="24-mer"
+if(consensus$PISAStoichiometry != "Inconclusive"){
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A"] ="monomer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A2"] ="dimer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "AB"] ="dimer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A3"] ="trimer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A2B"] ="trimer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "ABC"] ="trimer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A4"] ="tetramer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A2B2"] ="tetramer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "ABCD"] ="tetramer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A5"] ="pentamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A6"] ="hexamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A3B3"] ="hexamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A2B2C2"] ="hexamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A7"] ="heptamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A8"] ="octamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A4B4"] ="octamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A2B2C2D2"] ="octamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A9"] ="nonamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A10"] ="decamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A5B5"] ="decamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A11"] ="undecamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A12"] ="dodecamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A6B6"] ="dodecamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A13"] ="tridecamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A14"] ="tetradecamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A15"] ="pentadecamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A16"] ="hexadecamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A17"] ="heptadecamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A18"] ="octadecamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A19"] ="nonadecamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A20"] ="eicosamer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A21"] ="21-mer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A22"] ="22-mer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A23"] ="23-mer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A24"] ="24-mer"
+    
+}else{
+    
+    consensus$PISAOligomericState = "Inconclusive"
+}
 
-
-
-
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A"] ="monomer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A2"] ="dimer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "AB"] ="dimer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A3"] ="trimer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A2B"] ="trimer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "ABC"] ="trimer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A4"] ="tetramer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A2B2"] ="tetramer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "ABCD"] ="tetramer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A5"] ="pentamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A6"] ="hexamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A3B3"] ="hexamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A2B2C2"] ="hexamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A7"] ="heptamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A8"] ="octamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A4B4"] ="octamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A2B2C2D2"] ="octamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A9"] ="nonamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A10"] ="decamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A5B5"] ="decamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A11"] ="undecamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A12"] ="dodecamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A6B6"] ="dodecamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A13"] ="tridecamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A14"] ="tetradecamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A15"] ="pentadecamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A16"] ="hexadecamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A17"] ="heptadecamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A18"] ="octadecamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A19"] ="nonadecamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A20"] ="eicosamer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A21"] ="21-mer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A22"] ="22-mer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A23"] ="23-mer"
-consensus$PISAOligomericState[consensus$PISAStoichiometry == "A24"] ="24-mer"
 
 
 
