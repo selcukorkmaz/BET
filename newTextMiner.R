@@ -28,38 +28,33 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
             
             if(source[i]=="PDF"){
                 
+                #for(i in 1:dim(fi)[2]){
+                
                 sanitize <- function(str) {
                     gsub('([#$%&~_\\^\\\\{}\\s\\(\\)])', '\\\\\\1', str, perl = TRUE)
                 }
                 
                 # get a list of all files in the current directory
-                dir <- fi
+                f <- fi[i,1]
                 
-                setwd(dir)
+                f2 <- sanitize(f)
+                system(paste0("pdftotext ", f2), wait = TRUE)
                 
-                files = list.files()
+                # read content of converted txt file
+                filetxt <- sub(".pdf", ".txt", f)
+                text <- readLines(filetxt, warn=FALSE)
                 
-                for (i in 1:length(files)){
-                    
-                    
-                    f2 <- sanitize(files[i])
-                    system(paste0("pdftotext ", files[i]), wait = TRUE)
-                    filetxt <- sub(".pdf", ".txt", f2)
-                    
-                    paper = sub("([.-])|[[:punct:]]", "\\1", filetxt)
-                    
-                    text <- readLines(paper, warn=FALSE)
-                    
-                    # adjust encoding of text - you have to know it
-                    Encoding(text) <- "latin1"
-                    
-                    # Do something with the content - here: get word and character count of all pdfs in the current directory
-                    article <- paste(text, collapse="\n") # collapse lines into one long string
-                    
-                    fullTextTotal = as.String(article)
-                    numberOfChar = nchar(fullTextTotal)
-                    
-                }
+                # adjust encoding of text - you have to know it
+                Encoding(text) <- "latin1"
+                
+                # Do something with the content - here: get word and character count of all pdfs in the current directory
+                article <- paste(text, collapse="\n") # collapse lines into one long string
+                
+                fullTextTotal = as.String(article)
+                numberOfChar = nchar(fullTextTotal)
+                #}
+                
+            
                 
                 
             }
