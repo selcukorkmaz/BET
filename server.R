@@ -638,7 +638,7 @@ textMiner <- reactive({
 
     if(input$startAnalysis){
         
-      fullResult = miningResults[[1]][!(miningResults[[1]][,"oligomericState"] == "NoResult"),]
+      fullResult = miningResults[[1]][!(miningResults[[1]][,"oligomericState"] == "Inconclusive"),]
       
       if(dim(fullResult)[1] != 0){
         
@@ -1033,7 +1033,7 @@ for(i in 1:dim(resultUniqueProbabilityList)[1]){
 
 names(resultUniqueProbabilityList)[10:11] = c("Probable mutant", "Related structures")
 
-noResult = miningResults[[1]][(miningResults[[1]][,"oligomericState"] == "NoResult"),]
+noResult = miningResults[[1]][(miningResults[[1]][,"oligomericState"] == "Inconclusive"),]
 
 
 
@@ -1041,12 +1041,12 @@ noResult = miningResults[[1]][(miningResults[[1]][,"oligomericState"] == "NoResu
 if(dim(noResult)[1] != 0){
   
   
-  noResult$experimentalEvidence = "NoResult"
-  noResult$MLfiltering = "NoResult"
-  noResult$Probability = "NoResult"
-  noResult$PredictionReliability = "NoResult"
-  noResult$ProbableMutant = "NoResult"
-  noResult$RelatedStructures = "NoResult"
+  noResult$experimentalEvidence = "Inconclusive"
+  noResult$MLfiltering = "Inconclusive"
+  noResult$Probability = "Inconclusive"
+  noResult$PredictionReliability = "Inconclusive"
+  noResult$ProbableMutant = "Inconclusive"
+  noResult$RelatedStructures = "Inconclusive"
   
   names(noResult) = c("PDB ID", "Publication ID", "Oligomeric state", "oligomericSentence", "Publication type",
                       "Primary citation", "Experimental evidence", "ML Filtering", "Probability", "Prediction reliability",
@@ -1091,27 +1091,27 @@ names(summaryResult) = c("Source", "Count")
       
       
  if(dim(miningResults[[1]])[1] !=0){
-              noResult = miningResults[[1]][(miningResults[[1]][,"oligomericState"] == "NoResult"),]
+              noResult = miningResults[[1]][(miningResults[[1]][,"oligomericState"] == "Inconclusive"),]
               }else{
                 
                 noResult = data.frame(matrix(NA,1,6))
                 names(noResult) = c("PDB ID", "Publication ID", "Oligomeric state", "oligomericSentence", "Publication type",
                                     "Primary citation")
                 noResult$`PDB ID` = currentData()[i,1]
-                noResult$`Publication ID` = "NoResult"
-                noResult$`Oligomeric state` = "NoResult"
-                noResult$oligomericSentence = "NoResult"
-                noResult$`Publication type` = "NoResult"
-                noResult$`Primary citation` = "NoResult"
+                noResult$`Publication ID` = "Inconclusive"
+                noResult$`Oligomeric state` = "Inconclusive"
+                noResult$oligomericSentence = "Inconclusive"
+                noResult$`Publication type` = "Inconclusive"
+                noResult$`Primary citation` = "Inconclusive"
                 
               }
 
-      noResult$experimentalEvidence = "NoResult"
-      noResult$MLfiltering = "NoResult"
-      noResult$Probability = "NoResult"
-      noResult$PredictionReliability = "NoResult"
-      noResult$ProbableMutant = "NoResult"
-      noResult$RelatedStructures = "NoResult"
+      noResult$experimentalEvidence = "Inconclusive"
+      noResult$MLfiltering = "Inconclusive"
+      noResult$Probability = "Inconclusive"
+      noResult$PredictionReliability = "Inconclusive"
+      noResult$ProbableMutant = "Inconclusive"
+      noResult$RelatedStructures = "Inconclusive"
       
       names(noResult) = c("PDB ID", "Publication ID", "Oligomeric state", "oligomericSentence", "Publication type",
                           "Primary citation", "Experimental evidence", "ML Filtering", "Probability", "Prediction reliability",
@@ -1948,14 +1948,14 @@ sequenceCluster <- reactive({
     
     sequenceClusterLast = sequenceCluster[,c(7,1:6)]
     names(sequenceClusterLast) = c("PDB ID", "Representative chain","Stoichiometry", "Symmetry",
-    "Consistency score", "Number of PDB entries", "PDBs in the cluster")
+    "Consistency score", "Number of PDB entries", "PDB entries in the cluster")
     
     
     maxCS = sequenceClusterLast$`Consistency score`[which.max(sequenceClusterLast$`Consistency score`)]
     
     sequenceClusterLast$CS = maxCS
     
-    if(maxCS > 0.5){
+    if(maxCS > 0.5 && sum(sequenceClusterLast[,6]) > 3){
         
         for(i in 1: dim(sequenceClusterLast)[1]){
             sequenceClusterLast$Res[i] = if(sequenceClusterLast$CS[i] == sequenceClusterLast$`Consistency score`[i]){1}else{0}
@@ -1990,7 +1990,8 @@ if(input$signatureResults && input$startAnalysis){
 
 df = as.data.frame(sequenceCluster())
 
-datatable(df, rownames=FALSE, options = list(columnDefs = list(list(targets = 7, visible = FALSE)))
+datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('TableTools'), options = list(dom = 'T<"clear">lfrtip',tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),  columnDefs = list(list(targets = 7, visible = FALSE)))
+
 
 )%>% formatStyle(
 'Res',
@@ -2343,8 +2344,22 @@ combined <- reactive({
         names(pisaRes2) = c("PDB ID","PISA Oligomeric State")
 
         tm = textMiner()[[1]]
-        tm2 = tm[,1:2]
+        tm2 = tm[,c(1:2,4)]
+        
+        if(tm2[,3] == "TRUE"){
+        
+            tm2[,1] = substring(tm2[,1], 88, 91)
+            tm2 =tm2[,1:2]
+        }else{
+        
         tm2[,1] = substring(tm2[,1], 88, 91)
+        tm2[,2] = "Inconclusive"
+
+        tm2 =tm2[,1:2]
+
+
+        }
+        
         names(tm2) = c("PDB ID", "Text Mining Oligomeric State")
 
 #seqCluster2 = seqCluster[which.max(seqCluster[,4]),]
@@ -2506,11 +2521,17 @@ for(i in 1:dim(consensusLast)[1]){
 }
 
 for(i in 1:dim(consensusLast)[1]){
-	consensusLast$Result[i] = if(consensusLast$CurrentOligomericState[i] == consensusLast$ConsensusResult[i]){1}else if(consensusLast$ConsensusResult[i] == "Inconclusive"){2}else{0}
+	consensusLast$ResultC[i] = if(consensusLast$CurrentOligomericState[i] == consensusLast$ConsensusResult[i]){1}else if(consensusLast$ConsensusResult[i] == "Inconclusive"){2}else{0}
+    
+    consensusLast$ResultSC[i] = if(consensusLast$CurrentOligomericState[i] == consensusLast$SequenceClusterOligomericState[i]){1}else if(consensusLast$SequenceClusterOligomericState[i] == "Inconclusive"){2}else{0}
+        
+    consensusLast$ResultP[i] = if(consensusLast$CurrentOligomericState[i] == consensusLast$PISAOligomericState[i]){1}else if(consensusLast$PISAOligomericState[i] == "Inconclusive"){2}else{0}
+    
+    consensusLast$ResultTM[i] = if(consensusLast$CurrentOligomericState[i] == consensusLast$TextMiningStoichiometry[i]){1}else if(consensusLast$TextMiningStoichiometry[i] == "Inconclusive"){2}else{0}
 }
 
 names(consensusLast) = c("PDB ID", "BA Number", "Current Oligomeric State", "Sequence Cluster Oligomeric State",
-                                "PISA Oligomeric State", "Text Mining Oligomeric State", "Consensus Result", "Result")
+                                "PISA Oligomeric State", "Text Mining Oligomeric State", "Consensus Result", "ResultC", "ResultSC", "ResultP", "ResultTM")
 
 consensusLast
 
@@ -2521,10 +2542,14 @@ output$combinedResults <- DT::renderDataTable({
     
     df = as.data.frame(combined())
     
-        datatable(df, rownames=FALSE, options = list(columnDefs = list(list(targets = 7, visible = FALSE)))
+    #datatable(currentData(), ,escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
+    #dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE))#, colVis = list(activate = 'click', showAll = TRUE)
+
+
+    datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('TableTools'), options = list(dom = 'T<"clear">lfrtip',tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),  columnDefs = list(list(targets = c(7:10), visible = FALSE)))
         
         )%>% formatStyle(
-  "Consensus Result", "Result",
+  columns = c("Consensus Result", "Sequence Cluster Oligomeric State", "PISA Oligomeric State", "Text Mining Oligomeric State"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultTM"),
   backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
 )
       

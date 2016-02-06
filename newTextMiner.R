@@ -191,8 +191,8 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
                 
                 result[1,1] = paste0("<a href='","http://www.rcsb.org/pdb/explore/explore.do?structureId=",as.character(pdbId[i])," 'target=","'_blank'","'>",as.character(pdbId[i]),"</a>")
                 result[1,2] = if(source[i] == "CrossRef"){paste0("<a href='","http://dx.doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
-                result[1,3] = "NoResult"
-                result[1,4] = "NoResult"
+                result[1,3] = "Inconclusive"
+                result[1,4] = "Inconclusive"
                 result[1,5] = if(source[i]=="CrossRef"){("CrossRef")}else if(source[i]=="PMC"){("full text")}else if(source[i]=="PubMed"){("abstract")}else if(source[i]=="PDF"){("full text-PDF ")}
                 result[1,6] = primaryCitation[i]
                 
@@ -215,8 +215,8 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
               
               result[j,1] = paste0("<a href='","http://www.rcsb.org/pdb/explore/explore.do?structureId=",as.character(pdbId[i])," 'target=","'_blank'","'>",as.character(pdbId[i]),"</a>")
               result[j,2] = if(source[i] == "CrossRef"){paste0("<a href='","http://dx.doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
-              result[j,3] = "NoResult"
-              result[j,4] = "NoResult"
+              result[j,3] = "Inconclusive"
+              result[j,4] = "Inconclusive"
               result[j,5] = if(source[i]=="CrossRef"){("CrossRef")}else if(source[i]=="PMC"){("full text")}else if(source[i]=="PubMed"){("abstract")}else if(source[i]=="PDF"){("full text-PDF ")}
               result[j,6] = primaryCitation[i]
               
