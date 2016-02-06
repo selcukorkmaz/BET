@@ -912,31 +912,31 @@ textMiner <- reactive({
             uniqueData2 = unique(resultUniqueProbabilityList)
             
             
-            splitUniqueData2 = split(uniqueData2, uniqueData2$pdbId)
+#            splitUniqueData2 = split(uniqueData2, uniqueData2$pdbId)
             
-            resultUniqueForEach2 = list()
+#            resultUniqueForEach2 = list()
             
-            for(t in 1:length(splitUniqueData2)) {
-                reliabilityResult = splitUniqueData2[[t]]
-                #publicationType = if(reliabilityResult$pubType[1]== "full text")(1)else(0)
-                #pCitation = if(reliabilityResult$primaryCitation[1]== "yes")(2)else(0)
-                expEvidence = if(reliabilityResult$experimentalEvidence[1]== "not found")(0)else(1)
-                mlFiltering = if(reliabilityResult$MLfilter[1]== "filtered")(1)else(0)
-                
-                reliability = sum(expEvidence,mlFiltering)
-                
-                if(reliability == 0){predictionReliability = "low"}
-                if(reliability == 1){predictionReliability = "moderate"}
-                if(reliability == 2){predictionReliability = "high"}
-                #if(reliability>=5){predictionReliability = "very high"}
-                reliabilityResult$predictionReliability = predictionReliability
-                
-                resultUniqueForEach2[[t]] = reliabilityResult
-                
-                
-            }
+#            for(t in 1:length(splitUniqueData2)) {
+#                reliabilityResult = splitUniqueData2[[t]]
+#                #publicationType = if(reliabilityResult$pubType[1]== "full text")(1)else(0)
+#                #pCitation = if(reliabilityResult$primaryCitation[1]== "yes")(2)else(0)
+#                expEvidence = if(reliabilityResult$experimentalEvidence[1]== "not found")(0)else(1)
+#                mlFiltering = if(reliabilityResult$MLfilter[1]== "filtered")(1)else(0)
+#
+#                reliability = sum(expEvidence,mlFiltering)
+#
+#                if(reliability == 0){predictionReliability = "low"}
+#                if(reliability == 1){predictionReliability = "moderate"}
+#                if(reliability == 2){predictionReliability = "high"}
+#                #if(reliability>=5){predictionReliability = "very high"}
+#                reliabilityResult$predictionReliability = predictionReliability
+#
+#                resultUniqueForEach2[[t]] = reliabilityResult
+#
+#
+#            }
             
-            resultUniqueProbabilityList= do.call(rbind.data.frame, resultUniqueForEach2)
+            resultUniqueProbabilityList= uniqueData2
 
 
             
@@ -978,18 +978,19 @@ textMiner <- reactive({
     }
     
     
-    names(resultUniqueProbabilityList2) = c("Publication ID", "PDB ID","Oligomeric state", "Probability", "ML Filtering", "Publication type", "Primary citation", "Prediction reliability", "Experimental evidence")
+    names(resultUniqueProbabilityList2) = c("Publication ID", "PDB ID","Oligomeric state", "Probability", "ML Filtering", "Publication type", "Primary citation",
+    "Experimental evidence")
     
-    resultUniqueProbabilityList2 = resultUniqueProbabilityList2[,c("PDB ID", "Oligomeric state", "Experimental evidence", "ML Filtering", "Probability", "Publication ID", "Publication type", "Primary citation", "Prediction reliability")]
+    resultUniqueProbabilityList2 = resultUniqueProbabilityList2[,c("PDB ID", "Oligomeric state", "Experimental evidence", "ML Filtering", "Probability", "Publication ID", "Publication type", "Primary citation")]
     
     
 }else{
     
     resultUniqueProbabilityList2 = resultUniqueProbabilityList
     
-    names(resultUniqueProbabilityList2) = c("Publication ID", "PDB ID","Oligomeric state", "Probability", "ML Filtering",  "Experimental evidence", "Publication type", "Primary citation", "Prediction reliability")
+    names(resultUniqueProbabilityList2) = c("Publication ID", "PDB ID","Oligomeric state", "Probability", "ML Filtering",  "Experimental evidence", "Publication type", "Primary citation")
     
-    resultUniqueProbabilityList2 = resultUniqueProbabilityList2[,c("PDB ID", "Oligomeric state", "Experimental evidence", "ML Filtering", "Probability", "Publication ID", "Publication type", "Primary citation", "Prediction reliability")]
+    resultUniqueProbabilityList2 = resultUniqueProbabilityList2[,c("PDB ID", "Oligomeric state", "Experimental evidence", "ML Filtering", "Probability", "Publication ID", "Publication type", "Primary citation")]
 
     
     
@@ -1004,19 +1005,19 @@ mutantTable = mutantTable[,c("pdbId","PubId","mutantKeyword","mutantSentence")]
 names(mutantTable) = c("PDB ID", "Publication ID", "Keyword", "Sentence")
 
 
-for(i in 1:dim(resultUniqueProbabilityList)[1]){
-    
-    if(resultUniqueProbabilityList$`PDB ID`[i] %in% mutantTable$`PDB ID`){
-        
-        resultUniqueProbabilityList$probableMutant[i] = "yes"
-        
-    }else{
-        
-        resultUniqueProbabilityList$probableMutant[i] = "no"
-        
-    }
-    
-}
+#   for(i in 1:dim(resultUniqueProbabilityList)[1]){
+#
+#    if(resultUniqueProbabilityList$`PDB ID`[i] %in% mutantTable$`PDB ID`){
+#
+#        resultUniqueProbabilityList$probableMutant[i] = "yes"
+#
+#    }else{
+#
+#        resultUniqueProbabilityList$probableMutant[i] = "no"
+#
+#    }
+#
+#    }
 
 
 for(i in 1:dim(resultUniqueProbabilityList)[1]){
@@ -1031,7 +1032,7 @@ for(i in 1:dim(resultUniqueProbabilityList)[1]){
 }
 
 
-names(resultUniqueProbabilityList)[10:11] = c("Probable mutant", "Related structures")
+names(resultUniqueProbabilityList)[9] = c("Related structures")
 
 noResult = miningResults[[1]][(miningResults[[1]][,"oligomericState"] == "Inconclusive"),]
 
@@ -1044,17 +1045,17 @@ if(dim(noResult)[1] != 0){
   noResult$experimentalEvidence = "Inconclusive"
   noResult$MLfiltering = "Inconclusive"
   noResult$Probability = "Inconclusive"
-  noResult$PredictionReliability = "Inconclusive"
-  noResult$ProbableMutant = "Inconclusive"
+  #noResult$PredictionReliability = "Inconclusive"
+  #noResult$ProbableMutant = "Inconclusive"
   noResult$RelatedStructures = "Inconclusive"
   
   names(noResult) = c("PDB ID", "Publication ID", "Oligomeric state", "oligomericSentence", "Publication type",
-                      "Primary citation", "Experimental evidence", "ML Filtering", "Probability", "Prediction reliability",
-                      "Probable mutant", "Related structures")
+                      "Primary citation", "Experimental evidence", "ML Filtering", "Probability",
+                      "Related structures")
   
   noResultLast = noResult[,c("PDB ID","Oligomeric state","Experimental evidence","ML Filtering","Probability",
-                             "Publication ID","Publication type","Primary citation","Prediction reliability",
-                             "Probable mutant", "Related structures")]
+                             "Publication ID","Publication type","Primary citation",
+                             "Related structures")]
   
   
   resultCombined = rbind(resultUniqueProbabilityList, noResultLast)
@@ -1109,17 +1110,17 @@ names(summaryResult) = c("Source", "Count")
       noResult$experimentalEvidence = "Inconclusive"
       noResult$MLfiltering = "Inconclusive"
       noResult$Probability = "Inconclusive"
-      noResult$PredictionReliability = "Inconclusive"
-      noResult$ProbableMutant = "Inconclusive"
+      #noResult$PredictionReliability = "Inconclusive"
+      #noResult$ProbableMutant = "Inconclusive"
       noResult$RelatedStructures = "Inconclusive"
       
       names(noResult) = c("PDB ID", "Publication ID", "Oligomeric state", "oligomericSentence", "Publication type",
-                          "Primary citation", "Experimental evidence", "ML Filtering", "Probability", "Prediction reliability",
-                          "Probable mutant", "Related structures")
+                          "Primary citation", "Experimental evidence", "ML Filtering", "Probability",
+                          "Related structures")
       
       noResultLast = noResult[,c("PDB ID","Oligomeric state","Experimental evidence","ML Filtering","Probability",
-                                 "Publication ID","Publication type","Primary citation","Prediction reliability",
-                                 "Probable mutant", "Related structures")]
+                                 "Publication ID","Publication type","Primary citation",
+                                 "Related structures")]
       
       
       resultCombined = noResultLast
