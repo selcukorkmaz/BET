@@ -187,7 +187,7 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
                 
               }
               
-              if(is.na(result[,"oligomericState"])){
+              if(is.na(result[,"oligomericState"][1])){
                 
                 result[1,1] = paste0("<a href='","http://www.rcsb.org/pdb/explore/explore.do?structureId=",as.character(pdbId[i])," 'target=","'_blank'","'>",as.character(pdbId[i]),"</a>")
                 result[1,2] = if(source[i] == "CrossRef"){paste0("<a href='","http://dx.doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
