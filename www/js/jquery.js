@@ -17,6 +17,12 @@ $(document).keyup(function(event) {
 
 
 $(document).keyup(function(event) {
+    if ($("#PdbIdPDF").is(":focus") && (event.keyCode == 13)) {
+        $("#startAnalysis").click();
+    }
+});
+
+$(document).keyup(function(event) {
     if ($("#PDFPdbId").is(":focus") && (event.keyCode == 13)) {
         $("#startAnalysis").click();
     }

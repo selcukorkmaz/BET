@@ -23,6 +23,8 @@ shinyServer(function(input, output, session){
     load("oligomericStateList.rda")
     load("consistencyList.rda")
     
+    
+    
 
 ###############################
 ###### Data - Start ###########
@@ -282,12 +284,15 @@ shinyServer(function(input, output, session){
               
               else{
                 
-                fi <- read.table(inPDF$datapath, header=FALSE, fill=TRUE)
-                PubId = rep("PDF", dim(fi)[1])
-                pdbId = toupper(as.character(fi[,2]))
-                source = rep("PDF", dim(fi)[1])
-                primaryCitation = rep("yes", dim(fi)[1])
-                relatedStructures = rep("none", dim(fi)[1])
+                #fi <- read.table(inPDF$datapath, header=FALSE, sep="\t", stringsAsFactors = F)
+
+                #pdffile = input$uploadPDF
+
+                PubId = rep("PDF", 1)
+                pdbId = toupper(input$PdbIdPDF)
+                source = rep("PDF", 1)
+                primaryCitation = rep("yes", 1)
+                relatedStructures = rep("none", 1)
                 
                 #sourcePDF = data.frame(matrix(NA,1,5))
                 #sourcePDF[,1] = pdbId
@@ -318,11 +323,18 @@ shinyServer(function(input, output, session){
 
 dataPath <- reactive({
 
-        inPDF <- input$uploadPDF
-        read.table(inPDF$datapath, header=FALSE, fill=TRUE)
+        input$uploadPDF
+        #data2 = read.table(inPDF$datapath, header=FALSE, fill=TRUE, stringsAsFactors = F)
+        #assign('data',data2,envir=.GlobalEnv)
+
+
 
 
 })
+
+
+
+
 
 
     ###############################
@@ -332,7 +344,7 @@ dataPath <- reactive({
 ##### Observe functions #########
 
 #observe({
-    
+
 #    if(input$AdvancedOligomericStatePrediction){
 #        updateCheckboxInput(session, "AdvancedPisaPrediction", label = "PISA", FALSE)
        # updateCheckboxInput(session, "AdvancedEppic", label = "EPPIC", FALSE)
@@ -2347,7 +2359,7 @@ combined <- reactive({
         tm = textMiner()[[1]]
         tm2 = tm[,c(1:2,4)]
         
-        if(tm2[,3] == "TRUE"){
+        if(("TRUE" %in% as.character(tm2[,3]))){
         
             tm2[,1] = substring(tm2[,1], 88, 91)
             tm2 =tm2[,1:2]
@@ -2377,7 +2389,7 @@ if(dim(current2)[1] > 1){
     
 }else{
     
-    consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], tm[,2])
+    consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], tm2[,2])
 
 }
 
@@ -2563,7 +2575,6 @@ output$combinedResults <- DT::renderDataTable({
 ############################################################################################
 ############### Combined results - End ######################################
 ############################################################################################
-
 
 
   })

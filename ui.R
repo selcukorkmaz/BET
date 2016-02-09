@@ -20,9 +20,9 @@ conditionalPanel("input.tabs=='Analysis'",
 #checkboxInput(inputId = "pmc", label = "PMC Full Text Mining", value = FALSE),
 #conditionalPanel(condition = "input.pmc",
 
-radioButtons("dataInput", "", list("PDB ID"=1, "Upload file"=2, "Upload PDF"=3), selected=1),
+radioButtons(inputId = "dataInput", "", list("PDB ID"=1, "Upload file"=2, "Upload PDF"=3), selected=1),
 #bsTooltip(id = "input.dataInput=='1'", title="Single PDB entry", placement = "bottom", trigger = "focus",options = NULL),
-
+#bsTooltip(id = "dataInput", title="Use the first option for the single PDB entry. Use the second option for the multiple PDB entries. Use the third option for mining a PDF paper.", placement = "bottom", trigger = "hover", options = NULL),
 
 
         conditionalPanel(condition="input.dataInput=='1'",
@@ -39,11 +39,16 @@ bsTooltip(id = "PdbId", title="Enter a 4 characters long ID", placement = "botto
         conditionalPanel(condition="input.dataInput=='2'",
 # HTML('<br>'),
             fileInput("upload", "", multiple = FALSE),
-            HTML('<p><b>NOTE: First row must be header.</b></p>')
+bsTooltip(id = "upload", title="Upload a .txt file which includes multiple PDB entries. First row must be header.", placement = "bottom", trigger = "hover", options = NULL)
+# HTML('<p><b>NOTE: First row must be header.</b></p>')
         ),
 
 conditionalPanel(condition="input.dataInput=='3'",
-    fileInput("uploadPDF", "", multiple = FALSE)
+    fileInput("uploadPDF", "Upload a paper", multiple = FALSE),
+    bsTooltip(id = "uploadPDF", title="Upload a PDF paper for a PDB entry.", placement = "bottom", trigger = "hover", options = NULL),
+    textInput(inputId = "PdbIdPDF", label = "Enter a PDB ID"),
+    bsTooltip(id = "PdbIdPDF", title="Enter a PDB entry for the uploaded PDF paper.", placement = "bottom", trigger = "hover", options = NULL)
+
 ),
 
 br(),
@@ -162,7 +167,7 @@ conditionalPanel("input.tabs=='Help'"
 
 mainPanel(
 
-navbarPage("Bioassembly Evaluation Tool v.0.2.7", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
+navbarPage("Bioassembly Evaluation Tool v.0.2.9", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
 
         tabPanel("Analysis",
 
@@ -174,10 +179,13 @@ navbarPage("Bioassembly Evaluation Tool v.0.2.7", id="tabs", inverse = TRUE, col
 h4(textOutput(outputId = "section1")),
             bsAlert("help"),
 
+#dataTableOutput('path'),
 
 
 h4(textOutput(outputId = "section16")),
        dataTableOutput('combinedResults'),
+
+
 
 
 #h4(textOutput(outputId = "section4")),

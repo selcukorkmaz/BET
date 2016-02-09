@@ -30,18 +30,21 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
                 
                 #for(i in 1:dim(fi)[2]){
                 
-                sanitize <- function(str) {
-                    gsub('([#$%&~_\\^\\\\{}\\s\\(\\)])', '\\\\\\1', str, perl = TRUE)
-                }
                 
-                # get a list of all files in the current directory
-                f <- fi[i,1]
+                #sanitize <- function(str) {
+                #gsub('([#$%&~_\\^\\\\{}\\s\\(\\)])', '\\\\\\1', str, perl = TRUE)
+                #}
                 
-                f2 <- sanitize(f)
-                system(paste0("pdftotext ", f2), wait = TRUE)
+                f <- as.character(fi)
                 
-                # read content of converted txt file
-                filetxt <- sub(".pdf", ".txt", f)
+                #f2 <- sanitize(f)
+                system(paste0("pdftotext ", f[4]))
+                
+                
+                filetxt = paste0(f[4],".txt")
+                filetxt
+                
+                
                 text <- readLines(filetxt, warn=FALSE)
                 
                 # adjust encoding of text - you have to know it
