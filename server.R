@@ -2357,9 +2357,9 @@ combined <- reactive({
         names(pisaRes2) = c("PDB ID","PISA Oligomeric State")
 
         tm = textMiner()[[1]]
-        tm2 = tm[,c(1:2,4)]
+        tm2 = tm[,c(1:2,4,5)]
         
-        if(("TRUE" %in% as.character(tm2[,3]))){
+        if(("TRUE" %in% as.character(tm2[,3])) && (max(tm2[,4]) > 0.51)){
         
             tm2[,1] = substring(tm2[,1], 88, 91)
             tm2 =tm2[,1:2]
@@ -2534,13 +2534,13 @@ for(i in 1:dim(consensusLast)[1]){
 }
 
 for(i in 1:dim(consensusLast)[1]){
-	consensusLast$ResultC[i] = if(consensusLast$CurrentOligomericState[i] == consensusLast$ConsensusResult[i]){1}else if(consensusLast$ConsensusResult[i] == "Inconclusive"){2}else{0}
+	consensusLast$ResultC[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$ConsensusResult)[i]){1}else if(as.character(consensusLast$ConsensusResult)[i] == "Inconclusive"){2}else{0}
     
-    consensusLast$ResultSC[i] = if(consensusLast$CurrentOligomericState[i] == consensusLast$SequenceClusterOligomericState[i]){1}else if(consensusLast$SequenceClusterOligomericState[i] == "Inconclusive"){2}else{0}
+    consensusLast$ResultSC[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$SequenceClusterOligomericState)[i]){1}else if(as.character(consensusLast$SequenceClusterOligomericState)[i] == "Inconclusive"){2}else{0}
         
-    consensusLast$ResultP[i] = if(consensusLast$CurrentOligomericState[i] == consensusLast$PISAOligomericState[i]){1}else if(consensusLast$PISAOligomericState[i] == "Inconclusive"){2}else{0}
+    consensusLast$ResultP[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$PISAOligomericState)[i]){1}else if(as.character(consensusLast$PISAOligomericState)[i] == "Inconclusive"){2}else{0}
     
-    consensusLast$ResultTM[i] = if(consensusLast$CurrentOligomericState[i] == consensusLast$TextMiningStoichiometry[i]){1}else if(consensusLast$TextMiningStoichiometry[i] == "Inconclusive"){2}else{0}
+    consensusLast$ResultTM[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$TextMiningStoichiometry)[i]){1}else if(as.character(consensusLast$TextMiningStoichiometry)[i] == "Inconclusive"){2}else{0}
 }
 
 names(consensusLast) = c("PDB ID", "BA Number", "Current Oligomeric State", "Sequence Cluster Oligomeric State",
@@ -2550,6 +2550,113 @@ consensusLast
 
     }
 })
+
+
+###############################################################################################
+
+combinedSymmetry <- reactive({
+    if (input$startAnalysis){
+        
+        
+        current = outlierDetect2()[-5]
+        current2 = current[,c(1,2,4)]
+        names(current2) = c("PDB ID", "BA Number", "Current Symmetry")
+        
+        
+        if(length(unique(sequenceCluster2()[, "PDB ID"])) > 1){
+            
+            byPDB = list()
+            
+            splitByPDB = split(sequenceCluster2(), sequenceCluster2()[,1])
+            
+            for(i in 1:length(splitByPDB)){
+                
+                byPDB[[i]] = splitByPDB[[i]][which.max(splitByPDB[[i]][,5]),]
+                
+                
+            }
+            
+            seqCluster2 = do.call(rbind.data.frame, byPDB)
+            
+            seqCluster3 = seqCluster2[,c(1,4,5,6)]
+            
+            seqCluster3$Symmetry = as.character(seqCluster3$Symmetry)
+            
+            for (i in 1:dim(seqCluster3)[1]){
+                
+                if(seqCluster3[i,3] <= 0.5 || seqCluster3[i,4] < 3){
+                    
+                    seqCluster3[i,2] = "Inconclusive"
+                    
+                }
+                
+            }
+            
+            seqCluster3 = seqCluster3[,1:2]
+            
+            names(seqCluster3) = c("PDB ID", "Sequence Cluster Symmetry")
+            
+        }else{
+            
+            seqCluster2 = sequenceCluster2()[which.max(sequenceCluster2()[,5]),]
+            seqCluster3 = seqCluster2[,c(1,4,5,6)]
+            
+            
+            if(seqCluster3[3] <= 0.5 || seqCluster3[4] < 3){
+                
+                seqCluster3[2] = "Inconclusive"
+                
+            }
+            
+            seqCluster3 = seqCluster3[,1:2]
+            
+            names(seqCluster3) = c("PDB ID", "Sequence Cluster Symmetry")
+        }
+        pisaRes = selectedPisa()
+        pisaRes2 = pisaRes[,c(1,5)]
+        names(pisaRes2) = c("PDB ID","PISA Symmetry")
+        
+        
+        if(dim(current2)[1] > 1){
+            
+       consensusLast = join_all(list(current2,seqCluster3,pisaRes2), by = 'PDB ID', type = 'left')
+            
+        }else{
+            
+            consensusLast = cbind(current[,c(1,2,4)], seqCluster3[,2], pisaRes[,5])
+            
+        }
+        
+        names(consensusLast) = c("pdbId", "BaNumber", "CurrentSymmetry", "SequenceClusterSymmetry", "PISASymmetry")
+        
+        for(i in 1:dim(consensusLast)[1]){
+            vote = c(as.character(consensusLast$SequenceClusterSymmetry[i]), as.character(consensusLast$PISASymmetry[i]))
+            
+            consensusLast$ConsensusResult[i] = if(max(table(vote)) == 1){"Inconclusive"}else{names(which.max(table(vote)))}
+        }
+        
+        for(i in 1:dim(consensusLast)[1]){
+            consensusLast$ResultC[i] = if(as.character(consensusLast$CurrentSymmetry)[i] == as.character(consensusLast$ConsensusResult)[i]){1}else if(as.character(consensusLast$ConsensusResult)[i] == "Inconclusive"){2}else{0}
+            
+            consensusLast$ResultSC[i] = if(as.character(consensusLast$CurrentSymmetry)[i] == as.character(consensusLast$SequenceClusterSymmetry)[i]){1}else if(as.character(consensusLast$SequenceClusterSymmetry)[i] == "Inconclusive"){2}else{0}
+            
+            consensusLast$ResultP[i] = if(as.character(consensusLast$CurrentSymmetry)[i] == as.character(consensusLast$PISASymmetry)[i]){1}else if(as.character(consensusLast$PISASymmetry)[i] == "Inconclusive"){2}else{0}
+        
+        }
+        
+        names(consensusLast) = c("PDB ID", "BA Number", "Current Symmetry", "Sequence Cluster Symmetry",
+        "PISA Symmetry", "Consensus Result", "ResultC", "ResultSC", "ResultP")
+        
+        consensusLast
+
+    }
+    
+})
+
+
+#############################################################################################
+
+
 
 output$combinedResults <- DT::renderDataTable({
     
@@ -2565,8 +2672,24 @@ output$combinedResults <- DT::renderDataTable({
   columns = c("Consensus Result", "Sequence Cluster Oligomeric State", "PISA Oligomeric State", "Text Mining Oligomeric State"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultTM"),
   backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
 )
-      
-     
+
+})
+
+output$combinedSymmetryResults <- DT::renderDataTable({
+    
+    df = as.data.frame(combinedSymmetry())
+    
+    #datatable(currentData(), ,escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
+    #dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE))#, colVis = list(activate = 'click', showAll = TRUE)
+    
+    
+    datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('TableTools'), options = list(dom = 'T<"clear">lfrtip',tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),  columnDefs = list(list(targets = c(6:8), visible = FALSE)))
+    
+    )%>% formatStyle(
+    columns = c("Consensus Result", "Sequence Cluster Symmetry", "PISA Symmetry"), valueColumns = c("ResultC","ResultSC", "ResultP"),
+    backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
+    )
+
     
     
     
@@ -2575,6 +2698,10 @@ output$combinedResults <- DT::renderDataTable({
 ############################################################################################
 ############### Combined results - End ######################################
 ############################################################################################
+#output$path <- renderText({
 
+#tm = textMiner()[[1]]
+#tm2 = tm[,c(1:2,4,5)]
+#("TRUE" %in% as.character(tm2[,3])) && (max(tm2[,4]) > 0.51)})
 
   })

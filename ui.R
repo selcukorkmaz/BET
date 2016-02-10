@@ -29,7 +29,7 @@ radioButtons(inputId = "dataInput", "", list("PDB ID"=1, "Upload file"=2, "Uploa
 br(),
 
 
- textInput(inputId = "PdbId", label = "Enter a PDB ID", value = "2PMF"),
+ textInput(inputId = "PdbId", label = "Enter a PDB ID", value = "1Z77"),
 bsTooltip(id = "PdbId", title="Enter a 4 characters long ID", placement = "bottom", trigger = "hover", options = NULL)
 
 
@@ -38,13 +38,13 @@ bsTooltip(id = "PdbId", title="Enter a 4 characters long ID", placement = "botto
 
         conditionalPanel(condition="input.dataInput=='2'",
 # HTML('<br>'),
-            fileInput("upload", "", multiple = FALSE),
+            fileInput("upload", "", multiple = FALSE, accept = "text/plain"),
 bsTooltip(id = "upload", title="Upload a .txt file which includes multiple PDB entries. First row must be header.", placement = "bottom", trigger = "hover", options = NULL)
 # HTML('<p><b>NOTE: First row must be header.</b></p>')
         ),
 
 conditionalPanel(condition="input.dataInput=='3'",
-    fileInput("uploadPDF", "Upload a paper", multiple = FALSE),
+    fileInput("uploadPDF", "Upload a paper", multiple = FALSE, accept = "pdf"),
     bsTooltip(id = "uploadPDF", title="Upload a PDF paper for a PDB entry.", placement = "bottom", trigger = "hover", options = NULL),
     textInput(inputId = "PdbIdPDF", label = "Enter a PDB ID"),
     bsTooltip(id = "PdbIdPDF", title="Enter a PDB entry for the uploaded PDF paper.", placement = "bottom", trigger = "hover", options = NULL)
@@ -144,7 +144,7 @@ conditionalPanel(condition = "input.AdvancedEppic"
 conditionalPanel(condition = "input.advancedOptions",
 
 
-selectizeInput("MLalgorithm", "Select an ML algorithm", choices = c("Support vector machines", "Boosted logistic regression"), multiple = FALSE, selected = "Support vector machines"),
+selectizeInput("MLalgorithm", "Select an ML algorithm", choices = c("Support vector machines", "Boosted logistic regression"), multiple = FALSE, selected = "Boosted logistic regression"),
 
 
 selectizeInput("seqCluster", "Select a sequence cluster", choices = c("95% sequence cluster" = "95","90% sequence cluster" = "90", "70% sequence cluster" = "70", "40% sequence cluster" = "40"), multiple = FALSE, selected = "70")
@@ -167,7 +167,7 @@ conditionalPanel("input.tabs=='Help'"
 
 mainPanel(
 
-navbarPage("Bioassembly Evaluation Tool v.0.2.9", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
+navbarPage("Bioassembly Evaluation Tool v.0.3.1", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
 
         tabPanel("Analysis",
 
@@ -179,11 +179,13 @@ navbarPage("Bioassembly Evaluation Tool v.0.2.9", id="tabs", inverse = TRUE, col
 h4(textOutput(outputId = "section1")),
             bsAlert("help"),
 
-#dataTableOutput('path'),
 
 
 h4(textOutput(outputId = "section16")),
        dataTableOutput('combinedResults'),
+br(),
+       dataTableOutput('combinedSymmetryResults'),
+
 
 
 
