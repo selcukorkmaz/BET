@@ -29,7 +29,7 @@ radioButtons(inputId = "dataInput", "", list("PDB ID"=1, "Upload file"=2, "Uploa
 br(),
 
 
- textInput(inputId = "PdbId", label = "Enter a PDB ID", value = "1Z77"),
+ textInput(inputId = "PdbId", label = "Enter a PDB ID", value = "1SMT"),
 bsTooltip(id = "PdbId", title="Enter a 4 characters long ID", placement = "bottom", trigger = "hover", options = NULL)
 
 
@@ -64,11 +64,17 @@ br(),
 h5("Biological assembly evaluation methods"),
 
 
-fluidRow(column(4, checkboxInput(inputId = "signatureResults", label = "Sequence cluster", value = FALSE)),
-column(4, checkboxInput(inputId = "OligomericStatePrediction", label = "Text mining", value = FALSE)),
-column(3, checkboxInput(inputId = "pisaPrediction", label = "PISA", value = FALSE))
-#column(3, checkboxInput("eppic", "EPPIC", FALSE))
-)
+fluidRow(column(3, checkboxInput(inputId = "signatureResults", label = "SC", value = FALSE)),
+column(3, checkboxInput(inputId = "OligomericStatePrediction", label = "TM", value = FALSE)),
+column(3, checkboxInput(inputId = "pisaPrediction", label = "PISA", value = FALSE)),
+column(3, checkboxInput("eppicPrediction", "EPPIC", FALSE))
+),
+
+bsTooltip(id = "signatureResults", title="Sequence cluster", placement = "bottom", trigger = "hover", options = NULL),
+
+bsTooltip(id = "OligomericStatePrediction", title="Text mining", placement = "bottom", trigger = "hover", options = NULL)
+
+
 
 
 
@@ -167,7 +173,7 @@ conditionalPanel("input.tabs=='Help'"
 
 mainPanel(
 
-navbarPage("Bioassembly Evaluation Tool v.0.3.1", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
+navbarPage("Bioassembly Evaluation Tool v.0.3.3", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
 
         tabPanel("Analysis",
 
@@ -179,6 +185,7 @@ navbarPage("Bioassembly Evaluation Tool v.0.3.1", id="tabs", inverse = TRUE, col
 h4(textOutput(outputId = "section1")),
             bsAlert("help"),
 
+#dataTableOutput('path'),
 
 
 h4(textOutput(outputId = "section16")),
@@ -212,6 +219,10 @@ h4(textOutput(outputId = "section1")),
 
 h4(textOutput(outputId = "section13")),
                             dataTableOutput('pisa'),
+
+
+h4(textOutput(outputId = "section7")),
+                            dataTableOutput('eppic'),
 
 
 #h4(textOutput(outputId = "section3")),

@@ -1,0 +1,6 @@
+pdbId	structure	stoichiometry	symmetry
+1SMT	BA	A2	C2
+2GS2	BA	A	C1
+2TRX	BA	A	C1
+3HBX	BA	A6	D3
+4NWP	BA	A12B12	T

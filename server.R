@@ -1640,11 +1640,11 @@ output$section6 <- renderText({
     }
 })
 
-#output$section7 <- renderText({
-#    if (input$startAnalysis && input$noOligomericResults){
-#        'Papers with no oligomeric state results'
-#    }
-#})
+output$section7 <- renderText({
+    if (input$startAnalysis && input$eppicPrediction){
+        'EPPIC prediction'
+    }
+})
 
 #output$section8 <- renderText({
 #    if (input$startAnalysis && input$noFullTextResults){
@@ -2025,11 +2025,11 @@ backgroundColor = styleEqual(c(1), c('#00BA38'))
 
 
 ############################################################################################
-############### PISA  - Start ######################################################
+############### PISA - Start ######################################################
 ############################################################################################
 selectedPisa <- reactive({
     
-    pdbId = currentData()[,1]
+    pdbId = as.character(currentData()[,1])
     
     pisa = read.table("Pisa_results.txt", header = T, fill= T, sep="\t")
     pisa = unique(pisa)
@@ -2040,7 +2040,17 @@ selectedPisa <- reactive({
     
     selectedPisa = pisa[as.character(pdbId),]
     
-    selectedPisa
+    if(!is.na(selectedPisa[1,1])){
+        
+        selectedPisa
+    }else{
+        
+        selectedPisa$`PDB ID` = pdbId
+        selectedPisa$Structure = "Inconclusive"
+        selectedPisa$Stoichiometry = "Inconclusive"
+        selectedPisa$Symmetry = "Inconclusive"
+        selectedPisa
+    }
     
 })
 
@@ -2067,8 +2077,67 @@ output$pisa <- DT::renderDataTable({
 
 
 ############################################################################################
-############### PMC Text Miner  - End ######################################################
+############### PISA - End ######################################################
 ############################################################################################
+
+############################################################################################
+############### EPPIC - Start ######################################################
+############################################################################################
+selectedEppic <- reactive({
+    
+    pdbId = currentData()[,1]
+    
+    eppic = read.table("Eppic_results.txt", header = T, fill= T, sep="\t", stringsAsFactors = F)
+    eppic = unique(eppic)
+    
+    eppic$pdbId = toupper(eppic$pdbId)
+    rownames(eppic) = eppic$pdbId
+    names(eppic) = c("PDB ID", "Structure",  "Stoichiometry", "Symmetry")
+    
+    selectedEppic = eppic[as.character(pdbId),]
+    
+    
+    if(!is.na(selectedEppic$`PDB ID`)){
+    
+        selectedEppic
+    }else{
+        
+        selectedEppic$`PDB ID` = pdbId
+        selectedEppic$Structure = "Inconclusive"
+        selectedEppic$Stoichiometry = "Inconclusive"
+        selectedEppic$Symmetry = "Inconclusive"
+        selectedEppic
+    }
+    
+})
+
+
+output$eppic <- DT::renderDataTable({
+    
+    if (!input$startAnalysis){
+        return()
+        
+    }
+    
+    if (input$startAnalysis && input$eppicPrediction){
+        
+        datatable(selectedEppic(), escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
+        dom = 'T<"clear">lfrtip', tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)), deferRender = TRUE
+        
+        ))
+        
+        
+    }
+    
+    
+})
+
+
+############################################################################################
+############### PISA - End ######################################################
+############################################################################################
+
+
 
 ############################################################################################
 ############### 3D view with jmol - Start ######################################
@@ -2355,6 +2424,10 @@ combined <- reactive({
         pisaRes = selectedPisa()
         pisaRes2 = pisaRes[,c(1,4)]
         names(pisaRes2) = c("PDB ID","PISA Oligomeric State")
+        
+        eppicRes = selectedEppic()
+        eppicRes2 = eppicRes[,c(1,3)]
+        names(eppicRes2) = c("PDB ID","EPPIC Oligomeric State")
 
         tm = textMiner()[[1]]
         tm2 = tm[,c(1:2,4,5)]
@@ -2385,15 +2458,15 @@ if(dim(current2)[1] > 1){
     #merge2 = merge(pisaRes2,tm2,by = 'PDB ID')
     
     #consensus = merge(merge1, merge2, by = 'PDB ID')
-    consensus = join_all(list(current2,seqCluster3,pisaRes2,tm2), by = 'PDB ID', type = 'left')
+    consensus = join_all(list(current2, seqCluster3, pisaRes2, eppicRes2, tm2), by = 'PDB ID', type = 'left')
     
 }else{
     
-    consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], tm2[,2])
+    consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2], tm2[,2])
 
 }
 
-names(consensus) = c("pdbId", "BaNumber", "CurrentStoichiometry", "SequenceClusterStoichiometry", "PISAStoichiometry", "TextMiningStoichiometry")
+names(consensus) = c("pdbId", "BaNumber", "CurrentStoichiometry", "SequenceClusterStoichiometry", "PISAStoichiometry", "EPPICStoichiometry", "TextMiningStoichiometry")
 
 
 if(consensus$CurrentStoichiometry != "Inconclusive"){
@@ -2431,6 +2504,7 @@ if(consensus$CurrentStoichiometry != "Inconclusive"){
     consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A21"] ="21-mer"
     consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A22"] ="22-mer"
     consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A23"] ="23-mer"
+    consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A12B12"] ="24-mer"
     consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A24"] ="24-mer"
 }else{
     
@@ -2472,6 +2546,7 @@ if(consensus$SequenceClusterStoichiometry != "Inconclusive"){
     consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A21"] ="21-mer"
     consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A22"] ="22-mer"
     consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A23"] ="23-mer"
+    consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A12B12"] ="24-mer"
     consensus$SequenceClusterOligomericState[consensus$SequenceClusterStoichiometry == "A24"] ="24-mer"
     
 }else{
@@ -2514,6 +2589,7 @@ if(consensus$PISAStoichiometry != "Inconclusive"){
     consensus$PISAOligomericState[consensus$PISAStoichiometry == "A21"] ="21-mer"
     consensus$PISAOligomericState[consensus$PISAStoichiometry == "A22"] ="22-mer"
     consensus$PISAOligomericState[consensus$PISAStoichiometry == "A23"] ="23-mer"
+    consensus$PISAOligomericState[consensus$PISAStoichiometry == "A12B12"] ="24-mer"
     consensus$PISAOligomericState[consensus$PISAStoichiometry == "A24"] ="24-mer"
     
 }else{
@@ -2522,13 +2598,56 @@ if(consensus$PISAStoichiometry != "Inconclusive"){
 }
 
 
+if(consensus$EPPICStoichiometry != "Inconclusive"){
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A"] ="monomer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A2"] ="dimer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "AB"] ="dimer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A3"] ="trimer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A2B"] ="trimer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "ABC"] ="trimer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A4"] ="tetramer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A2B2"] ="tetramer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "ABCD"] ="tetramer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A5"] ="pentamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A6"] ="hexamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A3B3"] ="hexamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A2B2C2"] ="hexamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A7"] ="heptamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A8"] ="octamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A4B4"] ="octamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A2B2C2D2"] ="octamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A9"] ="nonamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A10"] ="decamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A5B5"] ="decamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A11"] ="undecamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A12"] ="dodecamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A6B6"] ="dodecamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A13"] ="tridecamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A14"] ="tetradecamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A15"] ="pentadecamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A16"] ="hexadecamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A17"] ="heptadecamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A18"] ="octadecamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A19"] ="nonadecamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A20"] ="eicosamer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A21"] ="21-mer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A22"] ="22-mer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A23"] ="23-mer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A12B12"] ="24-mer"
+    consensus$EPPICOligomericState[consensus$EPPICStoichiometry == "A24"] ="24-mer"
+    
+}else{
+    
+    consensus$EPPICOligomericState = "Inconclusive"
+}
 
 
-consensusLast = consensus[,c("pdbId", "BaNumber", "CurrentOligomericState", "SequenceClusterOligomericState", "PISAOligomericState",
-"TextMiningStoichiometry")]
+
+
+consensusLast = consensus[,c("pdbId", "BaNumber", "CurrentOligomericState", "SequenceClusterOligomericState", "PISAOligomericState", "EPPICOligomericState", "TextMiningStoichiometry")]
 
 for(i in 1:dim(consensusLast)[1]){
-    vote = c(as.character(consensusLast$SequenceClusterOligomericState[i]), as.character(consensusLast$PISAOligomericState[i]), as.character(consensusLast$TextMiningStoichiometry[i]))
+    vote = c(as.character(consensusLast$SequenceClusterOligomericState[i]), as.character(consensusLast$PISAOligomericState[i]), as.character(consensusLast$EPPICOligomericState[i]), as.character(consensusLast$TextMiningStoichiometry[i]))
     
         consensusLast$ConsensusResult[i] = if(max(table(vote)) == 1){"Inconclusive"}else{names(which.max(table(vote)))}
 }
@@ -2540,11 +2659,13 @@ for(i in 1:dim(consensusLast)[1]){
         
     consensusLast$ResultP[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$PISAOligomericState)[i]){1}else if(as.character(consensusLast$PISAOligomericState)[i] == "Inconclusive"){2}else{0}
     
+    consensusLast$ResultE[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$EPPICOligomericState)[i]){1}else if(as.character(consensusLast$EPPICOligomericState)[i] == "Inconclusive"){2}else{0}
+    
     consensusLast$ResultTM[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$TextMiningStoichiometry)[i]){1}else if(as.character(consensusLast$TextMiningStoichiometry)[i] == "Inconclusive"){2}else{0}
 }
 
 names(consensusLast) = c("PDB ID", "BA Number", "Current Oligomeric State", "Sequence Cluster Oligomeric State",
-                                "PISA Oligomeric State", "Text Mining Oligomeric State", "Consensus Result", "ResultC", "ResultSC", "ResultP", "ResultTM")
+                                "PISA Oligomeric State", "EPPIC Oligomeric State", "Text Mining Oligomeric State", "Consensus Result", "ResultC", "ResultSC", "ResultP", "ResultE", "ResultTM")
 
 consensusLast
 
@@ -2612,25 +2733,33 @@ combinedSymmetry <- reactive({
             
             names(seqCluster3) = c("PDB ID", "Sequence Cluster Symmetry")
         }
+        
+        
         pisaRes = selectedPisa()
         pisaRes2 = pisaRes[,c(1,5)]
         names(pisaRes2) = c("PDB ID","PISA Symmetry")
         
+        eppicRes = selectedEppic()
+        eppicRes2 = eppicRes[,c(1,4)]
+        names(eppicRes2) = c("PDB ID","EPPIC Symmetry")
+        
+        
+        
         
         if(dim(current2)[1] > 1){
             
-       consensusLast = join_all(list(current2,seqCluster3,pisaRes2), by = 'PDB ID', type = 'left')
+       consensusLast = join_all(list(current2,seqCluster3,pisaRes2,eppicRes2), by = 'PDB ID', type = 'left')
             
         }else{
             
-            consensusLast = cbind(current[,c(1,2,4)], seqCluster3[,2], pisaRes[,5])
+            consensusLast = cbind(current[,c(1,2,4)], seqCluster3[,2], pisaRes[,5], eppicRes2[2])
             
         }
         
-        names(consensusLast) = c("pdbId", "BaNumber", "CurrentSymmetry", "SequenceClusterSymmetry", "PISASymmetry")
+        names(consensusLast) = c("pdbId", "BaNumber", "CurrentSymmetry", "SequenceClusterSymmetry", "PISASymmetry", "EPPICSymmetry")
         
         for(i in 1:dim(consensusLast)[1]){
-            vote = c(as.character(consensusLast$SequenceClusterSymmetry[i]), as.character(consensusLast$PISASymmetry[i]))
+            vote = c(as.character(consensusLast$SequenceClusterSymmetry[i]), as.character(consensusLast$PISASymmetry[i]),as.character(consensusLast$EPPICSymmetry[i]))
             
             consensusLast$ConsensusResult[i] = if(max(table(vote)) == 1){"Inconclusive"}else{names(which.max(table(vote)))}
         }
@@ -2641,11 +2770,13 @@ combinedSymmetry <- reactive({
             consensusLast$ResultSC[i] = if(as.character(consensusLast$CurrentSymmetry)[i] == as.character(consensusLast$SequenceClusterSymmetry)[i]){1}else if(as.character(consensusLast$SequenceClusterSymmetry)[i] == "Inconclusive"){2}else{0}
             
             consensusLast$ResultP[i] = if(as.character(consensusLast$CurrentSymmetry)[i] == as.character(consensusLast$PISASymmetry)[i]){1}else if(as.character(consensusLast$PISASymmetry)[i] == "Inconclusive"){2}else{0}
+            
+            consensusLast$ResultE[i] = if(as.character(consensusLast$CurrentSymmetry)[i] == as.character(consensusLast$EPPICSymmetry)[i]){1}else if(as.character(consensusLast$EPPICSymmetry)[i] == "Inconclusive"){2}else{0}
         
         }
         
         names(consensusLast) = c("PDB ID", "BA Number", "Current Symmetry", "Sequence Cluster Symmetry",
-        "PISA Symmetry", "Consensus Result", "ResultC", "ResultSC", "ResultP")
+        "PISA Symmetry", "EPPIC Symmetry", "Consensus Result", "ResultC", "ResultSC", "ResultP", "ResultE")
         
         consensusLast
 
@@ -2666,10 +2797,10 @@ output$combinedResults <- DT::renderDataTable({
     #dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE))#, colVis = list(activate = 'click', showAll = TRUE)
 
 
-    datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('TableTools'), options = list(dom = 'T<"clear">lfrtip',tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),  columnDefs = list(list(targets = c(7:10), visible = FALSE)))
+    datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('TableTools'), options = list(dom = 'T<"clear">lfrtip',tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),  columnDefs = list(list(targets = c(8:12), visible = FALSE)))
         
         )%>% formatStyle(
-  columns = c("Consensus Result", "Sequence Cluster Oligomeric State", "PISA Oligomeric State", "Text Mining Oligomeric State"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultTM"),
+  columns = c("Consensus Result", "Sequence Cluster Oligomeric State", "PISA Oligomeric State", "EPPIC Oligomeric State", "Text Mining Oligomeric State"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE", "ResultTM"),
   backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
 )
 
@@ -2683,10 +2814,10 @@ output$combinedSymmetryResults <- DT::renderDataTable({
     #dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE))#, colVis = list(activate = 'click', showAll = TRUE)
     
     
-    datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('TableTools'), options = list(dom = 'T<"clear">lfrtip',tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),  columnDefs = list(list(targets = c(6:8), visible = FALSE)))
+    datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('TableTools'), options = list(dom = 'T<"clear">lfrtip',tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),  columnDefs = list(list(targets = c(7:10), visible = FALSE)))
     
     )%>% formatStyle(
-    columns = c("Consensus Result", "Sequence Cluster Symmetry", "PISA Symmetry"), valueColumns = c("ResultC","ResultSC", "ResultP"),
+    columns = c("Consensus Result", "Sequence Cluster Symmetry", "PISA Symmetry", "EPPIC Symmetry"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE"),
     backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
     )
 
@@ -2698,10 +2829,20 @@ output$combinedSymmetryResults <- DT::renderDataTable({
 ############################################################################################
 ############### Combined results - End ######################################
 ############################################################################################
-#output$path <- renderText({
+output$path <- renderDataTable({
 
-#tm = textMiner()[[1]]
-#tm2 = tm[,c(1:2,4,5)]
-#("TRUE" %in% as.character(tm2[,3])) && (max(tm2[,4]) > 0.51)})
+
+pisa = read.table("Pisa_results.txt", header = T, sep="\t")
+pisa = unique(pisa)
+rownames(pisa) = pisa$pdbId
+names(pisa) = c("PDB ID", "Assessment", "Structure",  "Stoichiometry", "Symmetry")
+
+#selectedPisa = pisa[as.character(pdbId),]
+
+ currentData()
+
+#as.data.frame(pdbId)
+
 
   })
+})
