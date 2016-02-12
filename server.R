@@ -2791,6 +2791,7 @@ combinedSymmetry <- reactive({
 
 output$combinedResults <- DT::renderDataTable({
     
+    
     df = as.data.frame(combined())
     
     #datatable(currentData(), ,escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
@@ -2803,6 +2804,7 @@ output$combinedResults <- DT::renderDataTable({
   columns = c("Consensus Result", "Sequence Cluster Oligomeric State", "PISA Oligomeric State", "EPPIC Oligomeric State", "Text Mining Oligomeric State"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE", "ResultTM"),
   backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
 )
+
 
 })
 
@@ -2830,19 +2832,30 @@ output$combinedSymmetryResults <- DT::renderDataTable({
 ############### Combined results - End ######################################
 ############################################################################################
 output$path <- renderDataTable({
+    
+    if(!input$startAnalysis){
+
+        invisible()
+
+    }
+
+else if(is.na(currentData()[,1])){
+    
+    Error = "Invalid PDB ID"
+    
+    as.data.frame(Error)
+    
+}else{
+    
+    invisible()
+
+}
 
 
-pisa = read.table("Pisa_results.txt", header = T, sep="\t")
-pisa = unique(pisa)
-rownames(pisa) = pisa$pdbId
-names(pisa) = c("PDB ID", "Assessment", "Structure",  "Stoichiometry", "Symmetry")
 
-#selectedPisa = pisa[as.character(pdbId),]
-
- currentData()
-
-#as.data.frame(pdbId)
-
-
-  })
+},rownames=FALSE, options = list(iDisplayLength = 1,bSearchable = FALSE
+,bFilter=FALSE,bPaginate=FALSE,bAutoWidth=TRUE
+,bInfo=0,bSort=0
+, "sDom" = "rt"
+))
 })

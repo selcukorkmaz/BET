@@ -173,7 +173,7 @@ conditionalPanel("input.tabs=='Help'"
 
 mainPanel(
 
-navbarPage("Bioassembly Evaluation Tool v.0.3.3", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
+navbarPage("Bioassembly Evaluation Tool v.0.3.4", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
 
         tabPanel("Analysis",
 
@@ -185,10 +185,12 @@ navbarPage("Bioassembly Evaluation Tool v.0.3.3", id="tabs", inverse = TRUE, col
 h4(textOutput(outputId = "section1")),
             bsAlert("help"),
 
-#dataTableOutput('path'),
+
 
 
 h4(textOutput(outputId = "section16")),
+        dataTableOutput('path'),
+
        dataTableOutput('combinedResults'),
 br(),
        dataTableOutput('combinedSymmetryResults'),
