@@ -173,7 +173,7 @@ conditionalPanel("input.tabs=='Help'"
 
 mainPanel(
 
-navbarPage("Bioassembly Evaluation Tool v.0.3.4", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
+navbarPage("Bioassembly Evaluation Tool v.0.3.5", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
 
         tabPanel("Analysis",
 

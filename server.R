@@ -1968,7 +1968,7 @@ sequenceCluster <- reactive({
     
     sequenceClusterLast$CS = maxCS
     
-    if(maxCS > 0.5 && sum(sequenceClusterLast[,6]) > 3){
+    if(maxCS > 0.5 && sum(sequenceClusterLast[,6]) > 2){
         
         for(i in 1: dim(sequenceClusterLast)[1]){
             sequenceClusterLast$Res[i] = if(sequenceClusterLast$CS[i] == sequenceClusterLast$`Consistency score`[i]){1}else{0}
@@ -2339,7 +2339,7 @@ sequenceCluster2 <- reactive({
       
       lastResult$PDBID = toupper(lastResult$`PDB ID`[which(lastResult$`PDB ID` %in% toupper(currentData()[,1]))])[1]
       
-      seqCluster2 =lastResult[which.max(lastResult[,5]),]
+      seqCluster2 =lastResult
     }
     
     seqRes = unique(seqCluster2[-1])
@@ -2407,17 +2407,20 @@ combined <- reactive({
 
         }else{
         
-        seqCluster2 = sequenceCluster2()[which.max(sequenceCluster2()[,5]),]
+        seqCluster2 = sequenceCluster2()
         seqCluster3 = seqCluster2[,c(1,3,5,6)]
         
         
-        if(seqCluster3[3] <= 0.5 || seqCluster3[4] < 3){
+        if(max(seqCluster3[,3]) <= 0.5 || sum(seqCluster3[,4]) < 3){
             
-            seqCluster3[2] = "Inconclusive"
+            seqCluster3[,2] = "Inconclusive"
             
         }
         
-        seqCluster3 = seqCluster3[,1:2]
+        seqCluster4 = seqCluster3[which.max(seqCluster3[,3]),]
+        
+        
+        seqCluster3 = seqCluster4[,1:2]
 
         names(seqCluster3) = c("PDB ID", "Sequence cluster Oligomeric State")
         }
@@ -2718,18 +2721,22 @@ combinedSymmetry <- reactive({
             names(seqCluster3) = c("PDB ID", "Sequence Cluster Symmetry")
             
         }else{
+        	
+        	        seqCluster2 = sequenceCluster2()
+        seqCluster3 = seqCluster2[,c(1,4,5,6)]
+        
+        
+        if(max(seqCluster3[,3]) <= 0.5 || sum(seqCluster3[,4]) < 3){
             
-            seqCluster2 = sequenceCluster2()[which.max(sequenceCluster2()[,5]),]
-            seqCluster3 = seqCluster2[,c(1,4,5,6)]
+            seqCluster3[,2] = "Inconclusive"
             
-            
-            if(seqCluster3[3] <= 0.5 || seqCluster3[4] < 3){
-                
-                seqCluster3[2] = "Inconclusive"
-                
-            }
-            
-            seqCluster3 = seqCluster3[,1:2]
+        }
+        
+        seqCluster4 = seqCluster3[which.max(seqCluster3[,3]),]
+        
+        
+        seqCluster3 = seqCluster4[,1:2]
+        	
             
             names(seqCluster3) = c("PDB ID", "Sequence Cluster Symmetry")
         }
