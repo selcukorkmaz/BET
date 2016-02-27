@@ -1,1 +1,0 @@
-# Bioassembly Evaluation ToolThis tool is developed for the evaluation of biological assemblies in the Protein Data Bank.It is freely available via http://bioassemblies.rcsb.org# Screenshots![My image](www/screenShots/ss1.jpg?raw=true "Welcome page")![My image](www/screenShots/ss2.jpg?raw=true "Result page")

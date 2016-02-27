@@ -12,7 +12,7 @@ sidebarLayout(
 	sidebarPanel(width=3,
 
 
-conditionalPanel("input.tabs=='Analysis'",
+conditionalPanel("input.tabs=='Evaluation results'",
             h5(HTML('<p><b>Enter a PDB ID or upload a file</b></p>'),
 
 #br(),
@@ -54,7 +54,7 @@ conditionalPanel(condition="input.dataInput=='3'",
 br(),
 
 
-actionButton(inputId = "startAnalysis", label = "Start analysis", icon = NULL),
+actionButton(inputId = "startAnalysis", label = "Evaluate", icon = NULL),
 br(),
 br(),
 
@@ -173,9 +173,9 @@ conditionalPanel("input.tabs=='Help'"
 
 mainPanel(
 
-navbarPage("Bioassembly Evaluation Tool v.0.3.5", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
+navbarPage("Bioassembly Evaluation Tool v.0.3.7", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
 
-        tabPanel("Analysis",
+        tabPanel("Evaluation results",
 
 
 # tabsetPanel(
@@ -192,7 +192,9 @@ h4(textOutput(outputId = "section16")),
         dataTableOutput('path'),
 
        dataTableOutput('combinedResults'),
-br(),
+#br(),
+h4(textOutput(outputId = "section17")),
+
        dataTableOutput('combinedSymmetryResults'),
 
 
@@ -201,7 +203,7 @@ br(),
 
 #h4(textOutput(outputId = "section4")),
 #tags$head(tags$style("#consistency  {white-space: nowrap;  }")),
-#        dataTableOutput('consistency'),
+       dataTableOutput('consistency'),
 
 #h4(textOutput(outputId = "section5")),
 #                           plotOutput('consistencyPlot', height = "auto"),

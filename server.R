@@ -1,5 +1,6 @@
 shinyServer(function(input, output, session){
     library("caret")
+    library("data.table")
     library("stringr")
     library("XML")
     library("tm")
@@ -22,6 +23,11 @@ shinyServer(function(input, output, session){
     load("TestSetPerformance.rda")
     load("oligomericStateList.rda")
     load("consistencyList.rda")
+    load("consistencyScore.rda")
+    load("eppic_results.rda")
+    load("publication.rda")
+    load("pisa_results.rda")
+    load("pisa_advanced_results.rda")
     
     
     
@@ -48,7 +54,8 @@ shinyServer(function(input, output, session){
             })
             
             #dataMentions = read.table("PdbDataMentionUnique.tsv", header=T, fill=T, sep="\t")
-            pubData <- read.table("publication.txt", header=TRUE, sep="\t")
+            pubData <- publication
+            pubData = pubData[!duplicated(pubData$pdbId),]
             rownames(pubData) = pubData$pdbId
             
             #PMCId <- reactive({
@@ -173,7 +180,7 @@ shinyServer(function(input, output, session){
                         otherPDBList[[j]] = s[1,]
                         
                       }
-                      splitOtherPDBResult = do.call(rbind.data.frame, otherPDBList)
+                      splitOtherPDBResult = as.data.frame(rbindlist( otherPDBList))
                       
                     }else{
                       
@@ -557,7 +564,7 @@ if(input$publicationInfo){
             createAlert(session, "help", "popupHelp", title = "Welcome to Biological Assembly Evaluation Tool!",
             content = "This web tool is developed for evaluation of biological assemblies of protein structures in the Protein Data Bank. There are four different methods for the evaluation process:
             <ul>
-            <li>Current results from the PDB repository with a Consistency score for each PDB ID.</li> <br>
+            <li>Sequence cluster (SC) result with a consistency score for each PDB ID.</li> <br>
             <li>Text mining of the primary citations in order to extract oligomeric state and experimental evidence.</li> <br>
             <li>Stoichiometry and symmetry predictions for biological assemblies using PISA.</li><br>
             <li>Stoichiometry and symmetry predictions for biological assemblies using EPPIC.</li>
@@ -565,9 +572,9 @@ if(input$publicationInfo){
             
             In order to use this application:
             <ul>
-            <li>Enter a <b>PDB ID</b>, <b>upload a file</b> which contains multiple PDB IDs or <b>upload a PDF</b> version of a paper.</li> <br>
-            <li>Select your evaluation methods, including <b>Current PDB</b>, <b>Text mining</b>, <b>PISA</b> and <b>EPPIC</b>,</li> <br>
-            <li>Click <b>Start analysis</b> button to get the results.</li> <br>
+            <li>Enter a <b>PDB ID</b>, <b>upload a file</b> which contains multiple PDB IDs or <b>upload PDF</b> version of a paper.</li> <br>
+            <li>Click <b>Start analysis</b> button to get the consensus result for both oligomeric state and symmetry.</li> <br>
+            <li>Click, <b>SC</b>, <b>Text mining</b>, <b>PISA</b> and <b>EPPIC</b> to see individual results.</li> <br>
             <li>For advanced results and options click <b>Results</b> and <b>Options</b> checkboxes</li><br>
             <li>For further information please see the <b>Help</b> tab.</li>
             </ul>",
@@ -774,7 +781,7 @@ textMiner <- reactive({
             }
             
             
-             experimentalEvidenceLast2 = do.call(rbind.data.frame, experimentalEvidenceLast)
+             experimentalEvidenceLast2 = as.data.frame(rbindlist(experimentalEvidenceLast))
             
            # mlResult$experimentalEvidence = experimentalEvidenceLast2[,"unlist(experimentalEvidenceWordList)"]
             
@@ -820,7 +827,7 @@ textMiner <- reactive({
             }
             
             
-            mlResult2 = do.call(rbind.data.frame, MLlist)
+            mlResult2 = as.data.frame(rbindlist(MLlist))
             
             evidenceSplitList = list()
             
@@ -839,7 +846,7 @@ textMiner <- reactive({
             }
             
             
-            mlResult2 = do.call(rbind.data.frame, evidenceSplitList)
+            mlResult2 = as.data.frame(rbindlist(evidenceSplitList))
             
             pdbID = split(mlResult2, mlResult2$pdbId)
             
@@ -869,7 +876,7 @@ textMiner <- reactive({
             
             ### find unique probabilites of each pdb entry ###
             
-            data = do.call(rbind.data.frame, resultOligomericState)
+            data = as.data.frame(rbindlist(resultOligomericState))
 
             
             if(length(unique(data$pdbId))>1){
@@ -887,7 +894,7 @@ textMiner <- reactive({
                     
                 }
                 
-                resultUniqueValues = do.call(rbind.data.frame, resultUniqueValues)
+                resultUniqueValues = as.data.frame(rbindlist(resultUniqueValues))
                 resultUniqueValues = resultUniqueValues[,c("PubId", "pdbId", "newOligomericState", "probability", "MLfilter", "experimentalEvidence", "pubType", "primaryCitation")]
                 
             }else{
@@ -918,7 +925,7 @@ textMiner <- reactive({
             }
             
             
-            resultUniqueProbabilityList= do.call(rbind.data.frame, resultUniqueForEach)
+            resultUniqueProbabilityList= as.data.frame(rbindlist(resultUniqueForEach))
             
             
             uniqueData2 = unique(resultUniqueProbabilityList)
@@ -1444,9 +1451,9 @@ outlierDetect <- reactive({
     if(input$seqCluster == "95"){
     
         # 95% sequence cluster
-        index95 = which(consistencyList$consistencyData95$"PDB ID" %in% as.character(currentData()[,1]))
+        index95 = which(consistencyData95$"PDB ID" %in% as.character(currentData()[,1]))
         if(length(index95) != 0){
-        result = consistencyList$consistencyData95[index95, c("PDB ID",	"BA Number", "Stoichiometry", "Symmetry","Representative", "Consistency score", "Result")]
+        result = consistencyData95[index95, c("PDB ID",	"BA Number", "Stoichiometry", "Symmetry","Representative", "Consistency score", "Result")]
     
         result
         
@@ -1458,16 +1465,16 @@ outlierDetect <- reactive({
     else if(input$seqCluster == "90"){
     
         # 90% sequence cluster
-        index90 = which(consistencyList$consistencyData90$"PDB ID" %in% as.character(currentData()[,1]))
-        result = consistencyList$consistencyData90[index90, c("PDB ID",	"BA Number", "Stoichiometry", "Symmetry","Representative", "Consistency score", "Result")]
+        index90 = which(consistencyData90$"PDB ID" %in% as.character(currentData()[,1]))
+        result = consistencyData90[index90, c("PDB ID",	"BA Number", "Stoichiometry", "Symmetry","Representative", "Consistency score", "Result")]
         result
     }
 
     else if(input$seqCluster == "70"){
     
         # 70% sequence cluster
-        index70 = which(consistencyList$consistencyData70$"PDB ID" %in% as.character(currentData()[,1]))
-        result = consistencyList$consistencyData70[index70, c("PDB ID",	"BA Number", "Stoichiometry", "Symmetry","Representative", "Consistency score", "Result")]
+        index70 = which(consistencyData70$"PDB ID" %in% as.character(currentData()[,1]))
+        result = consistencyData70[index70, c("PDB ID",	"BA Number", "Stoichiometry", "Symmetry","Representative", "Consistency score", "Result")]
         
         result
     }
@@ -1475,8 +1482,8 @@ outlierDetect <- reactive({
     else if(input$seqCluster == "40"){
     
         # 40% sequence cluster
-            index40 = which(consistencyList$consistencyData40$"PDB ID" %in% as.character(currentData()[,1]))
-           result = consistencyList$consistencyData40[index40, c("PDB ID",	"BA Number", "Stoichiometry", "Symmetry","Representative", "Consistency score", "Result")]
+            index40 = which(consistencyData40$"PDB ID" %in% as.character(currentData()[,1]))
+           result = consistencyData40[index40, c("PDB ID",	"BA Number", "Stoichiometry", "Symmetry","Representative", "Consistency score", "Result")]
             
             result
     
@@ -1688,12 +1695,7 @@ output$section11 <- renderText({
 
 })
 
-#output$section12 <- renderText({
-#    if (input$startAnalysis && input$mutantResults){
-#        'Mutant protein information'
-#    }
-#
-#})
+
 
 output$section13 <- renderText({
     if (input$startAnalysis && input$pisaPrediction){
@@ -1718,8 +1720,15 @@ output$section15 <- renderText({
 output$section16 <- renderText({
     
     if (input$startAnalysis){
-        'Consensus result'
+        'Oligomeric state'
     }
+})
+
+output$section17 <- renderText({
+    if (input$startAnalysis){
+        'Symmetry'
+    }
+
 })
 
 #heightSize <- reactive({
@@ -1872,26 +1881,26 @@ sequenceCluster <- reactive({
     
     if(input$seqCluster == "95"){
         
-        sequenceCluster = consistencyList$consistencyData95[consistencyList$consistencyData95[,3] %in% pdbList$Representative,]
+        sequenceCluster = consistencyData95[consistencyData95[,3] %in% pdbList$Representative,]
         
     }
     
     else if(input$seqCluster == "90"){
         
-        sequenceCluster = consistencyList$consistencyData90[consistencyList$consistencyData90[,3] %in% pdbList$Representative,]
+        sequenceCluster = consistencyData90[consistencyData90[,3] %in% pdbList$Representative,]
         
     }
     
     else if(input$seqCluster == "70"){
         
-        sequenceCluster = consistencyList$consistencyData70[consistencyList$consistencyData70[,3] %in% pdbList$Representative,]
+        sequenceCluster = consistencyData70[consistencyData70[,3] %in% pdbList$Representative,]
         
     }
     
     
     else if(input$seqCluster == "40"){
         
-        sequenceCluster = consistencyList$consistencyData40[consistencyList$consistencyData40[,3] %in% pdbList$Representative,]
+        sequenceCluster = consistencyData40[consistencyData40[,3] %in% pdbList$Representative,]
         
     }
     
@@ -1916,7 +1925,7 @@ sequenceCluster <- reactive({
         
         for(j in 1:dim(signatureData)[1]){
             
-            signatureData$count[j] = sum(signatureData$combinedOligomericState == signatureData$combinedOligomericState[j])
+            signatureData$count[j] = sum(sequenceCluster$combinedOligomericState == signatureData$combinedOligomericState[j])
             
         }
         
@@ -1951,7 +1960,7 @@ sequenceCluster <- reactive({
         signatureDataList[[i]] = sequenceCluster4
     }
     
-    lastResult = do.call(rbind.data.frame, signatureDataList)
+    lastResult = as.data.frame(rbindlist(signatureDataList))
     
     lastResult2 = unique(lastResult[,-1])
     
@@ -1961,7 +1970,7 @@ sequenceCluster <- reactive({
     
     sequenceClusterLast = sequenceCluster[,c(7,1:6)]
     names(sequenceClusterLast) = c("PDB ID", "Representative chain","Stoichiometry", "Symmetry",
-    "Consistency score", "Number of PDB entries", "PDB entries in the cluster")
+    "Consistency score", "Number of Biological Assemblies", "PDB entries in the cluster")
     
     
     maxCS = sequenceClusterLast$`Consistency score`[which.max(sequenceClusterLast$`Consistency score`)]
@@ -1978,8 +1987,11 @@ sequenceCluster <- reactive({
         sequenceClusterLast$Res = 0
     }
     
-    sequenceClusterLast[-8]
+   resultSeq =  sequenceClusterLast[-8]
     
+   resultSeq[,5] = round(resultSeq[,5], 2)
+   
+   resultSeq
 })
 
 ############################################################################################
@@ -2031,7 +2043,7 @@ selectedPisa <- reactive({
     
     pdbId = as.character(currentData()[,1])
     
-    pisa = read.table("Pisa_results.txt", header = T, fill= T, sep="\t")
+    pisa = pisa_results
     pisa = unique(pisa)
 
     pisa$pdbId = toupper(pisa$pdbId)
@@ -2087,8 +2099,8 @@ selectedEppic <- reactive({
     
     pdbId = currentData()[,1]
     
-    eppic = read.table("Eppic_results.txt", header = T, fill= T, sep="\t", stringsAsFactors = F)
-    eppic = unique(eppic)
+    eppic = eppic_results
+    #eppic = unique(eppic)
     
     eppic$pdbId = toupper(eppic$pdbId)
     rownames(eppic) = eppic$pdbId
@@ -2189,7 +2201,7 @@ selectedPisaAdvanced <- reactive({
     
     pdbId = currentData()[,1]
     
-    pisaAdvanced = read.table("Pisa_advanced_results.txt", header = T, sep="\t")
+    pisaAdvanced = pisa_advanced_results
     #pisaAdvanced = unique(pisaAdvanced)
     
     #pisaAdvanced$pdbId = toupper(pisaAdvanced$pdbId)
@@ -2236,26 +2248,26 @@ sequenceCluster2 <- reactive({
     
     if(input$seqCluster == "95"){
         
-        sequenceCluster = consistencyList$consistencyData95[consistencyList$consistencyData95[,3] %in% pdbList$Representative,]
+        sequenceCluster = consistencyData95[consistencyData95[,3] %in% pdbList$Representative,]
         
     }
     
     else if(input$seqCluster == "90"){
         
-        sequenceCluster = consistencyList$consistencyData90[consistencyList$consistencyData90[,3] %in% pdbList$Representative,]
+        sequenceCluster = consistencyData90[consistencyData90[,3] %in% pdbList$Representative,]
         
     }
     
     else if(input$seqCluster == "70"){
         
-        sequenceCluster = consistencyList$consistencyData70[consistencyList$consistencyData70[,3] %in% pdbList$Representative,]
+        sequenceCluster = consistencyData70[consistencyData70[,3] %in% pdbList$Representative,]
         
     }
     
     
     else if(input$seqCluster == "40"){
         
-        sequenceCluster = consistencyList$consistencyData40[consistencyList$consistencyData40[,3] %in% pdbList$Representative,]
+        sequenceCluster = consistencyData40[consistencyData40[,3] %in% pdbList$Representative,]
         
     }
     
@@ -2280,7 +2292,7 @@ sequenceCluster2 <- reactive({
         
         for(j in 1:dim(signatureData)[1]){
             
-            signatureData$count[j] = sum(signatureData$combinedOligomericState == signatureData$combinedOligomericState[j])
+            signatureData$count[j] = sum(sequenceCluster$combinedOligomericState == signatureData$combinedOligomericState[j])
             
         }
         
@@ -2315,7 +2327,7 @@ sequenceCluster2 <- reactive({
         signatureDataList[[i]] = sequenceCluster4
     }
     
-    lastResult = do.call(rbind.data.frame, signatureDataList)
+    lastResult = as.data.frame(rbindlist(signatureDataList))
     lastResult$PDBID = NA
     
     if(length(unique(lastResult$Representative)) > 1){
@@ -2333,7 +2345,7 @@ sequenceCluster2 <- reactive({
       
     }
     
-    seqCluster2 = do.call(rbind.data.frame, RepsList)
+    seqCluster2 = as.data.frame(rbindlist(RepsList))
     
     }else{
       
@@ -2346,7 +2358,7 @@ sequenceCluster2 <- reactive({
     
     seqRes2 = seqRes[,c(7,1:6)]
     
-    names(seqRes2) = c("PDB ID", "Representative chain", "Stoichiometry", "Symmetry", "Consistency score", "Number of biological assemblies", "PDB IDs")
+    names(seqRes2) = c("PDB ID", "Representative chain", "Stoichiometry", "Symmetry", "Consistency score", "Number of Biological Assemblies", "PDB IDs")
     seqRes2
     
 })
@@ -2355,7 +2367,14 @@ sequenceCluster2 <- reactive({
 ############### Sequence cluster2 - End ######################################
 ############################################################################################
 
+currentPDB <- reactive({
+  
+  current = consistencyScore
+  c = current[current$pdbId%in%currentData()[,1],]
+  c[,c("pdbId", "bioAssemblyNr95", "stoich95", "symmetry95")]
 
+  
+})
 
 
 ############################################################################################
@@ -2367,9 +2386,9 @@ combined <- reactive({
     if (input$startAnalysis){
         
         
-        current = outlierDetect2()[-5]
+        current = currentPDB()
         current2 = current[,1:3]
-        names(current2) = c("PDB ID", "BA Number", "Current Oligomeric State")
+        names(current2) = c("PDB ID", "BA Number", "PDB")
         
         
         if(length(unique(sequenceCluster2()[, "PDB ID"])) > 1){
@@ -2385,7 +2404,7 @@ combined <- reactive({
         
         }
         
-        seqCluster2 = do.call(rbind.data.frame, byPDB)
+        seqCluster2 = as.data.frame(rbindlist(byPDB))
 
         seqCluster3 = seqCluster2[,c(1,3,5,6)]
         
@@ -2403,7 +2422,7 @@ combined <- reactive({
         
         seqCluster3 = seqCluster3[,1:2]
         
-        names(seqCluster3) = c("PDB ID", "Sequence cluster Oligomeric State")
+        names(seqCluster3) = c("PDB ID", "Sequence Cluster")
 
         }else{
         
@@ -2422,15 +2441,15 @@ combined <- reactive({
         
         seqCluster3 = seqCluster4[,1:2]
 
-        names(seqCluster3) = c("PDB ID", "Sequence cluster Oligomeric State")
+        names(seqCluster3) = c("PDB ID", "Sequence Cluster")
         }
         pisaRes = selectedPisa()
         pisaRes2 = pisaRes[,c(1,4)]
-        names(pisaRes2) = c("PDB ID","PISA Oligomeric State")
+        names(pisaRes2) = c("PDB ID","PISA")
         
         eppicRes = selectedEppic()
         eppicRes2 = eppicRes[,c(1,3)]
-        names(eppicRes2) = c("PDB ID","EPPIC Oligomeric State")
+        names(eppicRes2) = c("PDB ID","EPPIC")
 
         tm = textMiner()[[1]]
         tm2 = tm[,c(1:2,4,5)]
@@ -2449,7 +2468,7 @@ combined <- reactive({
 
         }
         
-        names(tm2) = c("PDB ID", "Text Mining Oligomeric State")
+        names(tm2) = c("PDB ID", "Text Mining")
 
 #seqCluster2 = seqCluster[which.max(seqCluster[,4]),]
 
@@ -2667,8 +2686,8 @@ for(i in 1:dim(consensusLast)[1]){
     consensusLast$ResultTM[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$TextMiningStoichiometry)[i]){1}else if(as.character(consensusLast$TextMiningStoichiometry)[i] == "Inconclusive"){2}else{0}
 }
 
-names(consensusLast) = c("PDB ID", "BA Number", "Current Oligomeric State", "Sequence Cluster Oligomeric State",
-                                "PISA Oligomeric State", "EPPIC Oligomeric State", "Text Mining Oligomeric State", "Consensus Result", "ResultC", "ResultSC", "ResultP", "ResultE", "ResultTM")
+names(consensusLast) = c("PDB ID", "BA Number", "PDB", "Sequence Cluster",
+                                "PISA", "EPPIC", "Text Mining", "Consensus", "ResultC", "ResultSC", "ResultP", "ResultE", "ResultTM")
 
 consensusLast
 
@@ -2682,9 +2701,9 @@ combinedSymmetry <- reactive({
     if (input$startAnalysis){
         
         
-        current = outlierDetect2()[-5]
+      current = currentPDB()
         current2 = current[,c(1,2,4)]
-        names(current2) = c("PDB ID", "BA Number", "Current Symmetry")
+        names(current2) = c("PDB ID", "BA Number", "PDB")
         
         
         if(length(unique(sequenceCluster2()[, "PDB ID"])) > 1){
@@ -2700,7 +2719,7 @@ combinedSymmetry <- reactive({
                 
             }
             
-            seqCluster2 = do.call(rbind.data.frame, byPDB)
+            seqCluster2 = as.data.frame(rbindlist(byPDB))
             
             seqCluster3 = seqCluster2[,c(1,4,5,6)]
             
@@ -2718,7 +2737,7 @@ combinedSymmetry <- reactive({
             
             seqCluster3 = seqCluster3[,1:2]
             
-            names(seqCluster3) = c("PDB ID", "Sequence Cluster Symmetry")
+            names(seqCluster3) = c("PDB ID", "Sequence Cluster")
             
         }else{
         	
@@ -2738,17 +2757,17 @@ combinedSymmetry <- reactive({
         seqCluster3 = seqCluster4[,1:2]
         	
             
-            names(seqCluster3) = c("PDB ID", "Sequence Cluster Symmetry")
+            names(seqCluster3) = c("PDB ID", "Sequence Cluster")
         }
         
         
         pisaRes = selectedPisa()
         pisaRes2 = pisaRes[,c(1,5)]
-        names(pisaRes2) = c("PDB ID","PISA Symmetry")
+        names(pisaRes2) = c("PDB ID","PISA")
         
         eppicRes = selectedEppic()
         eppicRes2 = eppicRes[,c(1,4)]
-        names(eppicRes2) = c("PDB ID","EPPIC Symmetry")
+        names(eppicRes2) = c("PDB ID","EPPIC")
         
         
         
@@ -2782,8 +2801,8 @@ combinedSymmetry <- reactive({
         
         }
         
-        names(consensusLast) = c("PDB ID", "BA Number", "Current Symmetry", "Sequence Cluster Symmetry",
-        "PISA Symmetry", "EPPIC Symmetry", "Consensus Result", "ResultC", "ResultSC", "ResultP", "ResultE")
+        names(consensusLast) = c("PDB ID", "BA Number", "PDB", "Sequence Cluster",
+        "PISA", "EPPIC", "Consensus", "ResultC", "ResultSC", "ResultP", "ResultE")
         
         consensusLast
 
@@ -2808,7 +2827,7 @@ output$combinedResults <- DT::renderDataTable({
     datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('TableTools'), options = list(dom = 'T<"clear">lfrtip',tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),  columnDefs = list(list(targets = c(8:12), visible = FALSE)))
         
         )%>% formatStyle(
-  columns = c("Consensus Result", "Sequence Cluster Oligomeric State", "PISA Oligomeric State", "EPPIC Oligomeric State", "Text Mining Oligomeric State"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE", "ResultTM"),
+  columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC", "Text Mining"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE", "ResultTM"),
   backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
 )
 
@@ -2826,7 +2845,7 @@ output$combinedSymmetryResults <- DT::renderDataTable({
     datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('TableTools'), options = list(dom = 'T<"clear">lfrtip',tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),  columnDefs = list(list(targets = c(7:10), visible = FALSE)))
     
     )%>% formatStyle(
-    columns = c("Consensus Result", "Sequence Cluster Symmetry", "PISA Symmetry", "EPPIC Symmetry"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE"),
+    columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE"),
     backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
     )
 
