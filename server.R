@@ -2671,8 +2671,12 @@ consensusLast = consensus[,c("pdbId", "BaNumber", "CurrentOligomericState", "Seq
 for(i in 1:dim(consensusLast)[1]){
     vote = c(as.character(consensusLast$SequenceClusterOligomericState[i]), as.character(consensusLast$PISAOligomericState[i]), as.character(consensusLast$EPPICOligomericState[i]), as.character(consensusLast$TextMiningStoichiometry[i]))
     
-        consensusLast$ConsensusResult[i] = if(max(table(vote)) == 1){"Inconclusive"}else{names(which.max(table(vote)))}
+    v = as.data.frame(table(vote))
+    v2 = v[v$Freq>2,]
+    
+        consensusLast$ConsensusResult[i] = if(max(table(vote)) <3){"Inconclusive"} else if(length(v2$vote)>0){names(which.max(table(vote)))}else if(min(v$Freq)>2){names(which.max(table(vote)))}else{"Inconclusive"}
 }
+
 
 for(i in 1:dim(consensusLast)[1]){
 	consensusLast$ResultC[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$ConsensusResult)[i]){1}else if(as.character(consensusLast$ConsensusResult)[i] == "Inconclusive"){2}else{0}
@@ -2857,31 +2861,31 @@ output$combinedSymmetryResults <- DT::renderDataTable({
 ############################################################################################
 ############### Combined results - End ######################################
 ############################################################################################
-output$path <- renderDataTable({
-    
-    if(!input$startAnalysis){
+#output$path <- renderDataTable({
+#    
+#    if(!input$startAnalysis){
+#
+#        invisible()
+#
+#    }
+#
+#else if(is.na(currentData()[,1])){
+#    
+#    Error = "Invalid PDB ID"
+#    
+#    as.data.frame(Error)
+#    
+#}else{
+#    
+#    invisible()
 
-        invisible()
-
-    }
-
-else if(is.na(currentData()[,1])){
-    
-    Error = "Invalid PDB ID"
-    
-    as.data.frame(Error)
-    
-}else{
-    
-    invisible()
-
-}
+#}
 
 
 
-},rownames=FALSE, options = list(iDisplayLength = 1,bSearchable = FALSE
-,bFilter=FALSE,bPaginate=FALSE,bAutoWidth=TRUE
-,bInfo=0,bSort=0
-, "sDom" = "rt"
-))
+#},rownames=FALSE, options = list(iDisplayLength = 1,bSearchable = FALSE
+                                 #,bFilter=FALSE,bPaginate=FALSE,bAutoWidth=TRUE
+#,bInfo=0,bSort=0
+#, "sDom" = "rt"
+#))
 })
