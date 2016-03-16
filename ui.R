@@ -173,7 +173,7 @@ conditionalPanel("input.tabs=='Help'"
 
 mainPanel(
 
-navbarPage("Bioassembly Evaluation Tool v.0.3.9", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
+navbarPage("Bioassembly Evaluation Tool v.0.4.0", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
 
         tabPanel("Evaluation results",
 
@@ -189,13 +189,13 @@ h4(textOutput(outputId = "section1")),
 
 
 h4(textOutput(outputId = "section16")),
-#        dataTableOutput('path'),
+#        DT::dataTableOutput('path'),
 
-       dataTableOutput('combinedResults'),
+       DT::dataTableOutput('combinedResults'),
 #br(),
 h4(textOutput(outputId = "section17")),
 
-       dataTableOutput('combinedSymmetryResults'),
+       DT::dataTableOutput('combinedSymmetryResults'),
 
 
 
@@ -203,57 +203,57 @@ h4(textOutput(outputId = "section17")),
 
 #h4(textOutput(outputId = "section4")),
 #tags$head(tags$style("#consistency  {white-space: nowrap;  }")),
-       dataTableOutput('consistency'),
+       DT::dataTableOutput('consistency'),
 
 #h4(textOutput(outputId = "section5")),
 #                           plotOutput('consistencyPlot', height = "auto"),
 
 h4(textOutput(outputId = "section11")),
-                            dataTableOutput('signature'),
+                            DT::dataTableOutput('signature'),
 
 
 h4(textOutput(outputId = "section1")),
 #tags$head(tags$style("#TextMining  {white-space: nowrap;  }")),
 
-                           dataTableOutput('TextMining'),
+                           DT::dataTableOutput('TextMining'),
 
 #h4(textOutput(outputId = "section2")),
 #                            plotOutput('ospPlot', height = "auto"),
 
 
 h4(textOutput(outputId = "section13")),
-                            dataTableOutput('pisa'),
+                            DT::dataTableOutput('pisa'),
 
 
 h4(textOutput(outputId = "section7")),
-                            dataTableOutput('eppic'),
+                            DT::dataTableOutput('eppic'),
 
 
 #h4(textOutput(outputId = "section3")),
-#                            dataTableOutput('mlFilteredSentences'),
+#                            DT::dataTableOutput('mlFilteredSentences'),
 
 h4(textOutput(outputId = "section6")),
-                            dataTableOutput('machineLearning'),
+                            DT::dataTableOutput('machineLearning'),
 
 #h4(textOutput(outputId = "section12")),
-#                            dataTableOutput('mutantResults'),
+#                            DT::dataTableOutput('mutantResults'),
 
 #h4(textOutput(outputId = "section7")),
-#                            dataTableOutput('noOligomericResult'),
+#                            DT::dataTableOutput('noOligomericResult'),
 
 #h4(textOutput(outputId = "section8")),
-#                            dataTableOutput('noFullText'),
+#                            DT::dataTableOutput('noFullText'),
 
 #h4(textOutput(outputId = "section10")),
-#                            dataTableOutput('RawData'),
+#                            DT::dataTableOutput('RawData'),
 
 #h4(textOutput(outputId = "section9")),
-#                            dataTableOutput('summary'),
+#                            DT::dataTableOutput('summary'),
 
 
 
 h4(textOutput(outputId = "section15")),
-                            dataTableOutput('pisaAdvancedResults'),
+                            DT::dataTableOutput('pisaAdvancedResults'),
 
 h4(textOutput(outputId = "section14")),
                             uiOutput('jMolRes')

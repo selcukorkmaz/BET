@@ -107,9 +107,9 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
               
               xml_full =  xml_full+1
               
-              sent_token_annotator <- Maxent_Sent_Token_Annotator()
+              sent_token_annotator <- openNLP::Maxent_Sent_Token_Annotator()
               
-              fullTextSentences <- annotate(fullTextTotal, sent_token_annotator)
+              fullTextSentences <- NLP::annotate(fullTextTotal, sent_token_annotator)
               ## Extract sentences.
               fullTextSentencesList = fullTextTotal[fullTextSentences]
               
@@ -117,7 +117,7 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
               c=1
               for(l in 1:length(fullTextSentencesList)){
                 
-                review_source <- VectorSource(as.character(fullTextSentencesList)[l])
+                review_source <- tm::VectorSource(as.character(fullTextSentencesList)[l])
                 corpus <- Corpus(review_source)
                 corpus <- tm_map(corpus, stripWhitespace) # remove extra white spaeces
                 corpus <- tm_map(corpus, content_transformer(tolower)) # convert lower cases
