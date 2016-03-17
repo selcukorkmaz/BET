@@ -491,8 +491,8 @@ shinyServer(function(input, output, session){
   
   output$RawData <- DT::renderDataTable(
     if(input$publicationInfo){
-      datatable(currentData(), escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE))#, colVis = list(activate = 'click', showAll = TRUE)
+      datatable(currentData(), escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf')#, colVis = list(activate = 'click', showAll = TRUE)
         
       ))
       
@@ -1209,8 +1209,8 @@ shinyServer(function(input, output, session){
     
     else{
       
-      datatable(textMiner()[[1]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),   deferRender = TRUE
+      datatable(textMiner()[[1]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
         
       ))
       
@@ -1252,8 +1252,8 @@ shinyServer(function(input, output, session){
     if(input$mlFiltering){
       
       data = textMiner()[[6]]
-      datatable(data, escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE))#, colVis = list(activate = 'click', showAll = TRUE)
+      datatable(data, escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf')#, colVis = list(activate = 'click', showAll = TRUE)
         
       ))%>% formatStyle(
         "Sentence", "Label",
@@ -1276,8 +1276,8 @@ shinyServer(function(input, output, session){
     }
     
     if(input$mlFilteredSen){
-      datatable(textMiner()[[7]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),   deferRender = TRUE
+      datatable(textMiner()[[7]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
         
       ))
     }
@@ -1302,8 +1302,8 @@ shinyServer(function(input, output, session){
     if(input$mutantResults){
       
       
-      datatable(textMiner()[[8]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),   deferRender = TRUE
+      datatable(textMiner()[[8]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
         
       ))
     }
@@ -1334,8 +1334,8 @@ shinyServer(function(input, output, session){
       
       
       
-      datatable(textMiner()[[3]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),   deferRender = TRUE
+      datatable(textMiner()[[3]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
         
       ))
       
@@ -1362,8 +1362,8 @@ shinyServer(function(input, output, session){
       
       
       
-      datatable(textMiner()[[4]], escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),   deferRender = TRUE
+      datatable(textMiner()[[4]], escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
         
       ))
       
@@ -1397,8 +1397,8 @@ shinyServer(function(input, output, session){
       
       
       
-      datatable(textMiner()[[5]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),   deferRender = TRUE
+      datatable(textMiner()[[5]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
         
       ))
       
@@ -1554,8 +1554,8 @@ shinyServer(function(input, output, session){
   #         if(input$signatureResults && input$startAnalysis)
   #         #withProgress(message = 'Detecting outliers...',  detail = 'Please wait...', value=7,{
   #
-  #             datatable(outlierDetect2()[-5],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-  #             dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),   deferRender = TRUE)#, lengthMenu = c(5,50,34000))
+  #             datatable(outlierDetect2()[-5],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+  #             dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE)#, lengthMenu = c(5,50,34000))
   #
   # )
   
@@ -2018,7 +2018,7 @@ shinyServer(function(input, output, session){
       
       df = as.data.frame(sequenceCluster())
       
-      datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('TableTools'), options = list(dom = 'T<"clear">lfrtip',tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),  columnDefs = list(list(targets = 7, visible = FALSE)))
+      datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('Buttons'), options = list(dom = 'T<"clear">lfrtip',buttons = c('copy', 'excel', 'pdf'),  columnDefs = list(list(targets = 7, visible = FALSE)))
                 
                 
       )%>% formatStyle(
@@ -2079,8 +2079,8 @@ shinyServer(function(input, output, session){
     
     if (input$startAnalysis && input$pisaPrediction){
       
-      datatable(selectedPisa(), escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip', tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)), deferRender = TRUE
+      datatable(selectedPisa(), escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+        dom = 'T<"clear">lfrtip', buttons = c('copy', 'excel', 'pdf'), deferRender = TRUE
         
       ))
       
@@ -2136,8 +2136,8 @@ shinyServer(function(input, output, session){
     
     if (input$startAnalysis && input$eppicPrediction){
       
-      datatable(selectedEppic(), escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip', tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)), deferRender = TRUE
+      datatable(selectedEppic(), escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+        dom = 'T<"clear">lfrtip', buttons = c('copy', 'excel', 'pdf'), deferRender = TRUE
         
       ))
       
@@ -2225,8 +2225,8 @@ shinyServer(function(input, output, session){
     
     if (input$startAnalysis && input$pisaPrediction && input$advancedPisa){
       
-      datatable(selectedPisaAdvanced(), escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip', tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)), deferRender = TRUE
+      datatable(selectedPisaAdvanced(), escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+        dom = 'T<"clear">lfrtip', buttons = c('copy', 'excel', 'pdf'), deferRender = TRUE
         
       ))
       
@@ -2827,11 +2827,11 @@ shinyServer(function(input, output, session){
     
     df = as.data.frame(combined())
     
-    #datatable(currentData(), ,escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-    #dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE))#, colVis = list(activate = 'click', showAll = TRUE)
+    #datatable(currentData(), ,escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+    #dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf')#, colVis = list(activate = 'click', showAll = TRUE)
     
     
-    datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('TableTools'), options = list(dom = 'T<"clear">lfrtip',tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),  columnDefs = list(list(targets = c(8:12), visible = FALSE)))
+    datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('Buttons'), options = list(dom = 'T<"clear">lfrtip',buttons = c('copy', 'excel', 'pdf'),  columnDefs = list(list(targets = c(8:12), visible = FALSE)))
               
     )%>% formatStyle(
       columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC", "Text Mining"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE", "ResultTM"),
@@ -2845,11 +2845,11 @@ shinyServer(function(input, output, session){
     
     df = as.data.frame(combinedSymmetry())
     
-    #datatable(currentData(), ,escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('TableTools', 'Responsive'), options = list(
-    #dom = 'T<"clear">lfrtip',  tableTools = list(sSwfPath = copySWF('www', pdf = TRUE))#, colVis = list(activate = 'click', showAll = TRUE)
+    #datatable(currentData(), ,escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+    #dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf')#, colVis = list(activate = 'click', showAll = TRUE)
     
     
-    datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('TableTools'), options = list(dom = 'T<"clear">lfrtip',tableTools = list(sSwfPath = copySWF('www', pdf = TRUE)),  columnDefs = list(list(targets = c(7:10), visible = FALSE)))
+    datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('Buttons'), options = list(dom = 'T<"clear">lfrtip',buttons = c('copy', 'excel', 'pdf'),  columnDefs = list(list(targets = c(7:10), visible = FALSE)))
               
     )%>% formatStyle(
       columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE"),

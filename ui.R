@@ -173,7 +173,7 @@ conditionalPanel("input.tabs=='Help'"
 
 mainPanel(
 
-navbarPage("Bioassembly Evaluation Tool v.0.4.0", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
+navbarPage("Bioassembly Evaluation Tool v.0.4.1", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
 
         tabPanel("Evaluation results",
 
@@ -434,12 +434,12 @@ tags$img(src = "screenShots/nftar.jpg", width = "100%")
 
             HTML('<a href="#" class="back-to-top">Back to Top</a>'),
 
-HTML('<script src="js/jquery.js"></script>')
+HTML('<script src="js/jquery.js"></script>'),
 
-# tags$style(type="text/css",
-# ".shiny-output-error { visibility: hidden; }",
-# ".shiny-output-error:before { visibility: hidden; }"
-# )
+tags$style(type="text/css",
+".shiny-output-error { visibility: hidden; }",
+".shiny-output-error:before { visibility: hidden; }"
+)
 
 
 
