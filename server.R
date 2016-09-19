@@ -1,5 +1,4 @@
 shinyServer(function(input, output, session){
-  #rm(list = ls())
   library("tm")
   library("caret")
   library("DT")
