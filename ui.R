@@ -29,7 +29,7 @@ radioButtons(inputId = "dataInput", "", list("PDB ID"=1, "Upload file"=2, "Uploa
 br(),
 
 
- textInput(inputId = "PdbId", label = "Enter a PDB ID", value = "1SMT"),
+ textInput(inputId = "PdbId", label = "Enter a PDB ID", value = "1Z77"),
 bsTooltip(id = "PdbId", title="Enter a 4 characters long ID", placement = "bottom", trigger = "hover", options = NULL)
 
 
@@ -267,115 +267,128 @@ h4(textOutput(outputId = "section14")),
 
             tabsetPanel(
                 tabPanel('About',
-                h4("Introduction"),
-tags$p("", a("Protein Data Bank", href = "http://www.rcsb.org/pdb/home/home.do", target="_blank"), " (PDB) is a repository, which consists of detailed information about the three-dimensional (3D) structures of macromolecules, such as proteins and nucleic acids. As of August 2015, there are more than 110,000 biological macromolecular structures (i.e. protein, nucleic acid) in the PDB. These structure predictions are either from author deposition, using experimental methods, such as X-ray crystallography, nuclear magnetic resonance (NMR), electron microscopy etc., or PISA (Proteins, Interfaces, Structures and Assemblies) predictions, which is a computational method based on chemical thermodynamics."),
+                h4("Introduction", id = "intro"),
+tags$p(align = "justify", a("The Protein Data Bank", href = "http://www.rcsb.org/pdb/home/home.do", target="_blank"), " (PDB) provides detailed information about the three-dimensional 
+       (3D) structures of biological macromolecules, including proteins and nucleic acids. The PDB was founded in 1971 with only 7 structures and it contains more than 
+       118,000 structures as of May 2016. The majority of the 3D structures of biological assemblies in the PDB are determined by X-ray crystallography. However, it is not 
+       possible to distinguish biologically relevant contacts from crystal contacts in a crystal lattice by using crystallography alone. Therefore, further experiments, 
+       such as gel filtration, size exclusion chromatography, analytical ultracentrifugation, etc., are needed to assign the correct oligomeric state of a biological assembly. 
+       Moreover, the correct biological assembly information may be inferred by comparison with similar proteins through homology modeling and be provided by the structure 
+       depositor as metadata. Furthermore, it can be predicted using analytical methods, such as", a("PISA", href = "http://www.ebi.ac.uk/pdbe/pisa/", target="_blank"), "(Proteins, Interfaces, Structures and Assemblies) 
+       (Krissinel and Henrick, 2007) and", a("EPPIC", href = "http://www.eppic-web.org/ewui/", target="_blank"), "(Evolutionary Protein-Protein Interface Classifier) (Duarte et al. 2012)"),
 
-tags$p("Despite the enormous efforts, it is estimated that nearly 15% of the biological assembly (BA) structures in the PDB archive is incorrect. The problem arises beacause of the multiple predictions (either author or PISA) of the same PDB entry. For example, there are 13 BA predictions for PDB ID:",a("1BEN", href = "http://www.rcsb.org/pdb/explore/explore.do?structureId=1ben", target="_blank"),"(see the screenshot below)."),
-br(),
-tags$img(src = "screenShots/1ben.jpg", width = "100%"),
-br(),
-br(),
-tags$p("If we look at the detailed BA information, we can see that there are some inconsistencies in stoichiometry and symmetry between different BA predictions. For example, 1BEN is a hetero-dimer (AB) and has a cyclic (C1) symmetry according to the BA1 prediction, whereas it is a dodecamer (A6B6) and has a dihedral (D3) symmetry according to the BA3 prediction."),
-br(),
+tags$p(align = "justify", "The PDB grows by more than 10,000 structures annually thanks to the researchers all around the world. 
+       However, because of the incomplete or unclear experimental data, as well as the errors in the data upload 
+       processes, the biological assembly annotations in the PDB are not always correct and reliable (Capitani et al. 2015). 
+       In spite the great efforts to reduce the number of erroneous structures, it is reported that there are 
+       significant number of incorrect biological assemblies in the PDB. The error rate is 14% according to 
+       Levy (2007), while more recently Baskaran et al. (2014) reported a lower bound of error rate as 7%. 
+       Therefore, an extensive study is needed to detect the incorrect structures throughout the archive and to 
+       assign the most likely biological assemblies for the possibly incorrect structures."),
 
-tags$img(src = "screenShots/mp.pdf", width = "100%"),
+tags$p(align = "justify", "Here we developed a web-based tool to detect incorrect biological assembly predictions throughout the PDB repository and to assign the most
+       probable biological assemblies for the detected incorrect structures by using four different approaches:"),
 
-br(),
-br(),
-
-h4("Inconsistency in Stoichiometry and Symmetry"),
-
-tags$p("To overcome this problem and to identify incorrect BA predictions (outliers) in the PDB, we can use stoichiometry and symmetry information for each PDB entry and try to detect inconsistencies between multiple BA predictions. For this purpose, we make use of the homologous protein chain sequences. Since a great deal of protein chains in the PDB are similar in terms of sequence similarity,  we can cluster these chains and select only one representative from each group of similar chains. First, we find sequence clusters for 95%, 90%, 70% and 40% sequence similarity. Then, we calculate consistency probability for each PDB entry in each sequence cluster using following formula:"),
-
-tags$p(align="center", "P(Consistencyi) = P(Stoichiometryi)xP(Symmetryi|Stoichiometryi)"),
-
-tags$p("Finally, if consistency probability < 0.5 for any PDB entry, then we declare it as possible outlier."),
-
-h5("Example"),
-
-tags$p("95% Sequence cluster and representative chain is 1W28.A"),
 
 tags$ul(
-tags$li("A3 stoichiometry and C3 symmetry: 13 instances"),
-tags$li("A stoichiometry and C symmetry: 5 instances"),
-tags$li('P(Consistency = A3_C3) = P(A3)xP(C3|A3) = (13/18)x(13/13) = 0.722'),
-tags$li('P(Consistency = A1_C1) = P(A1)xP(C1|A1) = (5/18)x(5/5) = 0.278'),
-tags$li("Since consistency probability for A1 stoichiometry and C1 symmetry is less than our treshold, 0.5, we can conclude that these biological assembly predictions could be incorrect and further investigations might be neccessary to reveal the correct biological asseblies. In our example, we detect PDB entries",  a("1E5I", href = "http://www.rcsb.org/pdb/explore/explore.do?structureId=1e5i", target="_blank"),",", a("1W28", href = "http://www.rcsb.org/pdb/explore/explore.do?structureId=1w28", target="_blank"), ",", a("1W2A", href = "http://www.rcsb.org/pdb/explore/explore.do?structureId=1w2a", target="_blank"),",", a("1W2N", href = "http://www.rcsb.org/pdb/explore/explore.do?structureId=1w2n", target="_blank"), "and", a("1W2O", href = "http://www.rcsb.org/pdb/explore/explore.do?structureId=1w2o", target="_blank"), "as possible outliers."),
-br(),
-tags$img(src = "screenShots/outlierDetection.jpg", width = "100%"),
-br(),
-br()
+  tags$li("Determine a representative biological assembly for a given certain sequence identity threshold using sequence cluster approach and consistency score calculation."),
+  tags$li("Extract correct oligomeric state information alongside with the experimental evidence from a primary paper for a given PDB entry using a text mining approach."),
+  tags$li('Rebuild the biological assembly using PISA software and predict stoichiometry and symmetry of a protein structure using BioJava. '),
+  tags$li('Predict stoichiometry and symmetry of a protein structure using EPPIC software.')
 ),
 
-tags$p("In order to predict the most probable BA for these kind of inconsistent structures throughout the PDB archive, we developed a text mining approach. This tool mines the primary citations of the protein structures in order to extract correct BA information and predict oligomeric state for BA structrues in the PDB (see", a("Usage", href="#usage")," for more detailed information).")
+tags$p(align = "justify", "Finally, we aggregated results from these four different methods to provide a consensus result in order to predict the most likely biological assembly of each biological macromolecule in the PDB."),
 
+tags$p("Please see", a("Manual", href="#manual")," for more detailed information."),
+br(),
+h4("General workflow of the tool"),
+br(),
+HTML('<center><img src="screenShots/workFlow.jpg" width = "50%"></center>'),
+br(),
+br(),
+
+h4("Workflow of the sequence cluster (SC) approach"),
+br(),
+tags$img(src = "screenShots/sequenceCluster.jpg", width = "100%"),
+br(),
+br(),
+
+h4("Workflow of the text mining (TM) approach"),
+br(),
+tags$img(src = "screenShots/MLprocedure.jpg", width = "100%"),
+br(),
+br(),
+
+h4("Workflow of the PISA approach"),
+br(),
+tags$img(src = "screenShots/pisaProcedure.jpg", width = "100%"),
+br(),
+br(),
+
+h4("Consensus approach"),
+br(),
+tags$img(src = "screenShots/consensus.jpg", width = "100%")
 
 
 ),
-tabPanel('Usage', id = "usage",
+tabPanel('Manual', id = "manual",
 
-h4("Workflow of the tool"),
 
-tags$img(src = "screenShots/workFlow.pdf", width = "100%"),
 
 h4("Usage of the tool"),
 
 tags$ol(
-    tags$li("First, upload a data set using", tags$b("Data upload"), "tab. Data set requires PDB ID and PMC/PubMed ID. Please note that, even though the PMC ID has a 'PMC' prefix, the ID must be without that prefix (i.e. 1616964 instead of PMC1616964, see example dataset). There are three options in the", tags$b("Data upload"), "tab. Users can load example data set to test the tool or upload their own dataset using either", tags$b("Single PDB entry"), "or", tags$b("Upload a file"), "options."),
+    tags$li(align = "justify", "The tool has a very simple user interface, which only requires PDB entries as an input. Users can either enter a single PDB entry into the box in the tool or 
+            upload a .txt file, which includes multiple PDB IDs, using the option in the tool for multiple PDB entries. Furthermore, users can upload a PDF version of a paper
+            as a third option for the text mining method. After entering or uploading the proper input to the tool, one can click", tags$b("Evaluate"),"button to start evaluation process for PDB entries."),
 
 br(),
-    tags$img(src = "screenShots/ss2.jpg", width = "100%"),
 
+    tags$img(src = "screenShots/homePage.jpg", width = "100%"),
 
-br(),
-br(),
-
-
-    tags$li("After uploading the dataset properly, click", tags$b("Text mining"), "tab. Select one of three machine learning algorithms from the side-panel on the left: Support Vector Machines, Boosted Logistic Regression and Random Forest. Finally, click submit to start text mining."),
-br(),
-
-tags$img(src = "screenShots/ss3.jpg", width = "100%"),
 
 br(),
 br(),
 
-    tags$li("After text mining process is done, the results will be appeared under six subtabs in this section.", tags$b("Summary"), "displays a summary table of the results. Users can overview the results quickly, such as number of articles, number of articles founded as HTML, number of articles without oligomeric state, number of articles without full text or abstract and number of unique PDB ID."),
+
+    tags$li(align = "justify", "Initially, the tool gives results for both oligomeric state and symmetry information. The first table contains oligomeric state results from four different 
+evaluation methods, including sequence clustering, text mining, PISA and EPPIC, and the second table includes results from sequence clustering, PISA and EPPIC. 
+Finally, the results are aggregated and majority rule is applied to obtain a consensus result. Each result from different methods is compared to current result in the PDB. 
+If the two results do not match, red color is used to indicate the inconsistency between the results. On the other hand, green color is used to show the consistency between 
+evaluation methods and the current PDB results, and blue color is used to demonstrate the inconclusive results."),
 br(),
-    tags$img(src = "screenShots/summary.jpg", width = "100%"),
+
+tags$img(src = "screenShots/resultPage.jpg", width = "100%"),
+
 br(),
 br(),
 
-tags$li("Users can see the extracted sentences from the primary citations under", tags$b("Sentences"),"sub-tab. These sentences extracted from papers based on a keyword list (see full list in the", tags$b("Keywords"), "sub-tab under the", tags$b("Help"),"tab). The first column shows the PDB IDs. These IDs are also links for the corresponding RCSB web-site. Second column shows the hit keyword as oligomeric state and last column shows the corresponding sentence."),
+    tags$li(align = "justify", "The evaluation methods can be selected individually to see the more detailed results for sequence clustering, text mining, PISA and EPPIC. 
+            Sequence cluster table gives stoichiometry and symmetry information in the cluster alongside with the consistency score, the number of biological assemblies in 
+            the cluster and the PDB entries in the cluster. If the maximum consistency score in the cluster is greater than 0.5 and there are enough biological
+            assemblies in the cluster, a green background color will be used to indicate the row that has the highest consistency score and the representative biological 
+            assembly for the cluster.  Text mining results table contains the oligomeric state prediction keyword, experimental evidence information, ML (machine-learning) 
+            filtering result as TRUE or FALSE, majority probability, publication ID as PMC or PubMed, publication type as full-text or abstract and primary citation 
+            indication as yes or no. PISA predictions table gives PDB ID, assessment as stable, grey or unstable, structure as BA (biological assembly) or AU 
+            (asymmetric unit) and information that define oligomeric state: stoichiometry and symmetry. Likewise, EPPIC prediction table includes stoichiometry and 
+            symmetry information for a particular PDB entry."),
+br(),
+    tags$img(src = "screenShots/detailedResultPage.jpg", width = "100%"),
+br(),
+br(),
+
+tags$li(align = "justify", "One can display all extracted sentences from the primary publication alongside with the keywords, experimental evidence information and ML filtering label. 
+        The sentences classified as positive by the ML algorithm will be displayed with a green background color, while negative sentences will be displayed with a red 
+        background color."),
 br(),
 tags$img(src = "screenShots/sentences.jpg", width = "100%"),
 br(),
 br(),
 
-tags$li("Since we use a set of biological assembly related keyword list, all extracted sentences will be related with the biological assembly information somehow. However, some of these sentences are redundant. For example, some sentences will be related with the assymetric unit rather than the biological assembly and some sentences will be about some other protein structures and not the one we interested in. Therefore, we apply machine learning algorithms to eliminate these redundant sentences. Users can select one of three machine learning algorithms, including Support Vector Machines, Boosted Logistic Regression and Random Forest, at the begining of the text mining analysis (see the model performances of the machine learning algorithms in the", tags$b("Model performance "), "tab under the",  tags$b("Help"),"tab). In this section, there will be an extra column,", tags$b("Label"),", which classify these sentecences as biological assembly related (TRUE) and biological assembly unrelated (FALSE)."),
+tags$li("PISA advanced results contain a table, which include accessible surface area, buried surface area, dissociation energy, entropy, dissociation area and internal 
+        energy, and a 3D visualization tool for the protein structure."),
 br(),
-tags$img(src = "screenShots/ml.jpg", width = "100%"),
-br(),
-br(),
-
-tags$li("Finally, click", tags$b("Oligomeric state prediction"), "sub-tab to see the oligomeric state predictions for each PDB ID. The probability will be calculated based on the majority of the remaining sentences after machine learning filtering. PDB ID and PMC ID columns are also links for the corresponding protein structre in the RCSB website and the papers in the PMC or PubMed databases."),
-br(),
-tags$img(src = "screenShots/ss4.jpg", width = "100%"),
-br(),
-br(),
-
-tags$li("Since we use a keyword list, there maybe some papers which have a full text or abstact but not the keyword that we are using for search and extract sentences. In this case users can use", tags$b("No oligomeric state "), "sub-tab and easily reach that papers using the referring links."),
-br(),
-tags$img(src = "screenShots/nor.jpg", width = "100%"),
-br(),
-br(),
-tags$li("Since some papers are old enough, there may not be available full texts or even abstracts. These papers will be appeared in the", tags$b("No full text/abstract"), "sub-tab with their corresponding PDB ID and PMC or PubMed links."),
-
-tags$img(src = "screenShots/nftar.jpg", width = "100%")
-
-
-
-
-
+tags$img(src = "screenShots/pisa.jpg", width = "100%")
 
 )
                 ),
@@ -415,14 +428,45 @@ tags$img(src = "screenShots/nftar.jpg", width = "100%")
 
 
 
-            tabPanel('Keywords',h5("These keywords will be used to search and extract biological assembly related sentences throughout the paper(s)."),
-
-            verbatimTextOutput("baKeywords")
-
+            tabPanel('Keywords',
+                     
+                h5("These keywords will be used to search and extract biological assembly related sentences throughout the paper(s)."),
+                    verbatimTextOutput("baKeywords"),
+                
+                h5("These keywords will be used to search and extract experimental evidence."),
+                  verbatimTextOutput("eeKeywords")
+        
             ),
 
             tabPanel('News',HTML('<p><b>This page will be available soon...</b></p>')),
-            tabPanel('Authors',HTML('<p><b>This page will be available soon...</b></p>')),
+            tabPanel('Authors',
+                     br(),
+                     HTML('<p><a href="http://yunus.hacettepe.edu.tr/~selcuk.korkmaz/" target="_blank"> <b>Selcuk Korkmaz, PhD</b></a><p>'),
+                     HTML('<p>Hacettepe University Faculty of Medicine <a href="http://www.biostatistics.hacettepe.edu.tr" target="_blank"> Department of Biostatistics</a><p>'),
+                     HTML('<p><a href="mailto:selcukorkmaz@gmail.com" target="_blank">selcukorkmaz@gmail.com</a><p>'),
+                     
+                     HTML('<p><a href="https://www.linkedin.com/in/peterrose" target="_blank"> <b>Peter Rose, PhD</b></a><p>'),
+                     HTML('<p>Site Head <a href="http://www.rcsb.org/pdb/home/home.do" target="_blank">RCSB Protein Data Bank West</a> UCSD<p>'),
+                     HTML('<p><a href="mailto:peter.rose@rcsb.org" target="_blank">peter.rose@rcsb.org</a><p>'),
+                     
+                     HTML('<p> <b>Jose Duarte, PhD</b><p>'),
+                     HTML('<p>Senior Scientist <a href="http://www.rcsb.org/pdb/home/home.do" target="_blank">RCSB Protein Data Bank West</a> UCSD<p>'),
+                     HTML('<p><a href="mailto:jose.duarte@rcsb.org" target="_blank">jose.duarte@rcsb.org</a><p>'),
+                     
+                     HTML('<p><a href="http://www.spice-3d.org"> <b>Andreas Prlić, PhD</b></a><p>'),
+                     HTML('<p>Technical and Scientific Team Lead <a href="http://www.rcsb.org/pdb/home/home.do" target="_blank">RCSB Protein Data Bank West</a> UCSD<p>'),
+                     HTML('<p><a href="mailto:andreas.prlic@rcsb.org" target="_blank">andreas.prlic@rcsb.org</a><p>'),
+                     
+                     HTML('<p><a href="http://yunus.hacettepe.edu.tr/~dincer.goksuluk" target="_blank"> <b>Dincer Goksuluk</b></a><p>'),
+                     HTML('<p>Hacettepe University Faculty of Medicine <a href="http://www.biostatistics.hacettepe.edu.tr" target="_blank"> Department of Biostatistics</a><p>'),
+                     HTML('<p><a href="mailto:dincer.goksuluk@gmail.com" target="_blank">dincer.goksuluk@gmail.com</a><p>'),
+     
+                     HTML('<p><a href="http://gokmenzararsiz.simplesite.com" target="_blank"> <b>Gokmen Zararsiz, PhD</b></a><p>'),
+                     HTML('<p>Erciyes University Faculty of Medicine <a href="http://www.biostatistics.hacettepe.edu.tr" target="_blank"> Department of Biostatistics</a><p>'),
+                     HTML('<p><a href="mailto:gokmenzararsiz@hotmail.com" target="_blank">gokmenzararsiz@hotmail.com</a><p>')  
+                     
+                     
+            ),
             tabPanel('Citation',HTML('<p><b>This page will be available soon...</b></p>'))
         ))),
 
@@ -434,12 +478,12 @@ tags$img(src = "screenShots/nftar.jpg", width = "100%")
 
             HTML('<a href="#" class="back-to-top">Back to Top</a>'),
 
-HTML('<script src="js/jquery.js"></script>')
+HTML('<script src="js/jquery.js"></script>'),
 
-# tags$style(type="text/css",
-# ".shiny-output-error { visibility: hidden; }",
-# ".shiny-output-error:before { visibility: hidden; }"
-# )
+tags$style(type="text/css",
+".shiny-output-error { visibility: hidden; }",
+".shiny-output-error:before { visibility: hidden; }"
+)
 
 
 

@@ -1443,6 +1443,15 @@ shinyServer(function(input, output, session){
     
   })
   
+  output$eeKeywords<- renderPrint({
+    
+    
+    keywords = experimentalEvidenceWordList()
+    print(keywords)
+    
+    
+  })
+  
   ############################################################################################
   ############### Help - Model performances  - End ######################################
   ############################################################################################
