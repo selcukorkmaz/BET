@@ -299,7 +299,7 @@ tags$ul(
 
 tags$p(align = "justify", "Finally, we aggregated results from these four different methods to provide a consensus result in order to predict the most likely biological assembly of each biological macromolecule in the PDB."),
 
-tags$p("Please see", a("Manual", href="#manual")," for more detailed information."),
+tags$p("All source code is available at" , a("Github.", href = "https://github.com/selcukorkmaz/BET", target="_blank"), "Please see", a("Manual", href="#manual")," for more detailed information."),
 br(),
 h4("General workflow of the tool"),
 br(),
