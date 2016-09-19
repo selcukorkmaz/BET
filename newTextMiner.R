@@ -64,7 +64,8 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
             
             if(source[i]=="PMC"){
                 
-                doc <- htmlParse(paste("http://www.ncbi.nlm.nih.gov/pmc/articles/",gsub("PMC", "", PubId[i]),"/", sep=""))
+                url = paste("http://www.ncbi.nlm.nih.gov/pmc/articles/",gsub("PMC", "", PubId[i]),"/", sep="")
+                doc <- htmlParse(rawToChar(GET(url)$content))
                 
                 sections = xpathSApply(doc, "//div[starts-with(@class, 'tsec sec')]", xmlValue)
                 

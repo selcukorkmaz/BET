@@ -17,7 +17,7 @@ shinyServer(function(input, output, session){
   library("shinyBS")
   #library("pROC")
   library("FeatureHashing")
-  #library("httr")
+  library("httr")
   source("newTextMiner.R")
   load("blr.rda")
   load("svm.rda")
