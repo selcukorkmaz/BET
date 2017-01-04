@@ -61,7 +61,7 @@ br(),
 #h6("Check the box to include data mentions"),
 #checkboxInput("dataMentions", HTML('<p><font size="2">Include data mentions</font></p>'), FALSE),
 
-h5("Biological assembly evaluation methods"),
+h5("Quaternary structure evaluation methods"),
 
 
 fluidRow(column(3, checkboxInput(inputId = "signatureResults", label = "SC", value = FALSE)),
@@ -173,7 +173,7 @@ conditionalPanel("input.tabs=='Help'"
 
 mainPanel(
 
-navbarPage("Bioassembly Evaluation Tool v.0.4.1", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
+navbarPage("QuatStruct v.0.99", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
 
         tabPanel("Evaluation results",
 
