@@ -563,7 +563,7 @@ shinyServer(function(input, output, session){
   
   alert <- reactive({
     if(!input$startAnalysis) {
-      createAlert(session, "help", "popupHelp", title = "Welcome to Quaternary Structure Evaluation Tool!",
+      createAlert(session, "help", "popupHelp", title = "Welcome to Quaternary Structure Evaluation Tool (v.0.99)",
                   content = "This web tool is developed for evaluation of quaternary structures of protein structures in the Protein Data Bank. There are four different methods for the evaluation process:
                   <ul>
                   <li>Sequence cluster (SC) result with a consistency score for each PDB ID.</li> <br>
