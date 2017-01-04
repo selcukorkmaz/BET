@@ -563,13 +563,13 @@ shinyServer(function(input, output, session){
   
   alert <- reactive({
     if(!input$startAnalysis) {
-      createAlert(session, "help", "popupHelp", title = "Welcome to Biological Assembly Evaluation Tool!",
-                  content = "This web tool is developed for evaluation of biological assemblies of protein structures in the Protein Data Bank. There are four different methods for the evaluation process:
+      createAlert(session, "help", "popupHelp", title = "Welcome to Quaternary Structure Evaluation Tool!",
+                  content = "This web tool is developed for evaluation of quaternary structures of protein structures in the Protein Data Bank. There are four different methods for the evaluation process:
                   <ul>
                   <li>Sequence cluster (SC) result with a consistency score for each PDB ID.</li> <br>
                   <li>Text mining of the primary citations in order to extract oligomeric state and experimental evidence.</li> <br>
-                  <li>Stoichiometry and symmetry predictions for biological assemblies using PISA.</li><br>
-                  <li>Stoichiometry and symmetry predictions for biological assemblies using EPPIC.</li>
+                  <li>Stoichiometry and symmetry predictions for quaternary structures using PISA.</li><br>
+                  <li>Stoichiometry and symmetry predictions for quaternary structures using EPPIC.</li>
                   </ul><br>
                   
                   In order to use this application:
@@ -590,10 +590,10 @@ shinyServer(function(input, output, session){
   
   alertOD <- reactive({
     if(!input$startAnalysis) {
-      createAlert(session, "helpOD", "popupHelpOD", title = "Welcome to Biological Assembly Evaluation Pipeline!",
+      createAlert(session, "helpOD", "popupHelpOD", title = "Welcome to Quaternary Structure Evaluation Pipeline!",
                   content = "<ul>
                   <li>First, select a sequence cluser: 95%, 90%, 70% or 40%.</li> <br>
-                  <li>Then, click <b>Detect</b> button to detect outlier biological assembly predictions.</li> <br>
+                  <li>Then, click <b>Detect</b> button to detect outlier quaternary structure predictions.</li> <br>
                   <li>For further information please see the <b>Help</b> tab.</li>
                   </ul>",
                   append = FALSE)
@@ -609,12 +609,12 @@ shinyServer(function(input, output, session){
   alertTM <- reactive({
     
     if(!input$startAnalysis) {
-      createAlert(session, "helpTM", "popupHelpTM", title = "Welcome to Biological Assembly Evaluation Pipeline!",
+      createAlert(session, "helpTM", "popupHelpTM", title = "Welcome to Quaternary Structure Evaluation Pipeline!",
                   content = "<ul>
                   <li>Select one of the machine learning algorithms from the left panel and click submit to start mining.</li> <br>
                   <li> A summary table will be displayed under the <b>Summary</b> tab.</li> <br>
-                  <li> Sentences which are related with the biological assembly will be displayed under the <b>Sentences</b> tab.</li> <br>
-                  <li> To eliminate redundat sentences, these sentences will be classified as biological assembly related (TRUE) and biological assembly unrelated (FALSE) under the <b>Machine learning</b> tab. A majority probability will be calculated and oligomeric state prediction will be made for each PDB entry based on this calculated majority probability.</li> <br>
+                  <li> Sentences which are related with the quaternary structure will be displayed under the <b>Sentences</b> tab.</li> <br>
+                  <li> To eliminate redundat sentences, these sentences will be classified as quaternary structure related (TRUE) and quaternary structure unrelated (FALSE) under the <b>Machine learning</b> tab. A majority probability will be calculated and oligomeric state prediction will be made for each PDB entry based on this calculated majority probability.</li> <br>
                   <li> The papers without any oligomeric state information will be displayed under the <b>No oligomeric state</b> tab.</li> <br>
                   <li> The papers without full text or abstracts will be displayed under the <b>No full text/abstract result</b> tab.</li> <br>
                   <li>For further information please see the <b>Help</b> tab.</li>
@@ -1981,7 +1981,7 @@ shinyServer(function(input, output, session){
     
     sequenceClusterLast = sequenceCluster[,c(7,1:6)]
     names(sequenceClusterLast) = c("PDB ID", "Representative chain","Stoichiometry", "Symmetry",
-                                   "Consistency score", "Number of Biological Assemblies", "PDB entries in the cluster")
+                                   "Consistency score", "Number of Quaternary Structures", "PDB entries in the cluster")
     
     
     maxCS = sequenceClusterLast$`Consistency score`[which.max(sequenceClusterLast$`Consistency score`)]
@@ -2369,7 +2369,7 @@ shinyServer(function(input, output, session){
     
     seqRes2 = seqRes[,c(7,1:6)]
     
-    names(seqRes2) = c("PDB ID", "Representative chain", "Stoichiometry", "Symmetry", "Consistency score", "Number of Biological Assemblies", "PDB IDs")
+    names(seqRes2) = c("PDB ID", "Representative chain", "Stoichiometry", "Symmetry", "Consistency score", "Number of Quaternary Structure", "PDB IDs")
     seqRes2
     
   })
