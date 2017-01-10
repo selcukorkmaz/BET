@@ -95,8 +95,8 @@ column(6, checkboxInput(inputId = "advancedOptions", label = "Options", value = 
 
     conditionalPanel(condition = "input.advancedResults",
         checkboxInput(inputId = "mlFiltering", label = "Sentences", value = FALSE),
-        checkboxInput(inputId = "advancedPisa", label = "Pisa advanced results", value = FALSE),
-        checkboxInput(inputId = "Display", label = "Display 3D structure", value = FALSE)
+        checkboxInput(inputId = "advancedPisa", label = "PISA advanced results", value = FALSE)
+        #checkboxInput(inputId = "Display", label = "Display 3D structure", value = FALSE)
 
 ),
 
@@ -268,36 +268,29 @@ h4(textOutput(outputId = "section14")),
             tabsetPanel(
                 tabPanel('About',
                 h4("Introduction", id = "intro"),
-tags$p(align = "justify", a("The Protein Data Bank", href = "http://www.rcsb.org/pdb/home/home.do", target="_blank"), " (PDB) provides detailed information about the three-dimensional 
-       (3D) structures of biological macromolecules, including proteins and nucleic acids. The PDB was founded in 1971 with only 7 structures and it contains more than 
-       118,000 structures as of May 2016. The majority of the 3D structures of quaternary structures in the PDB are determined by X-ray crystallography. However, it is not 
-       possible to distinguish biologically relevant contacts from crystal contacts in a crystal lattice by using crystallography alone. Therefore, further experiments, 
-       such as gel filtration, size exclusion chromatography, analytical ultracentrifugation, etc., are needed to assign the correct oligomeric state of a quaternary structure. 
-       Moreover, the correct quaternary structure information may be inferred by comparison with similar proteins through homology modeling and be provided by the structure 
-       depositor as metadata. Furthermore, it can be predicted using analytical methods, such as", a("PISA", href = "http://www.ebi.ac.uk/pdbe/pisa/", target="_blank"), "(Proteins, Interfaces, Structures and Assemblies) 
-       (Krissinel and Henrick, 2007) and", a("EPPIC", href = "http://www.eppic-web.org/ewui/", target="_blank"), "(Evolutionary Protein-Protein Interface Classifier) (Duarte et al. 2012)"),
+tags$p(align = "justify", a("The Protein Data Bank", href = "http://www.rcsb.org/pdb/home/home.do", target="_blank"), " (PDB) is the single worldwide archive of the three-dimensional (3D) structures of proteins and nucleic acids. As of November 2016, the PDB contains more than 124,000 structures and grows by more than 10,000 structures annually. Since the 3D structure of a protein is vital to understand the mechanisms of biological processes, diseases and drug design, the correct quaternary assembly information is of critical importance. The biologically relevant form of a 3D structure determined by X-ray crystallography is not directly obtainable by this experimental technique. Instead, this information may come from additional experiments, is inferred by comparison with similar proteins, is predicted using the PISA (Proteins, Interfaces, Structures and Assemblies), or is provided by the structure depositor as metadata. Furthermore, it can be predicted using analytical methods, such as", a("PISA", href = "http://www.ebi.ac.uk/pdbe/pisa/", target="_blank"), "(Proteins, Interfaces, Structures and Assemblies) (Krissinel and Henrick, 2007) and", a("EPPIC", href = "http://www.eppic-web.org/ewui/", target="_blank"), "(Evolutionary Protein-Protein Interface Classifier) (Duarte et al. 2012)"),
 
 tags$p(align = "justify", "The PDB grows by more than 10,000 structures annually thanks to the researchers all around the world. 
        However, because of the incomplete or unclear experimental data, as well as the errors in the data upload 
        processes, the quaternary structure annotations in the PDB are not always correct and reliable (Capitani et al. 2015). 
        In spite the great efforts to reduce the number of erroneous structures, it is reported that there are 
-       significant number of incorrect quaternary structures in the PDB. The error rate is 14% according to 
+       significant number of incorrect quaternary structure annotations in the PDB. The error rate is 14% according to 
        Levy (2007), while more recently Baskaran et al. (2014) reported a lower bound of error rate as 7%. 
        Therefore, an extensive study is needed to detect the incorrect structures throughout the archive and to 
        assign the most likely quaternary structures for the possibly incorrect structures."),
 
-tags$p(align = "justify", "Here we developed a web-based tool to detect incorrect biological assembly predictions throughout the PDB repository and to assign the most
-       probable biological assemblies for the detected incorrect structures by using four different approaches:"),
+tags$p(align = "justify", "Here we developed a web-based tool to detect incorrect quaternary structure annotations throughout the PDB repository and to assign the most
+       probable annotations for the detected incorrect structures by using four approaches:"),
 
 
 tags$ul(
   tags$li("Determine a representative quaternary structure for a given certain sequence identity threshold using sequence cluster approach and consistency score calculation."),
   tags$li("Extract correct oligomeric state information alongside with the experimental evidence from a primary paper for a given PDB entry using a text mining approach."),
-  tags$li('Rebuild the quaternary structure using PISA software and predict stoichiometry and symmetry of a protein structure using BioJava. '),
+  tags$li('Rebuild the quaternary structure using PISA software and charactarize stoichiometry and symmetry of a protein structure using BioJava. '),
   tags$li('Predict stoichiometry and symmetry of a protein structure using EPPIC software.')
 ),
 
-tags$p(align = "justify", "Finally, we aggregated results from these four different methods to provide a consensus result in order to predict the most likely quaternary structure of each biological macromolecule in the PDB."),
+tags$p(align = "justify", "Finally, we aggregated results from these four methods to provide a consensus result in order to predict the most likely quaternary structure of each biological macromolecule in the PDB."),
 
 tags$p("All source code is available at" , a("Github.", href = "https://github.com/selcukorkmaz/BET", target="_blank"), "Please see", a("Manual", href="#manual")," for more detailed information."),
 br(),
@@ -309,19 +302,19 @@ br(),
 
 h4("Workflow of the sequence cluster (SC) approach"),
 br(),
-tags$img(src = "screenShots/sequenceCluster.jpg", width = "100%"),
+tags$img(src = "screenShots/sequenceCluster.tiff", width = "100%"),
 br(),
 br(),
 
 h4("Workflow of the text mining (TM) approach"),
 br(),
-tags$img(src = "screenShots/MLprocedure.jpg", width = "100%"),
+tags$img(src = "screenShots/MLprocedure.tiff", width = "100%"),
 br(),
 br(),
 
 h4("Workflow of the PISA approach"),
 br(),
-tags$img(src = "screenShots/pisaProcedure.jpg", width = "100%"),
+tags$img(src = "screenShots/pisaProcedure.tiff", width = "100%"),
 br(),
 br(),
 
@@ -386,7 +379,7 @@ br(),
 br(),
 
 tags$li("PISA advanced results contain a table, which include accessible surface area, buried surface area, dissociation energy, entropy, dissociation area and internal 
-        energy, and a 3D visualization tool for the protein structure."),
+        energy."),
 br(),
 tags$img(src = "screenShots/pisa.jpg", width = "100%")
 
