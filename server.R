@@ -633,17 +633,18 @@ shinyServer(function(input, output, session){
   
   TextMinerResult <- eventReactive(input$startAnalysis,{
     
-    oligomerNames = oligomerNames()
-    mutantProtein = mutantProtein()
+    if(input$OligomericStatePrediction){
+      oligomerNames = oligomerNames()
+      mutantProtein = mutantProtein()
     
-    
-    #if
-    
-    newTextMiner(currentData()[,2], as.character(currentData()[,1]), as.character(currentData()[,3]), as.character(currentData()[,4]), oligomerNames, mutantProtein, fi =  dataPath())
-    
+      newTextMiner(currentData()[,2], as.character(currentData()[,1]), as.character(currentData()[,3]), as.character(currentData()[,4]), oligomerNames, mutantProtein, fi =  dataPath())
+    }
   })
   
   textMiner <- reactive({
+    
+    if(input$OligomericStatePrediction){
+    
     
     if(input$startAnalysis == 0)
     {
@@ -1192,13 +1193,17 @@ shinyServer(function(input, output, session){
           
         })})
     
-  })
+  }
+    
+    })
   
   
   ############################################################################################
   ############### Text mining  - Start ######################################################
   ############################################################################################
   output$TextMining <- DT::renderDataTable({
+    
+    if(input$OligomericStatePrediction){
     alert()
     
     if (!input$OligomericStatePrediction){
@@ -1216,7 +1221,7 @@ shinyServer(function(input, output, session){
       
     }
     
-    
+    }
   })
   ############################################################################################
   ############### Text mining - End ####################################################
@@ -1229,10 +1234,11 @@ shinyServer(function(input, output, session){
   ############################################################################################
   output$sentences<- DT::renderDataTable({
     
+    if(input$OligomericStatePrediction){
     
-    validate(textMiner()[[2]])
+      validate(textMiner()[[2]])
     
-    
+    }
   })
   ############################################################################################
   ############### Sentences - End ####################################################
@@ -1243,21 +1249,24 @@ shinyServer(function(input, output, session){
   ############################################################################################
   output$machineLearning<- DT::renderDataTable({
     
-    if (!input$mlFiltering){
-      return()
-      
-    }
-    
-    if(input$mlFiltering){
-      
-      data = textMiner()[[6]]
-      datatable(data, escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf')#, colVis = list(activate = 'click', showAll = TRUE)
+    if(input$OligomericStatePrediction){
         
-      ))%>% formatStyle(
-        "Sentence", "Label",
-        backgroundColor = styleEqual(c("FALSE", "TRUE"), c('#F8766D', '#00BA38')))
-      
+        if (!input$mlFiltering){
+          return()
+          
+        }
+        
+        if(input$mlFiltering){
+          
+          data = textMiner()[[6]]
+          datatable(data, escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+            dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf')#, colVis = list(activate = 'click', showAll = TRUE)
+            
+          ))%>% formatStyle(
+            "Sentence", "Label",
+            backgroundColor = styleEqual(c("FALSE", "TRUE"), c('#F8766D', '#00BA38')))
+          
+        }
     }
   })
   ############################################################################################
@@ -1269,16 +1278,19 @@ shinyServer(function(input, output, session){
   ############################################################################################
   output$mlFilteredSentences<- DT::renderDataTable({
     
-    if (!input$mlFilteredSen){
-      return()
+    if(input$OligomericStatePrediction){
       
-    }
-    
-    if(input$mlFilteredSen){
-      datatable(textMiner()[[7]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
+      if (!input$mlFilteredSen){
+        return()
         
-      ))
+      }
+      
+      if(input$mlFilteredSen){
+        datatable(textMiner()[[7]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+          dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
+          
+        ))
+      }
     }
   })
   ############################################################################################
@@ -1293,18 +1305,20 @@ shinyServer(function(input, output, session){
   
   output$mutantResults<- DT::renderDataTable({
     
-    if (!input$mutantResults){
-      return()
-      
-    }
-    
-    if(input$mutantResults){
-      
-      
-      datatable(textMiner()[[8]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
+    if(input$OligomericStatePrediction){
+        if (!input$mutantResults){
+          return()
+          
+        }
         
-      ))
+        if(input$mutantResults){
+          
+          
+          datatable(textMiner()[[8]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+            dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
+            
+          ))
+        }
     }
   })
   
@@ -1323,24 +1337,26 @@ shinyServer(function(input, output, session){
   
   output$noOligomericResult<- DT::renderDataTable({
     
-    if (!input$noOligomericResults){
-      return()
-      
-    }
-    
-    
-    if(!length(textMiner()[[3]])==0 && input$noOligomericResults){
-      
-      
-      
-      datatable(textMiner()[[3]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
+    if(input$OligomericStatePrediction){
         
-      ))
-      
+        if (!input$noOligomericResults){
+          return()
+          
+        }
+        
+        
+        if(!length(textMiner()[[3]])==0 && input$noOligomericResults){
+          
+          
+          
+          datatable(textMiner()[[3]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+            dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
+            
+          ))
+          
+        }
+        
     }
-    
-    
   })
   
   
@@ -1351,27 +1367,26 @@ shinyServer(function(input, output, session){
   
   output$noFullText<- DT::renderDataTable({
     
-    if (!input$noFullTextResults){
-      return()
-      
-    }
+    if(input$OligomericStatePrediction){
     
-    
-    if(!length(textMiner()[[4]])==0 && input$noFullTextResults){
-      
-      
-      
-      datatable(textMiner()[[4]], escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
+        if (!input$noFullTextResults){
+          return()
+          
+        }
         
-      ))
-      
-    }
+        
+        if(!length(textMiner()[[4]])==0 && input$noFullTextResults){
+          
+          
+          
+          datatable(textMiner()[[4]], escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+            dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
+            
+          ))
+          
+        }
     
-    
-    
-    
-    
+    }  
     
   })
   
@@ -1385,24 +1400,26 @@ shinyServer(function(input, output, session){
   
   output$summary<- DT::renderDataTable({
     
-    if (!input$summaryResults){
-      return()
-      
-    }
     
-    
-    if(!length(textMiner()[[5]])==0 && input$summaryResults){
-      
-      
-      
-      
-      datatable(textMiner()[[5]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
+    if(input$OligomericStatePrediction){
+        if (!input$summaryResults){
+          return()
+          
+        }
         
-      ))
-      
+        
+        if(!length(textMiner()[[5]])==0 && input$summaryResults){
+          
+          
+          
+          
+          datatable(textMiner()[[5]],escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+            dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf'),   deferRender = TRUE
+            
+          ))
+          
+        }
     }
-    
   },escape=FALSE, rownames=FALSE)
   
   ############################################################################################
@@ -2462,6 +2479,8 @@ shinyServer(function(input, output, session){
       eppicRes2 = eppicRes[,c(1,3)]
       names(eppicRes2) = c("PDB ID","EPPIC")
       
+      if(input$OligomericStatePrediction){
+      
       tm = textMiner()[[1]]
       tm2 = tm[,c(1:2,4,5)]
       
@@ -2480,6 +2499,8 @@ shinyServer(function(input, output, session){
       }
       
       names(tm2) = c("PDB ID", "Text Mining")
+      
+      }
       
       #seqCluster2 = seqCluster[which.max(seqCluster[,4]),]
       
