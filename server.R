@@ -2847,7 +2847,7 @@ shinyServer(function(input, output, session){
               
     )%>% formatStyle(
       # columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC", "Text Mining"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE", "ResultTM"),
-      columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC", "Text Mining"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE"),
+      columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE"),
       backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
     )
     
