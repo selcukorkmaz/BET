@@ -2495,12 +2495,12 @@ shinyServer(function(input, output, session){
         
       }else{
         
-        consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2], tm2[,2])
-        
+        # consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2], tm2[,2])
+        consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2])
       }
       
-      names(consensus) = c("pdbId", "BaNumber", "CurrentStoichiometry", "SequenceClusterStoichiometry", "PISAStoichiometry", "EPPICStoichiometry", "TextMiningStoichiometry")
-      
+      names(consensus) = c("pdbId", "BaNumber", "CurrentStoichiometry", "SequenceClusterStoichiometry", "PISAStoichiometry", "EPPICStoichiometry")
+    # names(consensus) = c("pdbId", "BaNumber", "CurrentStoichiometry", "SequenceClusterStoichiometry", "PISAStoichiometry", "EPPICStoichiometry", "TextMiningStoichiometry")
       
       if(consensus$CurrentStoichiometry != "Inconclusive"){
         consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A"] ="monomer"
@@ -2677,11 +2677,11 @@ shinyServer(function(input, output, session){
       
       
       
-      consensusLast = consensus[,c("pdbId", "BaNumber", "CurrentOligomericState", "SequenceClusterOligomericState", "PISAOligomericState", "EPPICOligomericState", "TextMiningStoichiometry")]
-      
+      # consensusLast = consensus[,c("pdbId", "BaNumber", "CurrentOligomericState", "SequenceClusterOligomericState", "PISAOligomericState", "EPPICOligomericState", "TextMiningStoichiometry")]
+      consensusLast = consensus[,c("pdbId", "BaNumber", "CurrentOligomericState", "SequenceClusterOligomericState", "PISAOligomericState", "EPPICOligomericState")]
       for(i in 1:dim(consensusLast)[1]){
-        vote = c(as.character(consensusLast$SequenceClusterOligomericState[i]), as.character(consensusLast$PISAOligomericState[i]), as.character(consensusLast$EPPICOligomericState[i]), as.character(consensusLast$TextMiningStoichiometry[i]))
-        
+        # vote = c(as.character(consensusLast$SequenceClusterOligomericState[i]), as.character(consensusLast$PISAOligomericState[i]), as.character(consensusLast$EPPICOligomericState[i]), as.character(consensusLast$TextMiningStoichiometry[i]))
+        vote = c(as.character(consensusLast$SequenceClusterOligomericState[i]), as.character(consensusLast$PISAOligomericState[i]), as.character(consensusLast$EPPICOligomericState[i]))
         v = as.data.frame(table(vote))
         v2 = v[v$Freq>2,]
         
@@ -2698,11 +2698,15 @@ shinyServer(function(input, output, session){
         
         consensusLast$ResultE[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$EPPICOligomericState)[i]){1}else if(as.character(consensusLast$EPPICOligomericState)[i] == "Inconclusive"){2}else{0}
         
-        consensusLast$ResultTM[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$TextMiningStoichiometry)[i]){1}else if(as.character(consensusLast$TextMiningStoichiometry)[i] == "Inconclusive"){2}else{0}
+        # 
+        # consensusLast$ResultTM[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$TextMiningStoichiometry)[i]){1}else if(as.character(consensusLast$TextMiningStoichiometry)[i] == "Inconclusive"){2}else{0}
       }
       
-      names(consensusLast) = c("PDB ID", "BA Number", "PDB", "Sequence Cluster",
-                               "PISA", "EPPIC", "Text Mining", "Consensus", "ResultC", "ResultSC", "ResultP", "ResultE", "ResultTM")
+      # names(consensusLast) = c("PDB ID", "BA Number", "PDB", "Sequence Cluster",
+      #                          "PISA", "EPPIC", "Consensus", "ResultC", "ResultSC", "ResultP", "ResultE", "ResultTM")
+      
+       names(consensusLast) = c("PDB ID", "BA Number", "PDB", "Sequence Cluster",
+                                "PISA", "EPPIC", "Consensus", "ResultC", "ResultSC", "ResultP", "ResultE")
       
       consensusLast
       
@@ -2842,7 +2846,8 @@ shinyServer(function(input, output, session){
     datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('Buttons'), options = list(dom = 'T<"clear">lfrtip',buttons = c('copy', 'excel', 'pdf'),  columnDefs = list(list(targets = c(8:12), visible = FALSE)))
               
     )%>% formatStyle(
-      columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC", "Text Mining"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE", "ResultTM"),
+      # columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC", "Text Mining"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE", "ResultTM"),
+      columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC", "Text Mining"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE"),
       backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
     )
     
