@@ -61,24 +61,18 @@ br(),
 #h6("Check the box to include data mentions"),
 #checkboxInput("dataMentions", HTML('<p><font size="2">Include data mentions</font></p>'), FALSE),
 
-h5("Quaternary structure evaluation methods"),
-
-
-fluidRow(column(3, checkboxInput(inputId = "signatureResults", label = "SC", value = FALSE)),
-column(3, checkboxInput(inputId = "OligomericStatePrediction", label = "TM", value = FALSE)),
-column(3, checkboxInput(inputId = "pisaPrediction", label = "PISA", value = FALSE)),
-column(3, checkboxInput("eppicPrediction", "EPPIC", FALSE))
-),
+# h5("Quaternary structure evaluation methods"),
+# 
+# 
+# fluidRow(column(3, checkboxInput(inputId = "signatureResults", label = "SC", value = FALSE)),
+# column(3, checkboxInput(inputId = "OligomericStatePrediction", label = "TM", value = FALSE)),
+# column(3, checkboxInput(inputId = "pisaPrediction", label = "PISA", value = FALSE)),
+# column(3, checkboxInput("eppicPrediction", "EPPIC", FALSE))
+# ),
 
 bsTooltip(id = "signatureResults", title="Sequence cluster", placement = "bottom", trigger = "hover", options = NULL),
 
 bsTooltip(id = "OligomericStatePrediction", title="Text mining", placement = "bottom", trigger = "hover", options = NULL)
-
-
-
-
-
-
 
 ),
 
@@ -94,17 +88,23 @@ column(6, checkboxInput(inputId = "advancedOptions", label = "Options", value = 
 #checkboxInput(inputId = "advancedResults", label = "Advanced results", value = FALSE),
 
     conditionalPanel(condition = "input.advancedResults",
-        checkboxInput(inputId = "mlFiltering", label = "Sentences", value = FALSE),
-        checkboxInput(inputId = "advancedPisa", label = "PISA advanced results", value = FALSE)
+        checkboxInput(inputId = "signatureResults", label = "SC", value = FALSE),
+        checkboxInput(inputId = "pisaPrediction", label = "PISA", value = FALSE),
+        checkboxInput("eppicPrediction", "EPPIC", FALSE),
+        checkboxInput(inputId = "OligomericStatePrediction", label = "TM", value = FALSE)
+        # 
+        # checkboxInput(inputId = "mlFiltering", label = "Sentences", value = FALSE),
+        # checkboxInput(inputId = "advancedPisa", label = "PISA advanced results", value = FALSE)
         #checkboxInput(inputId = "Display", label = "Display 3D structure", value = FALSE)
 
+    ),
+
+conditionalPanel(condition = "input.OligomericStatePrediction",
+            checkboxInput(inputId = "mlFiltering", label = "Sentences", value = FALSE)
 ),
-
-#conditionalPanel(condition = "input.AdvancedOutlierDetection",
-
-#    checkboxInput(inputId = "outlierDetectionPlot", label = "Sequence cluster plot", value = FALSE)
-
-#),
+conditionalPanel(condition = "input.pisaPrediction",
+                 checkboxInput(inputId = "advancedPisa", label = "PISA advanced results", value = FALSE)
+),
 
 
 #conditionalPanel(condition = "input.AdvancedOligomericStatePrediction",
