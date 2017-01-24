@@ -90,8 +90,14 @@ column(6, checkboxInput(inputId = "advancedOptions", label = "Options", value = 
     conditionalPanel(condition = "input.advancedResults",
         checkboxInput(inputId = "signatureResults", label = "SC", value = FALSE),
         checkboxInput(inputId = "pisaPrediction", label = "PISA", value = FALSE),
+        conditionalPanel(condition = "input.pisaPrediction",
+                         checkboxInput(inputId = "advancedPisa", label = "PISA advanced results", value = FALSE)
+        ),
         checkboxInput("eppicPrediction", "EPPIC", FALSE),
-        checkboxInput(inputId = "OligomericStatePrediction", label = "TM", value = FALSE)
+        checkboxInput(inputId = "OligomericStatePrediction", label = "TM", value = FALSE),
+        conditionalPanel(condition = "input.OligomericStatePrediction",
+                         checkboxInput(inputId = "mlFiltering", label = "Sentences", value = FALSE)
+        )
         # 
         # checkboxInput(inputId = "mlFiltering", label = "Sentences", value = FALSE),
         # checkboxInput(inputId = "advancedPisa", label = "PISA advanced results", value = FALSE)
@@ -99,12 +105,7 @@ column(6, checkboxInput(inputId = "advancedOptions", label = "Options", value = 
 
     ),
 
-conditionalPanel(condition = "input.OligomericStatePrediction",
-            checkboxInput(inputId = "mlFiltering", label = "Sentences", value = FALSE)
-),
-conditionalPanel(condition = "input.pisaPrediction",
-                 checkboxInput(inputId = "advancedPisa", label = "PISA advanced results", value = FALSE)
-),
+
 
 
 #conditionalPanel(condition = "input.AdvancedOligomericStatePrediction",
