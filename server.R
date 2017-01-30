@@ -2469,7 +2469,7 @@ shinyServer(function(input, output, session){
       eppicRes2 = eppicRes[,c(1,3)]
       names(eppicRes2) = c("PDB ID","EPPIC")
       
-      if(input$OligomericStatePrediction){
+      # if(input$OligomericStatePrediction){
       
       tm = textMiner()[[1]]
       tm2 = tm[,c(1:2,4,5)]
@@ -2490,7 +2490,7 @@ shinyServer(function(input, output, session){
       
       names(tm2) = c("PDB ID", "Text Mining")
       
-      }
+      # }
       
       #seqCluster2 = seqCluster[which.max(seqCluster[,4]),]
       
@@ -2508,7 +2508,7 @@ shinyServer(function(input, output, session){
         
         if(input$FourMethodConsensus){
          consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2], tm2[,2])
-        }else{consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2], tm2[,2])}
+        }else{consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2])}
         
       }
       
