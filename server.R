@@ -2727,8 +2727,8 @@ shinyServer(function(input, output, session){
       }
       
       if(input$FourMethodConsensus){
-       names(consensusLast) = c("PDB ID", "BA Number", "PDB", "Sequence Cluster",
-                                "PISA", "EPPIC", "TM","Consensus", "ResultC", "ResultSC", "ResultP", "ResultE", "ResultTM")
+        names(consensusLast) = c("PDB ID", "BA Number", "PDB", "Sequence Cluster",
+                                 "PISA", "EPPIC", "Text Mining", "Consensus", "ResultC", "ResultSC", "ResultP", "ResultE", "ResultTM")
       }else{
        names(consensusLast) = c("PDB ID", "BA Number", "PDB", "Sequence Cluster",
                                 "PISA", "EPPIC", "Consensus", "ResultC", "ResultSC", "ResultP", "ResultE")
