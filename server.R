@@ -643,7 +643,7 @@ shinyServer(function(input, output, session){
   
   textMiner <- reactive({
     
-    if(input$OligomericStatePrediction){
+    # if(input$OligomericStatePrediction){
     
     
     if(input$startAnalysis == 0)
@@ -1185,7 +1185,7 @@ shinyServer(function(input, output, session){
           
         })})
     
-  }
+  
     
     })
   
