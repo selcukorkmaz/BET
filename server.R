@@ -2496,21 +2496,19 @@ shinyServer(function(input, output, session){
       
       
       if(dim(current2)[1] > 1){
-        
-        
         #merge1 = merge(current2,seqCluster3,by = 'PDB ID')
         #merge2 = merge(pisaRes2,tm2,by = 'PDB ID')
-        
         #consensus = merge(merge1, merge2, by = 'PDB ID')
+        
         if(input$FourMethodConsensus){
-        consensus = join_all(list(current2, seqCluster3, pisaRes2, eppicRes2, tm2), by = 'PDB ID', type = 'left')
+          consensus = join_all(list(current2, seqCluster3, pisaRes2, eppicRes2, tm2), by = 'PDB ID', type = 'left')
         }else{consensus = join_all(list(current2, seqCluster3, pisaRes2, eppicRes2), by = 'PDB ID', type = 'left')}
         
       }else{
         
         if(input$FourMethodConsensus){
          consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2], tm2[,2])
-        }else{consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2])}
+        }else{consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2], tm2[,2])}
         
       }
       
