@@ -2795,14 +2795,9 @@ shinyServer(function(input, output, session){
         }
         
         seqCluster4 = seqCluster3[which.max(seqCluster3[,3]),]
-        
-        
         seqCluster3 = seqCluster4[,1:2]
-        
-        
         names(seqCluster3) = c("PDB ID", "Sequence Cluster")
       }
-      
       
       pisaRes = selectedPisa()
       pisaRes2 = pisaRes[,c(1,5)]
@@ -2811,8 +2806,6 @@ shinyServer(function(input, output, session){
       eppicRes = selectedEppic()
       eppicRes2 = eppicRes[,c(1,4)]
       names(eppicRes2) = c("PDB ID","EPPIC")
-      
-      
       
       
       if(dim(current2)[1] > 1){
