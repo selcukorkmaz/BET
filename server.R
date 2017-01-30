@@ -2861,24 +2861,6 @@ shinyServer(function(input, output, session){
     #dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf')#, colVis = list(activate = 'click', showAll = TRUE)
     
     
-    datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('Buttons'), options = list(dom = 'T<"clear">lfrtip',buttons = c('copy', 'excel', 'pdf'),  columnDefs = list(list(targets = c(7:10), visible = FALSE)))
-              
-    )%>% formatStyle(
-      columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE"),
-      backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
-    )
-    
-    
-  })
-  # columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC", "Text Mining"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE", "ResultTM"),
-  
-  output$combinedSymmetryResults <- DT::renderDataTable({
-    
-    df = as.data.frame(combinedSymmetry())
-    
-    #datatable(currentData(), ,escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
-    #dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf')#, colVis = list(activate = 'click', showAll = TRUE)
-    
     if(input$FourMethodConsensus){
       
       datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('Buttons'), options = list(dom = 'T<"clear">lfrtip',buttons = c('copy', 'excel', 'pdf'),  columnDefs = list(list(targets = c(9:12), visible = FALSE)))
@@ -2890,13 +2872,36 @@ shinyServer(function(input, output, session){
       
       
     }else{
-        datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('Buttons'), options = list(dom = 'T<"clear">lfrtip',buttons = c('copy', 'excel', 'pdf'),  columnDefs = list(list(targets = c(7:10), visible = FALSE)))
-                  
-        )%>% formatStyle(
-          columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE"),
-          backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
-        )
+      datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('Buttons'), options = list(dom = 'T<"clear">lfrtip',buttons = c('copy', 'excel', 'pdf'),  columnDefs = list(list(targets = c(7:10), visible = FALSE)))
+                
+      )%>% formatStyle(
+        columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE"),
+        backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
+      )
+      
     }
+    
+    
+
+    
+  })
+  # columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC", "Text Mining"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE", "ResultTM"),
+  
+  output$combinedSymmetryResults <- DT::renderDataTable({
+    
+    df = as.data.frame(combinedSymmetry())
+    
+    #datatable(currentData(), ,escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+    #dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf')#, colVis = list(activate = 'click', showAll = TRUE)
+    
+    
+    datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('Buttons'), options = list(dom = 'T<"clear">lfrtip',buttons = c('copy', 'excel', 'pdf'),  columnDefs = list(list(targets = c(7:10), visible = FALSE)))
+              
+    )%>% formatStyle(
+      columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE"),
+      backgroundColor = styleEqual(c(0, 1, 2), c('#F8766D', '#00BA38', '#619CFF'))
+    )
+    
     
     
     
