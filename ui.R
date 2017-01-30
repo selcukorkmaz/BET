@@ -25,7 +25,7 @@ radioButtons(inputId = "dataInput", "", list("PDB ID"=1, "Upload file"=2, "Uploa
 #bsTooltip(id = "dataInput", title="Use the first option for the single PDB entry. Use the second option for the multiple PDB entries. Use the third option for mining a PDF paper.", placement = "bottom", trigger = "hover", options = NULL),
 
 
-        conditionalPanel(condition="input.dataInput=='1'",
+conditionalPanel(condition="input.dataInput=='1'",
 br(),
 
 
@@ -53,6 +53,7 @@ conditionalPanel(condition="input.dataInput=='3'",
 
 br(),
 
+checkboxInput(inputId = "FourMethodConsensus", label = "Include TM", value = FALSE),
 
 actionButton(inputId = "startAnalysis", label = "Evaluate", icon = NULL),
 br(),

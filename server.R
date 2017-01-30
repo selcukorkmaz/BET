@@ -961,15 +961,7 @@ shinyServer(function(input, output, session){
                 resultUniqueProbabilityList= uniqueData2
                 
                 
-                
-                
-                
                 resultUniqueProbabilityList[,4] = format(round(resultUniqueProbabilityList[,4],2), nsmall = 2)
-                
-                
-                
-                
-                
                 
                 
                 oligomericSentence = mlResult[,c("pdbId","PubId", "newOligomericState","experimentalEvidence", "oligomericSentence")]
@@ -1300,8 +1292,6 @@ shinyServer(function(input, output, session){
   ############################################################################################
   ############### Mutant Info - Start ####################################################
   ############################################################################################
-  
-  
   
   output$mutantResults<- DT::renderDataTable({
     
@@ -2516,12 +2506,18 @@ shinyServer(function(input, output, session){
         
       }else{
         
-        # consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2], tm2[,2])
-        consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2])
+        if(input$FourMethodConsensus){
+         consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2], tm2[,2])
+        }else{consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2])}
       }
       
-      names(consensus) = c("pdbId", "BaNumber", "CurrentStoichiometry", "SequenceClusterStoichiometry", "PISAStoichiometry", "EPPICStoichiometry")
-    # names(consensus) = c("pdbId", "BaNumber", "CurrentStoichiometry", "SequenceClusterStoichiometry", "PISAStoichiometry", "EPPICStoichiometry", "TextMiningStoichiometry")
+      if(input$FourMethodConsensus){
+        
+        names(consensus) = c("pdbId", "BaNumber", "CurrentStoichiometry", "SequenceClusterStoichiometry", "PISAStoichiometry", "EPPICStoichiometry", "TextMiningStoichiometry")
+        
+      }else{
+        names(consensus) = c("pdbId", "BaNumber", "CurrentStoichiometry", "SequenceClusterStoichiometry", "PISAStoichiometry", "EPPICStoichiometry")
+      }
       
       if(consensus$CurrentStoichiometry != "Inconclusive"){
         consensus$CurrentOligomericState[consensus$CurrentStoichiometry == "A"] ="monomer"
@@ -2697,12 +2693,17 @@ shinyServer(function(input, output, session){
       
       
       
-      
-      # consensusLast = consensus[,c("pdbId", "BaNumber", "CurrentOligomericState", "SequenceClusterOligomericState", "PISAOligomericState", "EPPICOligomericState", "TextMiningStoichiometry")]
-      consensusLast = consensus[,c("pdbId", "BaNumber", "CurrentOligomericState", "SequenceClusterOligomericState", "PISAOligomericState", "EPPICOligomericState")]
+      if(input$FourMethodConsensus){ 
+        consensusLast = consensus[,c("pdbId", "BaNumber", "CurrentOligomericState", "SequenceClusterOligomericState", "PISAOligomericState", "EPPICOligomericState", "TextMiningStoichiometry")]
+      }else{
+        consensusLast = consensus[,c("pdbId", "BaNumber", "CurrentOligomericState", "SequenceClusterOligomericState", "PISAOligomericState", "EPPICOligomericState")]
+      }
       for(i in 1:dim(consensusLast)[1]){
-        # vote = c(as.character(consensusLast$SequenceClusterOligomericState[i]), as.character(consensusLast$PISAOligomericState[i]), as.character(consensusLast$EPPICOligomericState[i]), as.character(consensusLast$TextMiningStoichiometry[i]))
+        if(input$FourMethodConsensus){ 
+          vote = c(as.character(consensusLast$SequenceClusterOligomericState[i]), as.character(consensusLast$PISAOligomericState[i]), as.character(consensusLast$EPPICOligomericState[i]), as.character(consensusLast$TextMiningStoichiometry[i]))
+        }else{
         vote = c(as.character(consensusLast$SequenceClusterOligomericState[i]), as.character(consensusLast$PISAOligomericState[i]), as.character(consensusLast$EPPICOligomericState[i]))
+        }
         v = as.data.frame(table(vote))
         v2 = v[v$Freq>2,]
         
@@ -2719,16 +2720,18 @@ shinyServer(function(input, output, session){
         
         consensusLast$ResultE[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$EPPICOligomericState)[i]){1}else if(as.character(consensusLast$EPPICOligomericState)[i] == "Inconclusive"){2}else{0}
         
-        # 
-        # consensusLast$ResultTM[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$TextMiningStoichiometry)[i]){1}else if(as.character(consensusLast$TextMiningStoichiometry)[i] == "Inconclusive"){2}else{0}
+        if(input$FourMethodConsensus){ 
+         consensusLast$ResultTM[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$TextMiningStoichiometry)[i]){1}else if(as.character(consensusLast$TextMiningStoichiometry)[i] == "Inconclusive"){2}else{0}
+        }
       }
       
-      # names(consensusLast) = c("PDB ID", "BA Number", "PDB", "Sequence Cluster",
-      #                          "PISA", "EPPIC", "Consensus", "ResultC", "ResultSC", "ResultP", "ResultE", "ResultTM")
-      
+      if(input$FourMethodConsensus){
+       names(consensusLast) = c("PDB ID", "BA Number", "PDB", "Sequence Cluster",
+                                "PISA", "EPPIC", "Consensus", "ResultC", "ResultSC", "ResultP", "ResultE", "ResultTM")
+      }else{
        names(consensusLast) = c("PDB ID", "BA Number", "PDB", "Sequence Cluster",
                                 "PISA", "EPPIC", "Consensus", "ResultC", "ResultSC", "ResultP", "ResultE")
-      
+      }
       consensusLast
       
     }
