@@ -53,7 +53,7 @@ conditionalPanel(condition="input.dataInput=='3'",
 
 br(),
 
-checkboxInput(inputId = "FourMethodConsensus", label = "Include TM", value = FALSE),
+checkboxInput(inputId = "FourMethodConsensus", label = "4-method consensus (include TM)", value = FALSE),
 
 actionButton(inputId = "startAnalysis", label = "Evaluate", icon = NULL),
 br(),
@@ -473,12 +473,12 @@ tags$img(src = "screenShots/pisa.jpg", width = "100%")
 
             HTML('<a href="#" class="back-to-top">Back to Top</a>'),
 
-HTML('<script src="js/jquery.js"></script>')
+HTML('<script src="js/jquery.js"></script>'),
 
-# tags$style(type="text/css",
-# ".shiny-output-error { visibility: hidden; }",
-# ".shiny-output-error:before { visibility: hidden; }"
-# )
+tags$style(type="text/css",
+".shiny-output-error { visibility: hidden; }",
+".shiny-output-error:before { visibility: hidden; }"
+)
 
 
 
