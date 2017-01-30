@@ -2863,7 +2863,9 @@ shinyServer(function(input, output, session){
     
     if(input$FourMethodConsensus){
       
-      datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('Buttons'), options = list(dom = 'T<"clear">lfrtip',buttons = c('copy', 'excel', 'pdf'),  columnDefs = list(list(targets = c(8:11), visible = FALSE)))
+      
+      
+      datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('Buttons'), options = list(dom = 'T<"clear">lfrtip',buttons = c('copy', 'excel', 'pdf'),  columnDefs = list(list(targets = c(8:12), visible = FALSE)))
                 
       )%>% formatStyle(
         columns = c("Consensus", "Sequence Cluster", "PISA", "EPPIC", "Text Mining"), valueColumns = c("ResultC","ResultSC", "ResultP", "ResultE", "ResultTM"),
