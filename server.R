@@ -633,12 +633,12 @@ shinyServer(function(input, output, session){
   
   TextMinerResult <- eventReactive(input$startAnalysis,{
     
-    if(input$OligomericStatePrediction){
+    #if(input$OligomericStatePrediction){
       oligomerNames = oligomerNames()
       mutantProtein = mutantProtein()
     
       newTextMiner(currentData()[,2], as.character(currentData()[,1]), as.character(currentData()[,3]), as.character(currentData()[,4]), oligomerNames, mutantProtein, fi =  dataPath())
-    }
+    #}
   })
   
   textMiner <- reactive({
