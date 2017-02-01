@@ -47,7 +47,7 @@ shinyServer(function(input, output, session){
     isolate({
       if(input$startAnalysis){
         
-        withProgress(message = 'Finding publications...',  detail = 'Please wait...', value=0,{
+        withProgress(message = 'Finding publications...',  detail = 'Please wait...', value=7,{
           
           
           PdbId <- reactive({
