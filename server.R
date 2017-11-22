@@ -49,10 +49,10 @@ shinyServer(function(input, output, session){
         
         withProgress(message = 'Finding publications...',  detail = 'Please wait...', value=7,{
           
-          
           PdbId <- reactive({
             pdb = as.character(input$PdbId)
             toupper(pdb)
+            
           })
           
           #dataMentions = read.table("PdbDataMentionUnique.tsv", header=T, fill=T, sep="\t")
@@ -141,184 +141,184 @@ shinyServer(function(input, output, session){
           })
           
           
-          if (input$dataInput==1)  {
+          # if (input$dataInput==1)  {
             data = data.frame(data_pmcSingle())
-          }
+          # }
           
-          else if(input$dataInput==2){  ## Upload data.
-            inFile <- input$upload
-            
-            if (is.null(input$upload))  {return(NULL)}
-            
-            if (file.info(inFile$datapath)$size <= 10485800){
-              data <- read.table(inFile$datapath, header=TRUE, fill=TRUE)
-              data= as.data.frame(factor(toupper(data[,1])))
-              pubData <- read.table("publication.txt", header=TRUE, sep="\t")
-              rownames(pubData) = pubData$pdbId
-              primaryCitation = pubData[as.character(data[,1]),]
-              otherPDB = pubData[pubData[,2] %in% primaryCitation$pubId,]
-              
-              
-              #if(!input$dataMentions){
-              
-              if(length(otherPDB$pdbId) > 1){
-                
-                otherPDBResult = otherPDB[!(otherPDB[,1] %in% primaryCitation$pdbId),]
-                
-                if(length(otherPDBResult$pdbId)!=0){
-                  
-                  splitOther = split(otherPDBResult, factor(otherPDBResult$pubId))
-                  
-                  otherPDBList = list()
-                  
-                  for(j in 1:length(splitOther)){
-                    
-                    s = splitOther[[j]]
-                    
-                    otherPDBsplit = paste(s$pdbId, collapse=", ")
-                    
-                    s$otherPDBsplit = otherPDBsplit
-                    
-                    otherPDBList[[j]] = s[1,]
-                    
-                  }
-                  splitOtherPDBResult = as.data.frame(rbindlist( otherPDBList))
-                  
-                }else{
-                  
-                  splitOtherPDBResult = otherPDB
-                  
-                }
-                
-              }else{
-                
-                otherPDBResult = otherPDB[!(otherPDB[,1] %in% primaryCitation$pdbId),]
-                splitOtherPDBResult = otherPDB
-                
-                
-              }
-              
-              if(length(otherPDBResult$pdbId)!=0){
-                for(i in 1:dim(primaryCitation)[1]){
-                  
-                  if(primaryCitation[i,"pubId"] %in% splitOtherPDBResult[,"pubId"] ){
-                    
-                    pubid = as.character(splitOtherPDBResult$pubId[which(primaryCitation[i,"pubId"] == splitOtherPDBResult[,"pubId"])])
-                    
-                    primaryCitation$otherPDBList[primaryCitation$pubId == pubid] =   splitOtherPDBResult[which(splitOtherPDBResult$pubId == pubid),"otherPDBsplit"]
-                    
-                    
-                  }else{
-                    
-                    primaryCitation$otherPDBList[i] = "none"
-                    
-                  }
-                  
-                }}else{
-                  
-                  primaryCitation$otherPDBList = "none"
-                  
-                }
-              
-              
-              data = primaryCitation
-              colnames(data) = c("PDB ID", "Publication ID", "Source", "Primary Citation", "Related Structures")
-              
-              
-              #}
-              
-              #if(input$dataMentions){
-              #
-              #if(length(otherPDB$pdbId) > 1){
-              #
-              #  otherPDBResult = otherPDB[!(otherPDB[,1] %in% primaryCitation$pdbId),]
-              #  splitOther = split(otherPDBResult, factor(otherPDBResult$pubId))
-              #
-              #  otherPDBList = list()
-              #
-              #  for(j in 1:length(splitOther)){
-              #
-              #    s = splitOther[[j]]
-              #
-              #    otherPDBsplit = paste(s$pdbId, collapse=", ")
-              #
-              #    s$otherPDBsplit = otherPDBsplit
-              #
-              #    otherPDBList[[j]] = s[1,]
-              #
-              #  }
-              #
-              # }
-              #
-              # splitOtherPDBResult = do.call(rbind.data.frame, otherPDBList)
-              
-              #for(i in 1:dim(primaryCitation)[1]){
-              
-              # if(primaryCitation[i,"pubId"] %in% splitOtherPDBResult[,"pubId"] ){
-              
-              
-              #primaryCitation$otherPDBList[factor(primaryCitation$pubId) == factor(primaryCitation$pubId[which(primaryCitation[i,"pubId"] == splitOtherPDBResult[,"pubId"])])]
-              
-              #    pubid = as.character(splitOtherPDBResult$pubId[which(primaryCitation[i,"pubId"] == splitOtherPDBResult[,"pubId"])])
-              
-              #    primaryCitation$otherPDBList[primaryCitation$pubId == pubid] =   splitOtherPDBResult[which(splitOtherPDBResult$pubId == pubid),"otherPDBsplit"]
-              
-              
-              #   }else{
-              
-              #     primaryCitation$otherPDBList[i] = "none"
-              
-              #   }
-              
-              # }
-              
-              
-              # dataMentions = read.table("PdbDataMentionUnique.tsv", header=T, fill=T, sep="\t")
-              # currentDataention = dataMentions[dataMentions$pdbId%in%as.character(data[,1]),]
-              # currentDataention$otherPDBList = "none"
-              # data = rbind(primaryCitation, currentDataention)
-              
-              # colnames(data) = c("PDB ID", "Publication ID", "Source", "Primary Citation", "Related Structures")
-              
-              
-              #}
-            }
-          }
+          # if(input$dataInput==2){  ## Upload data.
+          #   inFile <- input$upload
+          #   
+          #   if (is.null(input$upload))  {return(NULL)}
+          #   
+          #   if (file.info(inFile$datapath)$size <= 10485800){
+          #     data <- read.table(inFile$datapath, header=TRUE, fill=TRUE)
+          #     data= as.data.frame(factor(toupper(data[,1])))
+          #     pubData <- read.table("publication.txt", header=TRUE, sep="\t")
+          #     rownames(pubData) = pubData$pdbId
+          #     primaryCitation = pubData[as.character(data[,1]),]
+          #     otherPDB = pubData[pubData[,2] %in% primaryCitation$pubId,]
+          #     
+          #     
+          #     #if(!input$dataMentions){
+          #     
+          #     if(length(otherPDB$pdbId) > 1){
+          #       
+          #       otherPDBResult = otherPDB[!(otherPDB[,1] %in% primaryCitation$pdbId),]
+          #       
+          #       if(length(otherPDBResult$pdbId)!=0){
+          #         
+          #         splitOther = split(otherPDBResult, factor(otherPDBResult$pubId))
+          #         
+          #         otherPDBList = list()
+          #         
+          #         for(j in 1:length(splitOther)){
+          #           
+          #           s = splitOther[[j]]
+          #           
+          #           otherPDBsplit = paste(s$pdbId, collapse=", ")
+          #           
+          #           s$otherPDBsplit = otherPDBsplit
+          #           
+          #           otherPDBList[[j]] = s[1,]
+          #           
+          #         }
+          #         splitOtherPDBResult = as.data.frame(rbindlist( otherPDBList))
+          #         
+          #       }else{
+          #         
+          #         splitOtherPDBResult = otherPDB
+          #         
+          #       }
+          #       
+          #     }else{
+          #       
+          #       otherPDBResult = otherPDB[!(otherPDB[,1] %in% primaryCitation$pdbId),]
+          #       splitOtherPDBResult = otherPDB
+          #       
+          #       
+          #     }
+          #     
+          #     if(length(otherPDBResult$pdbId)!=0){
+          #       for(i in 1:dim(primaryCitation)[1]){
+          #         
+          #         if(primaryCitation[i,"pubId"] %in% splitOtherPDBResult[,"pubId"] ){
+          #           
+          #           pubid = as.character(splitOtherPDBResult$pubId[which(primaryCitation[i,"pubId"] == splitOtherPDBResult[,"pubId"])])
+          #           
+          #           primaryCitation$otherPDBList[primaryCitation$pubId == pubid] =   splitOtherPDBResult[which(splitOtherPDBResult$pubId == pubid),"otherPDBsplit"]
+          #           
+          #           
+          #         }else{
+          #           
+          #           primaryCitation$otherPDBList[i] = "none"
+          #           
+          #         }
+          #         
+          #       }}else{
+          #         
+          #         primaryCitation$otherPDBList = "none"
+          #         
+          #       }
+          #     
+          #     
+          #     data = primaryCitation
+          #     colnames(data) = c("PDB ID", "Publication ID", "Source", "Primary Citation", "Related Structures")
+          #     
+          #     
+          #     #}
+          #     
+          #     #if(input$dataMentions){
+          #     #
+          #     #if(length(otherPDB$pdbId) > 1){
+          #     #
+          #     #  otherPDBResult = otherPDB[!(otherPDB[,1] %in% primaryCitation$pdbId),]
+          #     #  splitOther = split(otherPDBResult, factor(otherPDBResult$pubId))
+          #     #
+          #     #  otherPDBList = list()
+          #     #
+          #     #  for(j in 1:length(splitOther)){
+          #     #
+          #     #    s = splitOther[[j]]
+          #     #
+          #     #    otherPDBsplit = paste(s$pdbId, collapse=", ")
+          #     #
+          #     #    s$otherPDBsplit = otherPDBsplit
+          #     #
+          #     #    otherPDBList[[j]] = s[1,]
+          #     #
+          #     #  }
+          #     #
+          #     # }
+          #     #
+          #     # splitOtherPDBResult = do.call(rbind.data.frame, otherPDBList)
+          #     
+          #     #for(i in 1:dim(primaryCitation)[1]){
+          #     
+          #     # if(primaryCitation[i,"pubId"] %in% splitOtherPDBResult[,"pubId"] ){
+          #     
+          #     
+          #     #primaryCitation$otherPDBList[factor(primaryCitation$pubId) == factor(primaryCitation$pubId[which(primaryCitation[i,"pubId"] == splitOtherPDBResult[,"pubId"])])]
+          #     
+          #     #    pubid = as.character(splitOtherPDBResult$pubId[which(primaryCitation[i,"pubId"] == splitOtherPDBResult[,"pubId"])])
+          #     
+          #     #    primaryCitation$otherPDBList[primaryCitation$pubId == pubid] =   splitOtherPDBResult[which(splitOtherPDBResult$pubId == pubid),"otherPDBsplit"]
+          #     
+          #     
+          #     #   }else{
+          #     
+          #     #     primaryCitation$otherPDBList[i] = "none"
+          #     
+          #     #   }
+          #     
+          #     # }
+          #     
+          #     
+          #     # dataMentions = read.table("PdbDataMentionUnique.tsv", header=T, fill=T, sep="\t")
+          #     # currentDataention = dataMentions[dataMentions$pdbId%in%as.character(data[,1]),]
+          #     # currentDataention$otherPDBList = "none"
+          #     # data = rbind(primaryCitation, currentDataention)
+          #     
+          #     # colnames(data) = c("PDB ID", "Publication ID", "Source", "Primary Citation", "Related Structures")
+          #     
+          #     
+          #     #}
+          #   }
+          # }
           
-          else if (input$dataInput==3){  ## Upload PDF
-            
-            inPDF <- input$uploadPDF
-            
-            if (is.null(input$uploadPDF))  {return(NULL)}
-            
-            else{
-              
-              #fi <- read.table(inPDF$datapath, header=FALSE, sep="\t", stringsAsFactors = F)
-              
-              #pdffile = input$uploadPDF
-              
-              PubId = rep("PDF", 1)
-              pdbId = toupper(input$PdbIdPDF)
-              source = rep("PDF", 1)
-              primaryCitation = rep("yes", 1)
-              relatedStructures = rep("none", 1)
-              
-              #sourcePDF = data.frame(matrix(NA,1,5))
-              #sourcePDF[,1] = pdbId
-              #sourcePDF[,2] = PubId
-              #sourcePDF[,3] = source
-              #sourcePDF[,4] = primaryCitation
-              #sourcePDF[,5] = relatedStructures
-              sourcePDF = data.frame(pdbId,PubId,source,primaryCitation,relatedStructures)
-              
-              colnames(sourcePDF) = c("PDB ID", "Pub ID", "Source", "Primary citation", "Related Structures")
-              
-              data = sourcePDF
-              
-            }
-            
-            
-          }
+          # else if (input$dataInput==3){  ## Upload PDF
+          #   
+          #   inPDF <- input$uploadPDF
+          #   
+          #   if (is.null(input$uploadPDF))  {return(NULL)}
+          #   
+          #   else{
+          #     
+          #     #fi <- read.table(inPDF$datapath, header=FALSE, sep="\t", stringsAsFactors = F)
+          #     
+          #     #pdffile = input$uploadPDF
+          #     
+          #     PubId = rep("PDF", 1)
+          #     pdbId = toupper(input$PdbIdPDF)
+          #     source = rep("PDF", 1)
+          #     primaryCitation = rep("yes", 1)
+          #     relatedStructures = rep("none", 1)
+          #     
+          #     #sourcePDF = data.frame(matrix(NA,1,5))
+          #     #sourcePDF[,1] = pdbId
+          #     #sourcePDF[,2] = PubId
+          #     #sourcePDF[,3] = source
+          #     #sourcePDF[,4] = primaryCitation
+          #     #sourcePDF[,5] = relatedStructures
+          #     sourcePDF = data.frame(pdbId,PubId,source,primaryCitation,relatedStructures)
+          #     
+          #     colnames(sourcePDF) = c("PDB ID", "Pub ID", "Source", "Primary citation", "Related Structures")
+          #     
+          #     data = sourcePDF
+          #     
+          #   }
+          #   
+          #   
+          # }
           
           
           return(data)
@@ -566,7 +566,7 @@ shinyServer(function(input, output, session){
       createAlert(session, "help", "popupHelp", title = "Welcome to Quaternary Structure Evaluation Tool (v.0.99)",
                   content = "This web tool is developed for evaluation of quaternary structures of protein structures in the Protein Data Bank. There are four different methods for the evaluation process:
                   <ul>
-                  <li>Sequence cluster (SC) result with a consistency score for each PDB ID.</li> <br>
+                  <li>Sequence cluster result with a consistency score for each PDB ID.</li> <br>
                   <li>Text mining of the primary citations in order to extract oligomeric state and experimental evidence.</li> <br>
                   <li>Stoichiometry and symmetry predictions for quaternary structures using PISA.</li><br>
                   <li>Stoichiometry and symmetry predictions for quaternary structures using EPPIC.</li>
@@ -576,7 +576,7 @@ shinyServer(function(input, output, session){
                   <ul>
                   <li>Enter a <b>PDB ID</b>, <b>upload a file</b> which contains multiple PDB IDs or <b>upload PDF</b> version of a paper.</li> <br>
                   <li>Click <b>Start analysis</b> button to get the consensus result for both oligomeric state and symmetry.</li> <br>
-                  <li>Click, <b>SC</b>, <b>Text mining</b>, <b>PISA</b> and <b>EPPIC</b> to see individual results.</li> <br>
+                  <li>Click, <b>Sequence cluster</b>, <b>Text mining</b>, <b>PISA</b> and <b>EPPIC</b> to see individual results.</li> <br>
                   <li>For advanced results and options click <b>Results</b> and <b>Options</b> checkboxes</li><br>
                   <li>For further information please see the <b>Help</b> tab.</li>
                   </ul>",
@@ -1195,7 +1195,7 @@ shinyServer(function(input, output, session){
   ############################################################################################
   output$TextMining <- DT::renderDataTable({
     
-    if(input$OligomericStatePrediction){
+    # if(input$OligomericStatePrediction){
     alert()
     
     if (!input$OligomericStatePrediction){
@@ -1213,7 +1213,7 @@ shinyServer(function(input, output, session){
       
     }
     
-    }
+    
   })
   ############################################################################################
   ############### Text mining - End ####################################################
@@ -2494,25 +2494,28 @@ shinyServer(function(input, output, session){
       
       #seqCluster2 = seqCluster[which.max(seqCluster[,4]),]
       
+      FourMethodConsensus = TRUE
       
       if(dim(current2)[1] > 1){
         #merge1 = merge(current2,seqCluster3,by = 'PDB ID')
         #merge2 = merge(pisaRes2,tm2,by = 'PDB ID')
         #consensus = merge(merge1, merge2, by = 'PDB ID')
         
-        if(input$FourMethodConsensus){
+        if(FourMethodConsensus){
           consensus = join_all(list(current2, seqCluster3, pisaRes2, eppicRes2, tm2), by = 'PDB ID', type = 'left')
         }else{consensus = join_all(list(current2, seqCluster3, pisaRes2, eppicRes2), by = 'PDB ID', type = 'left')}
         
-      }else{
+      }
+      
+      else{
         
-        if(input$FourMethodConsensus){
+        if(FourMethodConsensus){
          consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2], tm2[,2])
         }else{consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2])}
         
       }
       
-      if(input$FourMethodConsensus){
+      if(FourMethodConsensus){
         
         names(consensus) = c("pdbId", "BaNumber", "CurrentStoichiometry", "SequenceClusterStoichiometry", "PISAStoichiometry", "EPPICStoichiometry", "TextMiningStoichiometry")
         
@@ -2694,21 +2697,27 @@ shinyServer(function(input, output, session){
       
       
       
-      if(input$FourMethodConsensus){ 
+      if(FourMethodConsensus){ 
         consensusLast = consensus[,c("pdbId", "BaNumber", "CurrentOligomericState", "SequenceClusterOligomericState", "PISAOligomericState", "EPPICOligomericState", "TextMiningStoichiometry")]
       }else{
         consensusLast = consensus[,c("pdbId", "BaNumber", "CurrentOligomericState", "SequenceClusterOligomericState", "PISAOligomericState", "EPPICOligomericState")]
       }
       for(i in 1:dim(consensusLast)[1]){
-        if(input$FourMethodConsensus){ 
+        if(FourMethodConsensus){ 
           vote = c(as.character(consensusLast$SequenceClusterOligomericState[i]), as.character(consensusLast$PISAOligomericState[i]), as.character(consensusLast$EPPICOligomericState[i]), as.character(consensusLast$TextMiningStoichiometry[i]))
+          v = as.data.frame(table(vote))
+          v2 = v[v$Freq>2,]
+          
+          consensusLast$ConsensusResult[i] = if(max(table(vote)) <3){"Inconclusive"} else if(length(v2$vote)>0){names(which.max(table(vote)))}else if(min(v$Freq)>2){names(which.max(table(vote)))}else{"Inconclusive"}
         }else{
         vote = c(as.character(consensusLast$SequenceClusterOligomericState[i]), as.character(consensusLast$PISAOligomericState[i]), as.character(consensusLast$EPPICOligomericState[i]))
-        }
         v = as.data.frame(table(vote))
-        v2 = v[v$Freq>2,]
+        v2 = v[v$Freq>1,]
         
-        consensusLast$ConsensusResult[i] = if(max(table(vote)) <3){"Inconclusive"} else if(length(v2$vote)>0){names(which.max(table(vote)))}else if(min(v$Freq)>2){names(which.max(table(vote)))}else{"Inconclusive"}
+        consensusLast$ConsensusResult[i] = if(max(table(vote)) <2){"Inconclusive"} else if(length(v2$vote)>0){names(which.max(table(vote)))}else if(min(v$Freq)>1){names(which.max(table(vote)))}else{"Inconclusive"}
+        
+        }
+        
       }
       
       
@@ -2721,12 +2730,12 @@ shinyServer(function(input, output, session){
         
         consensusLast$ResultE[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$EPPICOligomericState)[i]){1}else if(as.character(consensusLast$EPPICOligomericState)[i] == "Inconclusive"){2}else{0}
         
-        if(input$FourMethodConsensus){ 
+        if(FourMethodConsensus){ 
          consensusLast$ResultTM[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$TextMiningStoichiometry)[i]){1}else if(as.character(consensusLast$TextMiningStoichiometry)[i] == "Inconclusive"){2}else{0}
         }
       }
       
-      if(input$FourMethodConsensus){
+      if(FourMethodConsensus){
         names(consensusLast) = c("PDB ID", "BA Number", "PDB", "Sequence Cluster",
                                  "PISA", "EPPIC", "Text Mining", "Consensus", "ResultC", "ResultSC", "ResultP", "ResultE", "ResultTM")
       }else{
@@ -2860,8 +2869,9 @@ shinyServer(function(input, output, session){
     #datatable(currentData(), ,escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
     #dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf')#, colVis = list(activate = 'click', showAll = TRUE)
     
+    FourMethodConsensus = TRUE
     
-    if(input$FourMethodConsensus){
+    if(FourMethodConsensus){
       
       
       

@@ -12,29 +12,29 @@ sidebarLayout(
 	sidebarPanel(width=3,
 
 
-conditionalPanel("input.tabs=='Evaluation results'",
-            h5(HTML('<p><b>Enter a PDB ID or upload a file</b></p>'),
+conditionalPanel("input.tabs=='Evaluation'",
+            h5(HTML('<p><b></b></p>'),
 
 #br(),
 
 #checkboxInput(inputId = "pmc", label = "PMC Full Text Mining", value = FALSE),
 #conditionalPanel(condition = "input.pmc",
 
-radioButtons(inputId = "dataInput", "", list("PDB ID"=1, "Upload file"=2, "Upload PDF"=3), selected=1),
+# radioButtons(inputId = "dataInput", "", list("PDB ID"=1), selected=1),
 #bsTooltip(id = "input.dataInput=='1'", title="Single PDB entry", placement = "bottom", trigger = "focus",options = NULL),
 #bsTooltip(id = "dataInput", title="Use the first option for the single PDB entry. Use the second option for the multiple PDB entries. Use the third option for mining a PDF paper.", placement = "bottom", trigger = "hover", options = NULL),
 
 
-conditionalPanel(condition="input.dataInput=='1'",
+# conditionalPanel(condition="input.dataInput=='1'",
 br(),
 
 
  textInput(inputId = "PdbId", label = "Enter a PDB ID", value = "1Z77"),
-bsTooltip(id = "PdbId", title="Enter a 4 characters long ID", placement = "bottom", trigger = "hover", options = NULL)
+bsTooltip(id = "PdbId", title="Enter a 4 characters long ID", placement = "bottom", trigger = "hover", options = NULL),
 
 
 #        selectizeInput("MLalgorithm", "Select an ML algorithm", choices = c("Support vector machines", "Boosted logistic regression", "Random forest"), multiple = FALSE, selected = "Boosted logistic regression")
-        ),
+        # ),
 
         conditionalPanel(condition="input.dataInput=='2'",
 # HTML('<br>'),
@@ -53,7 +53,7 @@ conditionalPanel(condition="input.dataInput=='3'",
 
 br(),
 
-checkboxInput(inputId = "FourMethodConsensus", label = "4-method consensus (include TM)", value = FALSE),
+# checkboxInput(inputId = "FourMethodConsensus", label = "4-method consensus (include TM)", value = FALSE),
 
 actionButton(inputId = "startAnalysis", label = "Evaluate", icon = NULL),
 br(),
@@ -89,13 +89,13 @@ column(6, checkboxInput(inputId = "advancedOptions", label = "Options", value = 
 #checkboxInput(inputId = "advancedResults", label = "Advanced results", value = FALSE),
 
     conditionalPanel(condition = "input.advancedResults",
-        checkboxInput(inputId = "signatureResults", label = "SC", value = FALSE),
+        checkboxInput(inputId = "signatureResults", label = "Sequence Cluster", value = FALSE),
         checkboxInput(inputId = "pisaPrediction", label = "PISA", value = FALSE),
         conditionalPanel(condition = "input.pisaPrediction",
                          checkboxInput(inputId = "advancedPisa", label = "PISA advanced results", value = FALSE)
         ),
         checkboxInput("eppicPrediction", "EPPIC", FALSE),
-        checkboxInput(inputId = "OligomericStatePrediction", label = "TM", value = FALSE),
+        checkboxInput(inputId = "OligomericStatePrediction", label = "Text Mining", value = FALSE),
         conditionalPanel(condition = "input.OligomericStatePrediction",
                          checkboxInput(inputId = "mlFiltering", label = "Sentences", value = FALSE)
         )
@@ -166,7 +166,7 @@ br()
 
 ),
 
-conditionalPanel("input.tabs=='Help'"
+conditionalPanel("input.tabs=='Introduction'"
 
 )
 
@@ -177,93 +177,98 @@ mainPanel(
 
 navbarPage("Quaternary Structure Evaluation Tool", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
 
-        tabPanel("Evaluation results",
-
-
-# tabsetPanel(
-                tabPanel(
-
-
-h4(textOutput(outputId = "section1")),
-            bsAlert("help"),
-
-
-
-
-h4(textOutput(outputId = "section16")),
-#        DT::dataTableOutput('path'),
-
-       DT::dataTableOutput('combinedResults'),
-#br(),
-h4(textOutput(outputId = "section17")),
-
-       DT::dataTableOutput('combinedSymmetryResults'),
-
-
-
-
-
-#h4(textOutput(outputId = "section4")),
-#tags$head(tags$style("#consistency  {white-space: nowrap;  }")),
-       DT::dataTableOutput('consistency'),
-
-#h4(textOutput(outputId = "section5")),
-#                           plotOutput('consistencyPlot', height = "auto"),
-
-h4(textOutput(outputId = "section11")),
-                            DT::dataTableOutput('signature'),
-
-
-h4(textOutput(outputId = "section1")),
-#tags$head(tags$style("#TextMining  {white-space: nowrap;  }")),
-
-                           DT::dataTableOutput('TextMining'),
-
-#h4(textOutput(outputId = "section2")),
-#                            plotOutput('ospPlot', height = "auto"),
-
-
-h4(textOutput(outputId = "section13")),
-                            DT::dataTableOutput('pisa'),
-
-
-h4(textOutput(outputId = "section7")),
-                            DT::dataTableOutput('eppic'),
-
-
-#h4(textOutput(outputId = "section3")),
-#                            DT::dataTableOutput('mlFilteredSentences'),
-
-h4(textOutput(outputId = "section6")),
-                            DT::dataTableOutput('machineLearning'),
-
-#h4(textOutput(outputId = "section12")),
-#                            DT::dataTableOutput('mutantResults'),
-
-#h4(textOutput(outputId = "section7")),
-#                            DT::dataTableOutput('noOligomericResult'),
-
-#h4(textOutput(outputId = "section8")),
-#                            DT::dataTableOutput('noFullText'),
-
-#h4(textOutput(outputId = "section10")),
-#                            DT::dataTableOutput('RawData'),
-
-#h4(textOutput(outputId = "section9")),
-#                            DT::dataTableOutput('summary'),
-
-
-
-h4(textOutput(outputId = "section15")),
-                            DT::dataTableOutput('pisaAdvancedResults'),
-
-h4(textOutput(outputId = "section14")),
-                            uiOutput('jMolRes')
-
-            )
-
-#        )
-),
+           
+           
+           
+           tabPanel("Evaluation",
+                    
+                    
+                    # tabsetPanel(
+                    tabPanel(
+                      
+                      
+                      h4(textOutput(outputId = "section1")),
+                      bsAlert("help"),
+                      
+                      
+                      
+                      
+                      h4(textOutput(outputId = "section16")),
+                      #        DT::dataTableOutput('path'),
+                      
+                      DT::dataTableOutput('combinedResults'),
+                      #br(),
+                      h4(textOutput(outputId = "section17")),
+                      
+                      DT::dataTableOutput('combinedSymmetryResults'),
+                      
+                      
+                      
+                      
+                      
+                      #h4(textOutput(outputId = "section4")),
+                      #tags$head(tags$style("#consistency  {white-space: nowrap;  }")),
+                      DT::dataTableOutput('consistency'),
+                      
+                      #h4(textOutput(outputId = "section5")),
+                      #                           plotOutput('consistencyPlot', height = "auto"),
+                      
+                      h4(textOutput(outputId = "section11")),
+                      DT::dataTableOutput('signature'),
+                      
+                      
+                      h4(textOutput(outputId = "section1")),
+                      #tags$head(tags$style("#TextMining  {white-space: nowrap;  }")),
+                      
+                      DT::dataTableOutput('TextMining'),
+                      
+                      #h4(textOutput(outputId = "section2")),
+                      #                            plotOutput('ospPlot', height = "auto"),
+                      
+                      
+                      h4(textOutput(outputId = "section13")),
+                      DT::dataTableOutput('pisa'),
+                      
+                      
+                      h4(textOutput(outputId = "section7")),
+                      DT::dataTableOutput('eppic'),
+                      
+                      
+                      #h4(textOutput(outputId = "section3")),
+                      #                            DT::dataTableOutput('mlFilteredSentences'),
+                      
+                      h4(textOutput(outputId = "section6")),
+                      DT::dataTableOutput('machineLearning'),
+                      
+                      #h4(textOutput(outputId = "section12")),
+                      #                            DT::dataTableOutput('mutantResults'),
+                      
+                      #h4(textOutput(outputId = "section7")),
+                      #                            DT::dataTableOutput('noOligomericResult'),
+                      
+                      #h4(textOutput(outputId = "section8")),
+                      #                            DT::dataTableOutput('noFullText'),
+                      
+                      #h4(textOutput(outputId = "section10")),
+                      #                            DT::dataTableOutput('RawData'),
+                      
+                      #h4(textOutput(outputId = "section9")),
+                      #                            DT::dataTableOutput('summary'),
+                      
+                      
+                      
+                      h4(textOutput(outputId = "section15")),
+                      DT::dataTableOutput('pisaAdvancedResults'),
+                      
+                      h4(textOutput(outputId = "section14")),
+                      uiOutput('jMolRes')
+                      
+                    )
+                    
+                    #        )
+           ),
+           
+           
 
         tabPanel("Help",
 
@@ -304,19 +309,19 @@ br(),
 
 h4("Workflow of the sequence cluster (SC) approach"),
 br(),
-tags$img(src = "screenShots/sequenceCluster.tiff", width = "100%"),
+tags$img(src = "screenShots/sequenceCluster.jpg", width = "100%"),
 br(),
 br(),
 
 h4("Workflow of the text mining (TM) approach"),
 br(),
-tags$img(src = "screenShots/MLprocedure.tiff", width = "100%"),
+tags$img(src = "screenShots/MLprocedure.jpg", width = "100%"),
 br(),
 br(),
 
 h4("Workflow of the PISA approach"),
 br(),
-tags$img(src = "screenShots/pisaProcedure.tiff", width = "100%"),
+tags$img(src = "screenShots/pisaProcedure.jpg", width = "100%"),
 br(),
 br(),
 
@@ -463,7 +468,17 @@ tags$img(src = "screenShots/pisa.jpg", width = "100%")
                      
             ),
             tabPanel('Citation',HTML('<p><b>This page will be available soon...</b></p>'))
-        ))),
+        ))
+
+
+
+),
+
+
+
+
+
+
 
         tags$head(
             tags$style("body {padding-top: 53px};")
