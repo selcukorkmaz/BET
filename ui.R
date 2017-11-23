@@ -53,7 +53,7 @@ conditionalPanel(condition="input.dataInput=='3'",
 
 br(),
 
-# checkboxInput(inputId = "FourMethodConsensus", label = "4-method consensus (include TM)", value = FALSE),
+ checkboxInput(inputId = "FourMethodConsensus", label = "4-method consensus (include text mining)", value = TRUE),
 
 actionButton(inputId = "startAnalysis", label = "Evaluate", icon = NULL),
 br(),

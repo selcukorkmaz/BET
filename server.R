@@ -2494,7 +2494,7 @@ shinyServer(function(input, output, session){
       
       #seqCluster2 = seqCluster[which.max(seqCluster[,4]),]
       
-      FourMethodConsensus = TRUE
+      FourMethodConsensus = input$FourMethodConsensus
       
       if(dim(current2)[1] > 1){
         #merge1 = merge(current2,seqCluster3,by = 'PDB ID')
@@ -2869,7 +2869,7 @@ shinyServer(function(input, output, session){
     #datatable(currentData(), ,escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
     #dom = 'T<"clear">lfrtip',  buttons = c('copy', 'excel', 'pdf')#, colVis = list(activate = 'click', showAll = TRUE)
     
-    FourMethodConsensus = TRUE
+    FourMethodConsensus = input$FourMethodConsensus
     
     if(FourMethodConsensus){
       
