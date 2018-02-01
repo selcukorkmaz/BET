@@ -79,20 +79,19 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
                 
             }
             if(source[i]=="PubMed"){
+              
+              # xml_data <- xmlParse(getURL(paste("https://www.ncbi.nlm.nih.gov/pubmed/", PubId[i],"?report=xml&format=text", sep="")))
+                # xml_data <- xmlParse(xml.url, useInternalNodes = T)
                 
+                # abstractXML = xml_data$resultList$result$abstractText
+                # if(length(abstractXML) != 0L){
+                #     title = xml_data$resultList$result$title
+                #     fullTextTotal <- as.String(c(paste("[title]", title), abstractXML))
+                #     numberOfChar = nchar(fullTextTotal)
+                #     
+                # }
                 
-                xml.url <- paste("http://www.ebi.ac.uk/europepmc/webservices/rest/search/resulttype=core&query=ext_id:", PubId[i], sep="")
-                
-                xml_data <- xmlToList(xml.url)
-                abstractXML = xml_data$resultList$result$abstractText
-                if(length(abstractXML) != 0L){
-                    title = xml_data$resultList$result$title
-                    fullTextTotal <- as.String(c(paste("[title]", title), abstractXML))
-                    numberOfChar = nchar(fullTextTotal)
-                    
-                }
-                
-                if(length(abstractXML) == 0L){
+                # if(length(abstractXML) == 0L){
                     
                     html <- getURL(paste("http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i], sep=""), followlocation = TRUE)
                     doc = htmlParse(html, asText=TRUE)
@@ -100,7 +99,7 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
                     numberOfChar = nchar(fullTextTotal)
                     
                     
-                }
+                # }
             }
             
             

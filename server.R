@@ -2121,21 +2121,31 @@ shinyServer(function(input, output, session){
     #eppic = unique(eppic)
     
     eppic$pdbId = toupper(eppic$pdbId)
-    rownames(eppic) = eppic$pdbId
-    names(eppic) = c("PDB ID", "Structure",  "Stoichiometry", "Symmetry")
+    selectedEppic = eppic[eppic$pdbId == as.character(pdbId),]
     
-    selectedEppic = eppic[as.character(pdbId),]
+    # rownames(eppic) = eppic$pdbId
+    names(eppic) = c("PDB ID","Structure", "Stoichiometry", "Symmetry", "mm size", "Composition", "Chain IDs", "Comment")
+
     
-    
-    if(!is.na(selectedEppic$`PDB ID`)){
-      
+    if(is.null(nrow(selectedEppic$pdbId))){
+
+      names(selectedEppic) = c("PDB ID","Structure", "Stoichiometry", "Symmetry", "mm size", "Composition", "Chain IDs", "Comment")
       selectedEppic
+      
     }else{
       
-      selectedEppic$`PDB ID` = pdbId
+      selectedEppic$pdbId = pdbId
       selectedEppic$Structure = "Inconclusive"
       selectedEppic$Stoichiometry = "Inconclusive"
       selectedEppic$Symmetry = "Inconclusive"
+      
+      selectedEppic$mm.size = "Inconclusive"
+      selectedEppic$Composition = "Inconclusive"
+      selectedEppic$Chain.IDs = "Inconclusive"
+      selectedEppic$Comment = "Inconclusive"
+      
+      names(selectedEppic) = c("PDB ID","Structure", "Stoichiometry", "Symmetry", "mm size", "Composition", "Chain IDs", "Comment")
+      
       selectedEppic
     }
     
@@ -2466,6 +2476,7 @@ shinyServer(function(input, output, session){
       names(pisaRes2) = c("PDB ID","PISA")
       
       eppicRes = selectedEppic()
+      eppicRes = eppicRes[eppicRes$Structure == "bio",]
       eppicRes2 = eppicRes[,c(1,3)]
       names(eppicRes2) = c("PDB ID","EPPIC")
       
@@ -2503,15 +2514,19 @@ shinyServer(function(input, output, session){
         
         if(FourMethodConsensus){
           consensus = join_all(list(current2, seqCluster3, pisaRes2, eppicRes2, tm2), by = 'PDB ID', type = 'left')
-        }else{consensus = join_all(list(current2, seqCluster3, pisaRes2, eppicRes2), by = 'PDB ID', type = 'left')}
+        }else{
+          
+          consensus = join_all(list(current2, seqCluster3, pisaRes2, eppicRes2), by = 'PDB ID', type = 'left')
+          
+          }
         
       }
       
       else{
         
         if(FourMethodConsensus){
-         consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2], tm2[,2])
-        }else{consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], eppicRes2[,2])}
+         consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], as.character(eppicRes2[,2]), tm2[,2])
+        }else{consensus = cbind(current[,1:3], seqCluster3[,2], pisaRes[,4], as.character(eppicRes2[,2]))}
         
       }
       
@@ -2814,6 +2829,7 @@ shinyServer(function(input, output, session){
       names(pisaRes2) = c("PDB ID","PISA")
       
       eppicRes = selectedEppic()
+      eppicRes = eppicRes[eppicRes$Structure == "bio",] 
       eppicRes2 = eppicRes[,c(1,4)]
       names(eppicRes2) = c("PDB ID","EPPIC")
       
