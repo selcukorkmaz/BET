@@ -148,7 +148,7 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
                     for(j in c:((c-1)+mutantProteinInfo[1,p])){
                       
                       mutantResult[j,1] = paste0("<a href='","http://www.rcsb.org/pdb/explore/explore.do?structureId=",as.character(pdbId[i])," 'target=","'_blank'","'>",as.character(pdbId[i]),"</a>")
-                      mutantResult[j,2] = if(source[i] == "CrossRef"){paste0("<a href='","http://dx.doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
+                      mutantResult[j,2] = if(source[i] == "CrossRef"){paste0("<a href='","https://doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
                       mutantResult[j,3] = names(mutantProteinInfo[p])
                       mutantResult[j,4] = gsub("\n", " ", as.character(fullTextSentencesList)[l])
                       
@@ -172,7 +172,7 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
                     for(j in z:((z-1)+oligomericState[1,k])){
                       
                       result[j,1] = paste0("<a href='","http://www.rcsb.org/pdb/explore/explore.do?structureId=",as.character(pdbId[i])," 'target=","'_blank'","'>",as.character(pdbId[i]),"</a>")
-                      result[j,2] = if(source[i] == "CrossRef"){paste0("<a href='","http://dx.doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
+                      result[j,2] = if(source[i] == "CrossRef"){paste0("<a href='","https://doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
                       result[j,3] = names(oligomericState[k])
                       result[j,4] = gsub("\n", " ", as.character(fullTextSentencesList)[l])
                       result[j,5] = if(source[i]=="CrossRef"){("CrossRef")}else if(source[i]=="PMC"){("full text")}else if(source[i]=="PubMed"){("abstract")}else if(source[i]=="PDF"){("full text-PDF ")}
@@ -193,7 +193,7 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
               if(is.na(result[,"oligomericState"][1])){
                 
                 result[1,1] = paste0("<a href='","http://www.rcsb.org/pdb/explore/explore.do?structureId=",as.character(pdbId[i])," 'target=","'_blank'","'>",as.character(pdbId[i]),"</a>")
-                result[1,2] = if(source[i] == "CrossRef"){paste0("<a href='","http://dx.doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
+                result[1,2] = if(source[i] == "CrossRef"){paste0("<a href='","https://doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
                 result[1,3] = "Inconclusive"
                 result[1,4] = "Inconclusive"
                 result[1,5] = if(source[i]=="CrossRef"){("CrossRef")}else if(source[i]=="PMC"){("full text")}else if(source[i]=="PubMed"){("abstract")}else if(source[i]=="PDF"){("full text-PDF ")}
@@ -210,7 +210,7 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
                 
                 no_oligomericState = no_oligomericState + 1
                 noOligomer[i,1]= paste0("<a href='","http://www.rcsb.org/pdb/explore/explore.do?structureId=",as.character(pdbId[i])," 'target=","'_blank'","'>",as.character(pdbId[i]),"</a>")
-                noOligomer[i,2]= if(source[i] == "CrossRef"){paste0("<a href='","http://dx.doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
+                noOligomer[i,2]= if(source[i] == "CrossRef"){paste0("<a href='","https://doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
                 
               }
             }
@@ -218,7 +218,7 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
                 
               
               result[1,1] = paste0("<a href='","http://www.rcsb.org/pdb/explore/explore.do?structureId=",as.character(pdbId[i])," 'target=","'_blank'","'>",as.character(pdbId[i]),"</a>")
-              result[1,2] = if(source[i] == "CrossRef"){paste0("<a href='","http://dx.doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
+              result[1,2] = if(source[i] == "CrossRef"){paste0("<a href='","https://doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
               result[1,3] = "Inconclusive"
               result[1,4] = "Inconclusive"
               result[1,5] = if(source[i]=="CrossRef"){("CrossRef")}else if(source[i]=="PMC"){("full text")}else if(source[i]=="PubMed"){("abstract")}else if(source[i]=="PDF"){("full text-PDF ")}
@@ -231,7 +231,7 @@ newTextMiner <- function(PubId, pdbId, source, primaryCitation, oligomerNames, m
               
               #xml_empty = xml_empty + 1
               #noFullText[i,1] = paste0("<a href='","http://www.rcsb.org/pdb/explore/explore.do?structureId=",as.character(pdbId[i])," 'target=","'_blank'","'>",as.character(pdbId[i]),"</a>")
-              #noFullText[i,2]= if(source[i] == "CrossRef"){paste0("<a href='","http://dx.doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
+              #noFullText[i,2]= if(source[i] == "CrossRef"){paste0("<a href='","https://doi.org/",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>")}else if(source[i] == "PMC"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pmc/articles/PMC",gsub("PMC","",PubId[i]),"/"," 'target=","'_blank'","'>",PubId[i],"</a>"))}else if(source[i] == "PubMed"){(paste0("<a href='","http://www.ncbi.nlm.nih.gov/pubmed/?term=",PubId[i]," 'target=","'_blank'","'>",PubId[i],"</a>"))}else{"PDF"}
               
             }
             
