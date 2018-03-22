@@ -2070,18 +2070,17 @@ shinyServer(function(input, output, session){
     
     selectedPisa = pisa[as.character(pdbId),]
     
-    if(!is.na(selectedPisa[1,1])){
-      
-      selectedPisa
-    }else{
+    if(is.na(selectedPisa[1,1])){
       
       selectedPisa$`PDB ID` = pdbId
+      selectedPisa$Assessment = "Inconclusive"
       selectedPisa$Structure = "Inconclusive"
       selectedPisa$Stoichiometry = "Inconclusive"
       selectedPisa$Symmetry = "Inconclusive"
-      selectedPisa
+      
     }
     
+    selectedPisa
   })
   
   
@@ -2124,31 +2123,33 @@ shinyServer(function(input, output, session){
     selectedEppic = eppic[eppic$pdbId == as.character(pdbId),]
     
     # rownames(eppic) = eppic$pdbId
-    names(eppic) = c("PDB ID","Structure", "Stoichiometry", "Symmetry", "mm size", "Composition", "Chain IDs", "Comment")
 
     
-    if(is.null(nrow(selectedEppic$pdbId))){
-
-      names(selectedEppic) = c("PDB ID","Structure", "Stoichiometry", "Symmetry", "mm size", "Composition", "Chain IDs", "Comment")
+    if(nrow(selectedEppic) != 0){
+      
       selectedEppic
       
     }else{
       
-      selectedEppic$pdbId = pdbId
-      selectedEppic$Structure = "Inconclusive"
-      selectedEppic$Stoichiometry = "Inconclusive"
-      selectedEppic$Symmetry = "Inconclusive"
+      selectedEppic = cbind.data.frame(pdbId = pdbId, Structure = "Inconclusive", Stoichiometry = "Inconclusive", Symmetry = "Inconclusive", mm.size = "Inconclusive",
+                       Composition = "Inconclusive", Chain.IDs = "Inconclusive", Comment = "Inconclusive")
+
       
-      selectedEppic$mm.size = "Inconclusive"
-      selectedEppic$Composition = "Inconclusive"
-      selectedEppic$Chain.IDs = "Inconclusive"
-      selectedEppic$Comment = "Inconclusive"
+    
+    }
+    names(selectedEppic) = c("PDB ID","Structure", "Stoichiometry", "Symmetry", "mm size", "Composition", "Chain IDs", "Comment")
+    
+    if(selectedEppic$Structure != "Inconclusive"){
       
-      names(selectedEppic) = c("PDB ID","Structure", "Stoichiometry", "Symmetry", "mm size", "Composition", "Chain IDs", "Comment")
+      for(i in 1: dim(selectedEppic)[1]){
+        selectedEppic$Res[i] = if(selectedEppic$Structure[i] == "bio"){1}else{0}
+      }
+    } else{
       
-      selectedEppic
+      selectedEppic$Res = 0
     }
     
+    selectedEppic
   })
   
   
@@ -2161,10 +2162,22 @@ shinyServer(function(input, output, session){
     
     if (input$startAnalysis && input$eppicPrediction){
       
-      datatable(selectedEppic(), escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
-        dom = 'T<"clear">lfrtip', buttons = c('copy', 'excel', 'pdf'), deferRender = TRUE
-        
-      ))
+      df = as.data.frame(selectedEppic())
+      
+      datatable(df, escape=FALSE,  rownames=FALSE, class = 'cell-border hover stripe', extensions = c('Buttons'), options = list(dom = 'T<"clear">lfrtip',buttons = c('copy', 'excel', 'pdf'),  columnDefs = list(list(targets = 8, visible = FALSE)))
+               
+                
+      )%>% formatStyle(
+        'Res',
+        target = 'row',
+        backgroundColor = styleEqual(c(1), c('#00BA38'))
+      )
+
+      
+      # datatable(selectedEppic(), escape=FALSE, rownames=FALSE,  class = 'cell-border hover stripe', extensions = c('Buttons', 'Responsive'), options = list(
+      #   dom = 'T<"clear">lfrtip', buttons = c('copy', 'excel', 'pdf'), deferRender = TRUE
+      #   
+      # ))
       
       
     }
@@ -2472,11 +2485,18 @@ shinyServer(function(input, output, session){
         names(seqCluster3) = c("PDB ID", "Sequence Cluster")
       }
       pisaRes = selectedPisa()
+      if(pisaRes$Assessment == "Grey"){
+        
+        pisaRes$Stoichiometry = "Inconclusive"
+        pisaRes$Symmetry = "Inconclusive"
+      }
       pisaRes2 = pisaRes[,c(1,4)]
       names(pisaRes2) = c("PDB ID","PISA")
       
       eppicRes = selectedEppic()
-      eppicRes = eppicRes[eppicRes$Structure == "bio",]
+      if(eppicRes$Structure != "Inconclusive"){
+        eppicRes = eppicRes[eppicRes$Structure == "bio",]
+      }
       eppicRes2 = eppicRes[,c(1,3)]
       names(eppicRes2) = c("PDB ID","EPPIC")
       
@@ -2720,12 +2740,19 @@ shinyServer(function(input, output, session){
       for(i in 1:dim(consensusLast)[1]){
         if(FourMethodConsensus){ 
           vote = c(as.character(consensusLast$SequenceClusterOligomericState[i]), as.character(consensusLast$PISAOligomericState[i]), as.character(consensusLast$EPPICOligomericState[i]), as.character(consensusLast$TextMiningStoichiometry[i]))
+         if(length(vote[vote == "Inconclusive"]) != 4){
+           vote[vote == "Inconclusive"] = NA
+         }
           v = as.data.frame(table(vote))
-          v2 = v[v$Freq>2,]
+          v2 = v[v$Freq>1,]
           
-          consensusLast$ConsensusResult[i] = if(max(table(vote)) <3){"Inconclusive"} else if(length(v2$vote)>0){names(which.max(table(vote)))}else if(min(v$Freq)>2){names(which.max(table(vote)))}else{"Inconclusive"}
+          consensusLast$ConsensusResult[i] = if(max(table(vote)) <2){"Inconclusive"} else if(length(v2$vote)>0){names(which.max(table(vote)))}else if(min(v$Freq)>1){names(which.max(table(vote)))}else{"Inconclusive"}
         }else{
         vote = c(as.character(consensusLast$SequenceClusterOligomericState[i]), as.character(consensusLast$PISAOligomericState[i]), as.character(consensusLast$EPPICOligomericState[i]))
+        
+        if(length(vote[vote == "Inconclusive"]) != 3){
+          vote[vote == "Inconclusive"] = NA
+        }
         v = as.data.frame(table(vote))
         v2 = v[v$Freq>1,]
         
@@ -2825,11 +2852,18 @@ shinyServer(function(input, output, session){
       }
       
       pisaRes = selectedPisa()
+      if(pisaRes$Assessment == "Grey"){
+        
+        pisaRes$Stoichiometry = "Inconclusive"
+        pisaRes$Symmetry = "Inconclusive"
+      }
       pisaRes2 = pisaRes[,c(1,5)]
       names(pisaRes2) = c("PDB ID","PISA")
       
       eppicRes = selectedEppic()
+      if(eppicRes$Structure != "Inconclusive"){
       eppicRes = eppicRes[eppicRes$Structure == "bio",] 
+      }
       eppicRes2 = eppicRes[,c(1,4)]
       names(eppicRes2) = c("PDB ID","EPPIC")
       
@@ -2848,6 +2882,10 @@ shinyServer(function(input, output, session){
       
       for(i in 1:dim(consensusLast)[1]){
         vote = c(as.character(consensusLast$SequenceClusterSymmetry[i]), as.character(consensusLast$PISASymmetry[i]),as.character(consensusLast$EPPICSymmetry[i]))
+        
+        if(length(vote[vote == "Inconclusive"]) != 3){
+          vote[vote == "Inconclusive"] = NA
+        }
         
         consensusLast$ConsensusResult[i] = if(max(table(vote)) == 1){"Inconclusive"}else{names(which.max(table(vote)))}
       }

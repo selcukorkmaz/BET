@@ -152,7 +152,7 @@ conditionalPanel(condition = "input.AdvancedEppic"
 conditionalPanel(condition = "input.advancedOptions",
 
 
-selectizeInput("MLalgorithm", "Select an ML algorithm", choices = c("Support vector machines", "Boosted logistic regression"), multiple = FALSE, selected = "Boosted logistic regression"),
+selectizeInput("MLalgorithm", "Select an ML algorithm", choices = c("Support vector machines", "Boosted logistic regression"), multiple = FALSE, selected = "Support vector machines"),
 
 
 selectizeInput("seqCluster", "Select a sequence cluster", choices = c("95% sequence cluster" = "95","90% sequence cluster" = "90", "70% sequence cluster" = "70", "40% sequence cluster" = "40"), multiple = FALSE, selected = "70")
@@ -488,12 +488,12 @@ tags$img(src = "screenShots/pisa.jpg", width = "100%")
 
             HTML('<a href="#" class="back-to-top">Back to Top</a>'),
 
-HTML('<script src="js/jquery.js"></script>'),
+HTML('<script src="js/jquery.js"></script>')
 
-tags$style(type="text/css",
-".shiny-output-error { visibility: hidden; }",
-".shiny-output-error:before { visibility: hidden; }"
-)
+# tags$style(type="text/css",
+# ".shiny-output-error { visibility: hidden; }",
+# ".shiny-output-error:before { visibility: hidden; }"
+# )
 
 
 
