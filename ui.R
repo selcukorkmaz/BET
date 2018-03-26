@@ -63,8 +63,8 @@ br(),
 #checkboxInput("dataMentions", HTML('<p><font size="2">Include data mentions</font></p>'), FALSE),
 
 # h5("Quaternary structure evaluation methods"),
-# 
-# 
+#
+#
 # fluidRow(column(3, checkboxInput(inputId = "signatureResults", label = "SC", value = FALSE)),
 # column(3, checkboxInput(inputId = "OligomericStatePrediction", label = "TM", value = FALSE)),
 # column(3, checkboxInput(inputId = "pisaPrediction", label = "PISA", value = FALSE)),
@@ -99,7 +99,7 @@ column(6, checkboxInput(inputId = "advancedOptions", label = "Options", value = 
         conditionalPanel(condition = "input.OligomericStatePrediction",
                          checkboxInput(inputId = "mlFiltering", label = "Sentences", value = FALSE)
         )
-        # 
+        #
         # checkboxInput(inputId = "mlFiltering", label = "Sentences", value = FALSE),
         # checkboxInput(inputId = "advancedPisa", label = "PISA advanced results", value = FALSE)
         #checkboxInput(inputId = "Display", label = "Display 3D structure", value = FALSE)
@@ -177,98 +177,98 @@ mainPanel(
 
 navbarPage("Quaternary Structure Evaluation Tool", id="tabs", inverse = TRUE, collapsible = TRUE, fluid = TRUE, position = "fixed-top", #class("navbar navbar-inverse"),
 
-           
-           
-           
+
+
+
            tabPanel("Evaluation",
-                    
-                    
+
+
                     # tabsetPanel(
                     tabPanel(
-                      
-                      
+
+
                       h4(textOutput(outputId = "section1")),
                       bsAlert("help"),
-                      
-                      
-                      
-                      
+
+
+
+
                       h4(textOutput(outputId = "section16")),
                       #        DT::dataTableOutput('path'),
-                      
+
                       DT::dataTableOutput('combinedResults'),
                       #br(),
                       h4(textOutput(outputId = "section17")),
-                      
+
                       DT::dataTableOutput('combinedSymmetryResults'),
-                      
-                      
-                      
-                      
-                      
+
+
+
+
+
                       #h4(textOutput(outputId = "section4")),
                       #tags$head(tags$style("#consistency  {white-space: nowrap;  }")),
                       DT::dataTableOutput('consistency'),
-                      
+
                       #h4(textOutput(outputId = "section5")),
                       #                           plotOutput('consistencyPlot', height = "auto"),
-                      
+
                       h4(textOutput(outputId = "section11")),
                       DT::dataTableOutput('signature'),
-                      
-                      
+
+
                       h4(textOutput(outputId = "section1")),
                       #tags$head(tags$style("#TextMining  {white-space: nowrap;  }")),
-                      
+
                       DT::dataTableOutput('TextMining'),
-                      
+
                       #h4(textOutput(outputId = "section2")),
                       #                            plotOutput('ospPlot', height = "auto"),
-                      
-                      
+
+
                       h4(textOutput(outputId = "section13")),
                       DT::dataTableOutput('pisa'),
-                      
-                      
+
+
                       h4(textOutput(outputId = "section7")),
                       DT::dataTableOutput('eppic'),
-                      
-                      
+
+
                       #h4(textOutput(outputId = "section3")),
                       #                            DT::dataTableOutput('mlFilteredSentences'),
-                      
+
                       h4(textOutput(outputId = "section6")),
                       DT::dataTableOutput('machineLearning'),
-                      
+
                       #h4(textOutput(outputId = "section12")),
                       #                            DT::dataTableOutput('mutantResults'),
-                      
+
                       #h4(textOutput(outputId = "section7")),
                       #                            DT::dataTableOutput('noOligomericResult'),
-                      
+
                       #h4(textOutput(outputId = "section8")),
                       #                            DT::dataTableOutput('noFullText'),
-                      
+
                       #h4(textOutput(outputId = "section10")),
                       #                            DT::dataTableOutput('RawData'),
-                      
+
                       #h4(textOutput(outputId = "section9")),
                       #                            DT::dataTableOutput('summary'),
-                      
-                      
-                      
+
+
+
                       h4(textOutput(outputId = "section15")),
                       DT::dataTableOutput('pisaAdvancedResults'),
-                      
+
                       h4(textOutput(outputId = "section14")),
                       uiOutput('jMolRes')
-                      
+
                     )
-                    
+
                     #        )
            ),
-           
-           
+
+
 
         tabPanel("Help",
 
@@ -277,13 +277,13 @@ navbarPage("Quaternary Structure Evaluation Tool", id="tabs", inverse = TRUE, co
                 h4("Introduction", id = "intro"),
 tags$p(align = "justify", a("The Protein Data Bank", href = "http://www.rcsb.org/pdb/home/home.do", target="_blank"), " (PDB) is the single worldwide archive of the three-dimensional (3D) structures of proteins and nucleic acids. As of November 2016, the PDB contains more than 124,000 structures and grows by more than 10,000 structures annually. Since the 3D structure of a protein is vital to understand the mechanisms of biological processes, diseases and drug design, the correct quaternary assembly information is of critical importance. The biologically relevant form of a 3D structure determined by X-ray crystallography is not directly obtainable by this experimental technique. Instead, this information may come from additional experiments, is inferred by comparison with similar proteins, is predicted using the PISA (Proteins, Interfaces, Structures and Assemblies), or is provided by the structure depositor as metadata. Furthermore, it can be predicted using analytical methods, such as", a("PISA", href = "http://www.ebi.ac.uk/pdbe/pisa/", target="_blank"), "(Proteins, Interfaces, Structures and Assemblies) (Krissinel and Henrick, 2007) and", a("EPPIC", href = "http://www.eppic-web.org/ewui/", target="_blank"), "(Evolutionary Protein-Protein Interface Classifier) (Duarte et al. 2012)"),
 
-tags$p(align = "justify", "The PDB grows by more than 10,000 structures annually thanks to the researchers all around the world. 
-       However, because of the incomplete or unclear experimental data, as well as the errors in the data upload 
-       processes, the quaternary structure annotations in the PDB are not always correct and reliable (Capitani et al. 2015). 
-       In spite the great efforts to reduce the number of erroneous structures, it is reported that there are 
-       significant number of incorrect quaternary structure annotations in the PDB. The error rate is 14% according to 
-       Levy (2007), while more recently Baskaran et al. (2014) reported a lower bound of error rate as 7%. 
-       Therefore, an extensive study is needed to detect the incorrect structures throughout the archive and to 
+tags$p(align = "justify", "The PDB grows by more than 10,000 structures annually thanks to the researchers all around the world.
+       However, because of the incomplete or unclear experimental data, as well as the errors in the data upload
+       processes, the quaternary structure annotations in the PDB are not always correct and reliable (Capitani et al. 2015).
+       In spite the great efforts to reduce the number of erroneous structures, it is reported that there are
+       significant number of incorrect quaternary structure annotations in the PDB. The error rate is 14% according to
+       Levy (2007), while more recently Baskaran et al. (2014) reported a lower bound of error rate as 7%.
+       Therefore, an extensive study is needed to detect the incorrect structures throughout the archive and to
        assign the most likely quaternary structures for the possibly incorrect structures."),
 
 tags$p(align = "justify", "Here we developed a web-based tool to detect incorrect quaternary structure annotations throughout the PDB repository and to assign the most
@@ -338,7 +338,7 @@ tabPanel('Manual', id = "manual",
 h4("Usage of the tool"),
 
 tags$ol(
-    tags$li(align = "justify", "The tool has a very simple user interface, which only requires PDB entries as an input. Users can either enter a single PDB entry into the box in the tool or 
+    tags$li(align = "justify", "The tool has a very simple user interface, which only requires PDB entries as an input. Users can either enter a single PDB entry into the box in the tool or
             upload a .txt file, which includes multiple PDB IDs, using the option in the tool for multiple PDB entries. Furthermore, users can upload a PDF version of a paper
             as a third option for the text mining method. After entering or uploading the proper input to the tool, one can click", tags$b("Evaluate"),"button to start evaluation process for PDB entries."),
 
@@ -351,10 +351,10 @@ br(),
 br(),
 
 
-    tags$li(align = "justify", "Initially, the tool gives results for both oligomeric state and symmetry information. The first table contains oligomeric state results from four different 
-evaluation methods, including sequence clustering, text mining, PISA and EPPIC, and the second table includes results from sequence clustering, PISA and EPPIC. 
-Finally, the results are aggregated and majority rule is applied to obtain a consensus result. Each result from different methods is compared to current result in the PDB. 
-If the two results do not match, red color is used to indicate the inconsistency between the results. On the other hand, green color is used to show the consistency between 
+    tags$li(align = "justify", "Initially, the tool gives results for both oligomeric state and symmetry information. The first table contains oligomeric state results from four different
+evaluation methods, including sequence clustering, text mining, PISA and EPPIC, and the second table includes results from sequence clustering, PISA and EPPIC.
+Finally, the results are aggregated and majority rule is applied to obtain a consensus result. Each result from different methods is compared to current result in the PDB.
+If the two results do not match, red color is used to indicate the inconsistency between the results. On the other hand, green color is used to show the consistency between
 evaluation methods and the current PDB results, and blue color is used to demonstrate the inconclusive results."),
 br(),
 
@@ -363,29 +363,29 @@ tags$img(src = "screenShots/resultPage.jpg", width = "100%"),
 br(),
 br(),
 
-    tags$li(align = "justify", "The evaluation methods can be selected individually to see the more detailed results for sequence clustering, text mining, PISA and EPPIC. 
-            Sequence cluster table gives stoichiometry and symmetry information in the cluster alongside with the consistency score, the number of quaternary structures in 
+    tags$li(align = "justify", "The evaluation methods can be selected individually to see the more detailed results for sequence clustering, text mining, PISA and EPPIC.
+            Sequence cluster table gives stoichiometry and symmetry information in the cluster alongside with the consistency score, the number of quaternary structures in
             the cluster and the PDB entries in the cluster. If the maximum consistency score in the cluster is greater than 0.5 and there are enough biological
-            assemblies in the cluster, a green background color will be used to indicate the row that has the highest consistency score and the representative biological 
-            assembly for the cluster.  Text mining results table contains the oligomeric state prediction keyword, experimental evidence information, ML (machine-learning) 
-            filtering result as TRUE or FALSE, majority probability, publication ID as PMC or PubMed, publication type as full-text or abstract and primary citation 
-            indication as yes or no. PISA predictions table gives PDB ID, assessment as stable, grey or unstable, structure as BA (biological assembly) or AU 
-            (asymmetric unit) and information that define oligomeric state: stoichiometry and symmetry. Likewise, EPPIC prediction table includes stoichiometry and 
+            assemblies in the cluster, a green background color will be used to indicate the row that has the highest consistency score and the representative biological
+            assembly for the cluster.  Text mining results table contains the oligomeric state prediction keyword, experimental evidence information, ML (machine-learning)
+            filtering result as TRUE or FALSE, majority probability, publication ID as PMC or PubMed, publication type as full-text or abstract and primary citation
+            indication as yes or no. PISA predictions table gives PDB ID, assessment as stable, grey or unstable, structure as BA (biological assembly) or AU
+            (asymmetric unit) and information that define oligomeric state: stoichiometry and symmetry. Likewise, EPPIC prediction table includes stoichiometry and
             symmetry information for a particular PDB entry."),
 br(),
     tags$img(src = "screenShots/detailedResultPage.jpg", width = "100%"),
 br(),
 br(),
 
-tags$li(align = "justify", "One can display all extracted sentences from the primary publication alongside with the keywords, experimental evidence information and ML filtering label. 
-        The sentences classified as positive by the ML algorithm will be displayed with a green background color, while negative sentences will be displayed with a red 
+tags$li(align = "justify", "One can display all extracted sentences from the primary publication alongside with the keywords, experimental evidence information and ML filtering label.
+        The sentences classified as positive by the ML algorithm will be displayed with a green background color, while negative sentences will be displayed with a red
         background color."),
 br(),
 tags$img(src = "screenShots/sentences.jpg", width = "100%"),
 br(),
 br(),
 
-tags$li("PISA advanced results contain a table, which include accessible surface area, buried surface area, dissociation energy, entropy, dissociation area and internal 
+tags$li("PISA advanced results contain a table, which include accessible surface area, buried surface area, dissociation energy, entropy, dissociation area and internal
         energy."),
 br(),
 tags$img(src = "screenShots/pisa.jpg", width = "100%")
@@ -429,13 +429,13 @@ tags$img(src = "screenShots/pisa.jpg", width = "100%")
 
 
             tabPanel('Keywords',
-                     
+
                 h5("These keywords will be used to search and extract quaternary structure related sentences throughout the paper(s)."),
                     verbatimTextOutput("baKeywords"),
-                
+
                 h5("These keywords will be used to search and extract experimental evidence."),
                   verbatimTextOutput("eeKeywords")
-        
+
             ),
 
             tabPanel('News',HTML('<p><b>This page will be available soon...</b></p>')),
@@ -444,28 +444,28 @@ tags$img(src = "screenShots/pisa.jpg", width = "100%")
                      HTML('<p><a href="http://yunus.hacettepe.edu.tr/~selcuk.korkmaz/" target="_blank"> <b>Selcuk Korkmaz, PhD</b></a><p>'),
                      HTML('<p>Hacettepe University Faculty of Medicine <a href="http://www.biostatistics.hacettepe.edu.tr" target="_blank"> Department of Biostatistics</a><p>'),
                      HTML('<p><a href="mailto:selcukorkmaz@gmail.com" target="_blank">selcukorkmaz@gmail.com</a><p>'),
-                     
+
                      HTML('<p><a href="https://www.linkedin.com/in/peterrose" target="_blank"> <b>Peter Rose, PhD</b></a><p>'),
                      HTML('<p>Site Head <a href="http://www.rcsb.org/pdb/home/home.do" target="_blank">RCSB Protein Data Bank West</a> UCSD<p>'),
                      HTML('<p><a href="mailto:peter.rose@rcsb.org" target="_blank">peter.rose@rcsb.org</a><p>'),
-                     
+
                      HTML('<p> <b>Jose Duarte, PhD</b><p>'),
                      HTML('<p>Senior Scientist <a href="http://www.rcsb.org/pdb/home/home.do" target="_blank">RCSB Protein Data Bank West</a> UCSD<p>'),
                      HTML('<p><a href="mailto:jose.duarte@rcsb.org" target="_blank">jose.duarte@rcsb.org</a><p>'),
-                     
+
                      HTML('<p><a href="http://www.spice-3d.org"> <b>Andreas Prlić, PhD</b></a><p>'),
                      HTML('<p>Technical and Scientific Team Lead <a href="http://www.rcsb.org/pdb/home/home.do" target="_blank">RCSB Protein Data Bank West</a> UCSD<p>'),
                      HTML('<p><a href="mailto:andreas.prlic@rcsb.org" target="_blank">andreas.prlic@rcsb.org</a><p>'),
-                     
+
                      HTML('<p><a href="http://yunus.hacettepe.edu.tr/~dincer.goksuluk" target="_blank"> <b>Dincer Goksuluk</b></a><p>'),
                      HTML('<p>Hacettepe University Faculty of Medicine <a href="http://www.biostatistics.hacettepe.edu.tr" target="_blank"> Department of Biostatistics</a><p>'),
                      HTML('<p><a href="mailto:dincer.goksuluk@gmail.com" target="_blank">dincer.goksuluk@gmail.com</a><p>'),
-     
+
                      HTML('<p><a href="http://gokmenzararsiz.simplesite.com" target="_blank"> <b>Gokmen Zararsiz, PhD</b></a><p>'),
                      HTML('<p>Erciyes University Faculty of Medicine <a href="http://www.biostatistics.hacettepe.edu.tr" target="_blank"> Department of Biostatistics</a><p>'),
-                     HTML('<p><a href="mailto:gokmenzararsiz@hotmail.com" target="_blank">gokmenzararsiz@hotmail.com</a><p>')  
-                     
-                     
+                     HTML('<p><a href="mailto:gokmenzararsiz@hotmail.com" target="_blank">gokmenzararsiz@hotmail.com</a><p>')
+
+
             ),
             tabPanel('Citation',HTML('<p><b>This page will be available soon...</b></p>'))
         ))
