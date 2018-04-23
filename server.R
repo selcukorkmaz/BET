@@ -2453,12 +2453,18 @@ shinyServer(function(input, output, session){
 
         for (i in 1:dim(seqCluster3)[1]){
 
-          if(seqCluster3[i,3] <= 0.5 || seqCluster3[i,4] < 3){
+          if(seqCluster3[i,3] <= 0.5 && seqCluster3[i,4] >= 3){
 
             seqCluster3[i,2] = "Inconclusive"
 
           }
 
+          if(seqCluster3[i,4] < 3){
+            
+            seqCluster3[i,2] = "N/A"
+            
+          }
+          
         }
 
         seqCluster3 = seqCluster3[,1:2]
@@ -2471,10 +2477,16 @@ shinyServer(function(input, output, session){
         seqCluster3 = seqCluster2[,c(1,3,5,6)]
 
 
-        if(max(seqCluster3[,3]) <= 0.5 || sum(seqCluster3[,4]) < 3){
-
+        if(max(seqCluster3[,3]) <= 0.5 && sum(seqCluster3[,4]) >= 3){
+          
           seqCluster3[,2] = "Inconclusive"
-
+          
+        }
+        
+        if(sum(seqCluster3[,4]) < 3){
+          
+          seqCluster3[,2] = "N/A"
+          
         }
 
         seqCluster4 = seqCluster3[which.max(seqCluster3[,3]),]
@@ -2822,11 +2834,21 @@ shinyServer(function(input, output, session){
 
         for (i in 1:dim(seqCluster3)[1]){
 
-          if(seqCluster3[i,3] <= 0.5 || seqCluster3[i,4] < 3){
-
+             ################
+          
+          if(seqCluster3[i,3] <= 0.5 && seqCluster3[i,4] >= 3){
+            
             seqCluster3[i,2] = "Inconclusive"
-
+            
           }
+          
+          if(seqCluster3[i,4] < 3){
+            
+            seqCluster3[i,2] = "N/A"
+            
+          }
+          #################
+          
 
         }
 
@@ -2840,11 +2862,18 @@ shinyServer(function(input, output, session){
         seqCluster3 = seqCluster2[,c(1,4,5,6)]
 
 
-        if(max(seqCluster3[,3]) <= 0.5 || sum(seqCluster3[,4]) < 3){
+        if(max(seqCluster3[,3]) <= 0.5 && sum(seqCluster3[,4]) >= 3){
 
           seqCluster3[,2] = "Inconclusive"
 
         }
+        
+        if(sum(seqCluster3[,4]) < 3){
+          
+          seqCluster3[,2] = "N/A"
+          
+        }
+        
 
         seqCluster4 = seqCluster3[which.max(seqCluster3[,3]),]
         seqCluster3 = seqCluster4[,1:2]
