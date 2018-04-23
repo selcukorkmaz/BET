@@ -2139,7 +2139,7 @@ shinyServer(function(input, output, session){
     }
     names(selectedEppic) = c("PDB ID","Structure", "Stoichiometry", "Symmetry", "mm size", "Composition", "Chain IDs", "Comment")
 
-    if(selectedEppic$Structure != "Inconclusive"){
+    if(!("Inconclusive" %in% selectedEppic$Structure)){
 
       for(i in 1: dim(selectedEppic)[1]){
         selectedEppic$Res[i] = if(selectedEppic$Structure[i] == "bio"){1}else{0}
@@ -2506,7 +2506,7 @@ shinyServer(function(input, output, session){
       names(pisaRes2) = c("PDB ID","PISA")
 
       eppicRes = selectedEppic()
-      if(eppicRes$Structure != "Inconclusive"){
+      if(!("Inconclusive" %in% eppicRes$Structure)){
         eppicRes = eppicRes[eppicRes$Structure == "bio",]
       }
       eppicRes2 = eppicRes[,c(1,3)]
@@ -2774,6 +2774,7 @@ shinyServer(function(input, output, session){
 
       }
 
+      if(is.na(consensusLast$SequenceClusterOligomericState)){consensusLast$SequenceClusterOligomericState = "N/A"}
 
       for(i in 1:dim(consensusLast)[1]){
         consensusLast$ResultC[i] = if(as.character(consensusLast$CurrentOligomericState)[i] == as.character(consensusLast$ConsensusResult)[i]){1}else if(as.character(consensusLast$ConsensusResult)[i] == "Inconclusive"){2}else{0}
